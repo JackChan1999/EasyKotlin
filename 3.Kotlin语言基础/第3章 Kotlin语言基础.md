@@ -1,13 +1,11 @@
-第3章 Kotlin语言基础 《Kotlin 极简教程》
+第3章 Kotlin语言基础
 ===
 
 > 掌握基础，持续练习
 
-
 学习任何东西，都是一个由表及里的过程。学习一门编程语言也一样。对于一门编程语言来说，“表” 就是基本词汇（关键字、标识符等）、句子（表达式）和语法。
 
-每一门编程语言的学习内容都会涉及： 运行环境、基础数据类型（数字、字符串、数组、集合、映射字典等） 、表达式、 流程控制 、类、方法（函数）
-等等，不同的语言会借鉴其他的语言特性，同时也会有各自的特性。这样我们就可以通过对比学习来加深理解。另外，我们还通过大量实践深入理解，达到熟练使用。
+每一门编程语言的学习内容都会涉及： 运行环境、基础数据类型（数字、字符串、数组、集合、映射字典等） 、表达式、 流程控制 、类、方法（函数）等等，不同的语言会借鉴其他的语言特性，同时也会有各自的特性。这样我们就可以通过对比学习来加深理解。另外，我们还通过大量实践深入理解，达到熟练使用。
 
 所谓“纸上得来终觉浅，绝知此事要躬行”是也。下面让我们开始吧。
 
@@ -26,12 +24,8 @@ com.bbc.jackjson.JSON.parseJSONObject()
 
 我们可以在`*.kt`文件开头声明`package`命名空间。例如在PackageDemo.kt源代码中，我们按照如下方式声明包
 
-```
+```kotlin
 package com.easy.kotlin
-
-/**
- * Created by jack on 2017/6/8.
- */
 
 fun what(){
     println("This is WHAT ?")
@@ -46,8 +40,6 @@ class Motorbike{
 fun main(args:Array<String>){
     println("Hello,World!")
 }
-
-
 ```
 
 包的声明处于源文件顶部。这里，我们声明了包 `com.easy.kotlin` , 里面定义了包级函数 `what()` , 同时定义了一个类 `Motorbike` 。另外，目录与包的结构无需匹配：源代码可以在文件系统的任意位置。
@@ -56,21 +48,16 @@ fun main(args:Array<String>){
 
 首先，我们使用标准Gradle工程目录，对应的测试代码放在test目录下。具体目录结构如下
 
-
-![螢幕快照 2017-06-08 22.54.12.png](http://upload-images.jianshu.io/upload_images/1233356-624f7da04a606184.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-624f7da04a606184.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 我们在测试源代码目录 `src/test/kotlin`下面新建一个包，跟`src/main/kotlin`在同一个 `package com.easy.kotlin`。然后，在此包下面新建一个测试类PackageDemoTest
 
-```
+```kotlin
 package com.easy.kotlin
 
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-
-/**
- * Created by jack on 2017/6/8.
- */
 
 @RunWith(JUnit4::class)
 class PackageDemoTest {
@@ -87,14 +74,12 @@ class PackageDemoTest {
     }
 
 }
-
-
 ```
 其中，`what()` 函数跟` PackageDemoTest`类在同一个包命名空间下，可以直接调用，不需要 `import`。`Motorbike`类跟` PackageDemoTest`类也是同理分析。
 
 如果不在同一个package下面，我们就需要import对应的类和函数。例如，我们在 `src/test/kotlin`目录下新建一个`package com.easy.kotlin.test`, 使用`package com.easy.kotlin` 下面的类和函数，示例如下
 
-```
+```kotlin
 package com.easy.kotlin.test
 
 import com.easy.kotlin.Motorbike
@@ -102,11 +87,6 @@ import com.easy.kotlin.what
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-
-
-/**
- * Created by jack on 2017/6/8.
- */
 
 @RunWith(JUnit4::class)
 class PackageDemoTest {
@@ -121,12 +101,9 @@ class PackageDemoTest {
         val motorbike = Motorbike()
         motorbike.drive()
     }
-
 }
-
 ```
 我们使用`import com.easy.kotlin.Motorbike`导入类，直接使用`import com.easy.kotlin.what`导入包级函数。
-
 
 上面我们使用JUnit4测试框架。在`build.gradle`中的依赖是
 ```
@@ -135,21 +112,16 @@ testCompile group: 'junit', name: 'junit', version: '4.12'
 
 右击测试类，点击执行
 
-
-![螢幕快照 2017-06-08 23.10.36.png](http://upload-images.jianshu.io/upload_images/1233356-f184a42badf5380c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-f184a42badf5380c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 运行结果
 
-![螢幕快照 2017-06-08 23.10.59.png](http://upload-images.jianshu.io/upload_images/1233356-54b9c1f3b179c826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-54b9c1f3b179c826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 另外，如果我们不定义package命令空间，则默认在根级目录。例如直接在`src/main/kotlin` 源代码目录下面新建 DefaultPackageDemo.kt 类
 
-```
+```kotlin
 import java.util.*
-
-/**
- * Created by jack on 2017/6/8.
- */
 
 fun now() {
     println("Now Date is: " + Date())
@@ -159,22 +131,15 @@ class Car{
     fun drive(){
         println("Drive The Car ... ")
     }
-
 }
-
 ```
 
 如果，我们同样在`src/test/kotlin` 目录下面新建测试类DefaultPackageDemoTest
 
-```
+```kotlin
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-
-/**
- * Created by jack on 2017/6/8.
- */
-
 
 @RunWith(JUnit4::class)
 class DefaultPackageDemoTest {
@@ -186,9 +151,7 @@ class DefaultPackageDemoTest {
         car.drive()
     }
 
-
 }
-
 ```
 
 我们不需要import  `now()` 函数和 `Car`类，可以直接调用。如果我们在 `src/test/kotlin/com/easy/kotlin/PackageDemoTest.kt` 测试类里面调用`now()` 函数和 `Car`类， 我们按照下面的方式import
@@ -200,7 +163,7 @@ import Car
 
 PackageDemoTest.kt完整测试代码如下
 
-```
+```kotlin
 package com.easy.kotlin
 
 import now
@@ -208,10 +171,6 @@ import Car
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-
-/**
- * Created by jack on 2017/6/8.
- */
 
 @RunWith(JUnit4::class)
 class PackageDemoTest {
@@ -235,9 +194,7 @@ class PackageDemoTest {
     }
 
 }
-
 ```
-
 
 另外， Kotlin会会默认导入一些基础包到每个 Kotlin 文件中：
 
@@ -270,7 +227,6 @@ JS:
 
 本小节示例工程源代码：https://github.com/EasyKotlin/chapter3_kotlin_basics/tree/package_demo
 
-
 ### 3.2 声明变量和值
 
 首先，在Kotlin中， 一切都是对象。所以，所有变量也都是对象（也就是说，任何变量都是根据引用类型来使用的）。
@@ -283,17 +239,12 @@ Kotlin的变量分为 `var` (可变的) 和 `val` (不可变的)。
 
 >而 `val` 是只读的，仅能一次赋值，后面就不能被重新赋值。 
 
-
 代码示例
 
-```
+```kotlin
 package com.easy.kotlin
 
 import java.util.*
-
-/**
- * Created by jack on 2017/6/8.
- */
 
 class VariableVSValue {
     fun declareVar() {
@@ -323,20 +274,16 @@ class VariableVSValue {
         println("c = $c, d = $d, e = $e")
     }
 }
-
-
-
 ```
 
 我们知道，在Java中也分可变与不可变（final）。在Kotlin中，更简洁的、更常用的场景是：只要可能，尽量在Kotlin中首选使用`val`不变值。因为事实上在程序中大部分地方使用不可变的变量，可带来很多益处，如：可预测的行为和线程安全。
-
 
 ## 3.3 变量类型推断
 
 ### 3.3.1 省去变量类型
 在Kotlin中大部分情况你不需要说明你使用对象的类型，编译器可以直接推断出它的类型。代码示例
 
-```
+```kotlin
     fun typeInference(){
         val str = "abc"
         println(str)
@@ -386,23 +333,22 @@ class VariableVSValue {
 
  但是，类型推断不是所有的。例如，整型变量Int不能赋值Long变量。下面的代码不能通过编译：
 
-```
+```kotlin
     fun Int2Long(){
         val x:Int = 10
         val y:Long = x // Type mismatch
     }
- ```
+```
 
 我们需要显式地调用对应的类型转换函数进行转换：
 
-```
+```kotlin
     fun Int2Long(){
         val x:Int = 10
 //        val y:Long = x // Type mismatch
         val y: Long = x.toLong()
     }
- ```
-
+```
 
 ### 3.3.2 使用`is`运算符进行类型检测
 
@@ -410,49 +356,42 @@ class VariableVSValue {
 
 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换：
 
-
-``` kotlin
-    fun getLength(obj: Any): Int? {
-        var result = 0
-        if (obj is String) {
-            // `obj` 在该条件分支内自动转换成 `String`
-            println(obj::class) //class java.lang.String
-            result = obj.length
-            println(result)
-        }
-        // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型
-        println(obj::class) // class java.lang.Object
-        return result
+```kotlin
+fun getLength(obj: Any): Int? {
+    var result = 0
+    if (obj is String) {
+        // `obj` 在该条件分支内自动转换成 `String`
+        println(obj::class) //class java.lang.String
+        result = obj.length
+        println(result)
     }
+    // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型
+    println(obj::class) // class java.lang.Object
+    return result
+}
 ```
 
 测试类如下
 
+```kotlin
+@Test
+fun testGetLength() {
+    val obj = "abcdef"
+    val len = variableVSValue.getLength(obj)
+    Assert.assertTrue(len == 6)
+
+    val obj2:Any = Any()
+    variableVSValue.getLength(obj2)
+
+}
 ```
-    @Test
-    fun testGetLength() {
-        val obj = "abcdef"
-        val len = variableVSValue.getLength(obj)
-        Assert.assertTrue(len == 6)
-
-        val obj2:Any = Any()
-        variableVSValue.getLength(obj2)
-
-    }
-```
-
 
 ### 3.4 字符串与其模板表达式
 
 原始字符串(raw string)由三重引号（"""）分隔(这个跟python一样)。原始字符串可以包含换行符和任何其他字符。
 
-```
+```kotlin
 package com.easy.kotlin
-
-/**
- * Created by jack on 2017/6/9.
- */
-
 
 fun main(args: Array<String>) {
     val rawString = """
@@ -463,13 +402,12 @@ fun helloWorld(val name : String) {
     println(rawString)
 
 }
-
 ```
 
 字符串可以包含模板表达式。模板表达式以美元符号（$）开始。
-```
-    val fooTemplateString = "$rawString has ${rawString.length} characters"
-    println(fooTemplateString)
+```kotlin
+val fooTemplateString = "$rawString has ${rawString.length} characters"
+println(fooTemplateString)
 ```
 
 ## 3.5 流程控制语句
@@ -484,21 +422,14 @@ fun helloWorld(val name : String) {
 
 ### 3.5.1 if表达式
 
-
-
 if-else语句是控制程序流程的最基本的形式，其中else是可选的。
 
 在 Kotlin 中，if 是一个表达式，即它会返回一个值(跟Scala一样)。
 
 代码示例：
 
-``` kotlin
+```kotlin
 package com.easy.kotlin
-
-/**
- * Created by jack on 2017/6/9.
- */
-
 
 fun main(args: Array<String>) {
     println(max(1, 2))
@@ -530,14 +461,11 @@ fun max2(a: Int, b: Int): Int {
     }
     return max2
 }
-
-
-
 ```
 
 另外，if 的分支可以是代码块，最后的表达式作为该块的值：
 
-``` kotlin
+```kotlin
 fun max3(a: Int, b: Int): Int {
     val max = if (a > b) {
         print("Max is a")
@@ -562,7 +490,7 @@ if(true) 1 else 0
 
 示例代码
 
-```
+```kotlin
 >>> val x = if(1==1) true
 >>> x
 kotlin.Unit
@@ -571,14 +499,13 @@ kotlin.Unit
 true
 ```
 
-
 if-else语句规则：
 
 - if后的括号不能省略，括号里表达式的值须是布尔型
 
 代码反例：
 
-```
+```kotlin
 >>> if("a") 1
 error: type mismatch: inferred type is String but Boolean was expected
 if("a") 1
@@ -593,7 +520,7 @@ if(1)
 
 - 如果条件体内只有一条语句需要执行，那么if后面的大括号可以省略。良好的编程风格建议加上大括号。
 
-```
+```kotlin
 >>> if(true) println(1) else println(0)
 1
 >>> if(true) { println(1)}  else{ println(0)}
@@ -613,7 +540,7 @@ when表达式类似于 switch-case 表达式。when会对所有的分支进行�
 
 Kotlin的极简语法表达风格，使得我们对分支检查的代码写起来更加简单直接：
 
-``` kotlin
+```kotlin
 fun cases(obj: Any) {
     when (obj) {
         1 -> print("第一项")
@@ -623,7 +550,6 @@ fun cases(obj: Any) {
         else -> print("else类似于Java中的default")
     }
 }
-
 ```
 
 像 if  一样，when 的每一个分支也可以是一个代码块，它的值是块中最后的表达式的值。
@@ -632,7 +558,7 @@ fun cases(obj: Any) {
 
 如果我们有很多分支需要用相同的方式处理，则可以把多个分支条件放在一起，用逗号分隔：
 
-``` kotlin
+```kotlin
 fun switch(x: Any) {
     when (x) {
         -1, 0 -> print("x == -1 or x == 0")
@@ -647,7 +573,7 @@ fun switch(x: Any) {
 
 我们可以用任意表达式（而不只是常量）作为分支条件
 
-``` kotlin
+```kotlin
 fun switch(x: Int) {
     val s = "123"
     when (x) {
@@ -665,20 +591,17 @@ fun switch(x: Int) {
 
 我们也可以检测一个值在 in 或者不在 !in 一个区间或者集合中：
 
-``` kotlin
+```kotlin
 
-    val x = 1
-    val validNumbers = arrayOf(1, 2, 3)
-    when (x) {
-        in 1..10 -> print("x is in the range")
-        in validNumbers -> print("x is valid")
-        !in 10..20 -> print("x is outside the range")
-        else -> print("none of the above")
-    }
-
+val x = 1
+val validNumbers = arrayOf(1, 2, 3)
+when (x) {
+    in 1..10 -> print("x is in the range")
+    in validNumbers -> print("x is valid")
+    !in 10..20 -> print("x is outside the range")
+    else -> print("none of the above")
+}
 ```
-
-
 
 ### 3.5.3 for循环
 
@@ -686,7 +609,7 @@ Kotlin的for循环跟现代的程序设计语言基本相同。
 
 for 循环可以对任何提供迭代器（iterator）的对象进行遍历，语法如下:
 
-``` kotlin
+```kotlin
 for (item in collection) {
     print(item)
 }
@@ -694,7 +617,7 @@ for (item in collection) {
 
 循环体可以是一个代码块。
 
-``` kotlin
+```kotlin
 for (i in intArray) {
     ...
 }
@@ -703,8 +626,6 @@ for (i in intArray) {
 代码示例
 
 ```
-
-
 
 /**
  * For loop iterates through anything that provides an iterator.
@@ -718,41 +639,32 @@ fun main(args: Array<String>) {
     for (i in args.indices)
         println(args[i])
 }
-
-
 ```
 
 如果你想要通过索引遍历一个数组或者一个 list，你可以这么做：
 
-``` kotlin
+```kotlin
 for (i in array.indices) {
     print(array[i])
 }
 ```
 
-
 或者你可以用库函数 `withIndex`：
 
-``` kotlin
+```kotlin
 for ((index, value) in array.withIndex()) {
     println("the element at $index is $value")
 }
 ```
-
 
 ### 3.5.4 while循环
 while  和  do .. while使用方式跟C、Java语言基本一致。
 
 代码示例
 
-``` kotlin
+```kotlin
 
 package com.easy.kotlin
-
-/**
- * Created by jack on 2017/6/9.
- */
-
 
 fun main(args: Array<String>) {
     var x = 10
@@ -767,13 +679,7 @@ fun main(args: Array<String>) {
         println(y)
     } while (y < 20) // y的作用域包含此处
 }
-
-
-
-
-
 ```
-
 
  ### 3.5.5 break 和 continue 
 
@@ -802,10 +708,10 @@ fun breakDemo_1() {
 测试代码：
 
 ```
-    @Test
-    fun testBreakDemo_1(){
-        breakDemo_1()
-    }
+@Test
+fun testBreakDemo_1(){
+    breakDemo_1()
+}
 ```
 输出：
 ```
@@ -821,10 +727,9 @@ fun breakDemo_1() {
 
 > 打印数字0~10，但是不打印偶数。
 
-
 代码示例：
 
-```
+```kotlin
 fun continueDemo() {
     for (i in 1..10) {
         if (i % 2 == 0) {
@@ -851,8 +756,6 @@ fun continueDemo() {
 9
 ```
 
-
-
 ### 3.5.6 return返回
 
 在Java、C语言中，return语句使我们再常见不过的了。虽然在Scala，Groovy这样的语言中，函数的返回值可以不需要显示用return来指定，但是我们仍然认为，使用return的编码风格更加容易阅读理解。
@@ -866,7 +769,6 @@ fun sum(a: Int,b: Int): Int{
 }
 
 fun max(a: Int, b: Int): Int { if (a > b) return a else return b}
-
 ```
 我们在Kotlin中，可以直接使用`=`符号来直接返回一个函数的值。
 
@@ -942,10 +844,7 @@ res6: Int = 2
 
 我们可以看出`maxf: (x: Int, y: Int)Int`跟`maxv: (x: Int, y: Int)Int`签名是一样的。在这里，Kotlin跟Scala在大括号的使用上，是完全不同的。
 
-
-
 然后，调用方式是直接调用`invoke()`函数。通过REPL的编译错误提示信息，我们也可以看出，在Kotlin中，调用无参函数也是要加上括号`()`的。
-
 
 kotlin 中 `return` 语句会从最近的函数或匿名函数中返回，但是在Lambda表达式中遇到return，则直接返回最近的外层函数。例如下面两个函数是不同的：
 
@@ -1001,9 +900,7 @@ fun returnDemo_2() {
 
 ### 3.5.7 标签（label）
 
-
 在 Kotlin 中任何表达式都可以用标签（label）来标记。 标签的格式为标识符后跟 `@` 符号，例如：`abc@`、`jarOfLove@` 都是有效的标签。我们可以用Label标签来控制 `return`、`break` 或 `continue`的跳转（jump）行为。
-
 
 Kotlin 的函数是可以被嵌套的。它有函数字面量、局部函数等。 有了标签限制的 return，我们就可以从外层函数返回了。例如，从 lambda 表达式中返回，`returnDemo_2()` 我们可以显示指定lambda 表达式中的return地址是其入口处。
 
@@ -1042,7 +939,6 @@ fun returnDemo_4() {
 
     println(" END " + ::returnDemo_4.name)
 }
-
 ```
 
 接收该Lambda表达式的函数是forEach, 所以我们可以直接使用 `return@forEach` ，来跳转到此处执行下一轮循环。
@@ -1111,9 +1007,7 @@ inner=2
 outer=1
 ```
 
-
 有时候，为了代码可读性，我们可以用标签来显式地指出循环体的跳转地址，比如说在`breakDemo_1()`中，我们可以用标签来指明内层循环的跳转地址：
-
 
 ```
 fun breakDemo_3() {
@@ -1128,9 +1022,6 @@ fun breakDemo_3() {
         }
 }
 ```
-
-
-
 
 ### 3.5.8 throw表达式
 
@@ -1148,7 +1039,6 @@ class java.lang.Void
 >>> fail("XXXX")
 java.lang.IllegalArgumentException: XXXX
 	at Line57.fail(Unknown Source)
-
 
 ```
 
@@ -1190,15 +1080,13 @@ PsiElement: ex
 The root cause was thrown at: ScriptContext.java:86
 ...
 
-
 ```
-
 
 ## 3.6 代码注释
 
 正如 Java 和 JavaScript，Kotlin 支持行注释及块注释。
 
-``` kotlin
+```kotlin
 // 这是一个行注释
 
 /* 这是一个多行的
@@ -1227,10 +1115,7 @@ fun main(args:Array<String>){
     println(f.sum1(1,1))
     println(f.sum2(1,1))
 }
-
 ```
-
-
 
 ## 3.7 语法与标识符
 
@@ -1348,8 +1233,6 @@ KtModifierKeywordToken[] MODIFIER_KEYWORDS_ARRAY =
 
 ## 3.7.2 关键字(保留字)
 
-
-
 ```
 TokenSet KEYWORDS = TokenSet.create(PACKAGE_KEYWORD, AS_KEYWORD, TYPE_ALIAS_KEYWORD, CLASS_KEYWORD, INTERFACE_KEYWORD,
                                         THIS_KEYWORD, SUPER_KEYWORD, VAL_KEYWORD, VAR_KEYWORD, FUN_KEYWORD, FOR_KEYWORD,
@@ -1374,8 +1257,6 @@ TokenSet KEYWORDS = TokenSet.create(PACKAGE_KEYWORD, AS_KEYWORD, TYPE_ALIAS_KEYW
                                              SUSPEND_KEYWORD, HEADER_KEYWORD, IMPL_KEYWORD
     );
 ```
-
-
 
 其中，对应的关键字如下：
 
@@ -1470,7 +1351,6 @@ TokenSet KEYWORDS = TokenSet.create(PACKAGE_KEYWORD, AS_KEYWORD, TYPE_ALIAS_KEYW
 
 #### `this` 关键字
 
-
 `this`关键字持有当前对象的引用。我们可以使用`this`来引用变量或者成员函数，也可以使用`return  this`，来返回某个类的引用。
 
 代码示例
@@ -1490,7 +1370,6 @@ class ThisDemo {
         println("HOW IS THIS ?")
     }
 }
-
 ```
 测试代码
 
@@ -1508,9 +1387,6 @@ THIS IS
 HOW IS THIS ?
 com.easy.kotlin.ThisDemo@475232fc
 ```
-
-
-
 
 在类的成员中，this 指向的是该类的当前对象。
 
@@ -1533,8 +1409,6 @@ abctrue
 ```
 
 如果 this 没有限定符，它指的是最内层的包含它的作用域。如果我们想要引用其他作用域中的 this，可以使用 this@label 标签。
-
-
 
 代码示例：
 ```
@@ -1569,7 +1443,6 @@ class Outer {
         }
     }
 
-
 }
 ```
 测试代码：
@@ -1580,10 +1453,7 @@ class Outer {
         val outer = Outer()
         outer.Inner().m()
     }
-
 ```
-
-
 
 输出
 
@@ -1594,7 +1464,6 @@ pthis=com.easy.kotlin.Outer$Inner@5aa8ac7f
 Oh!
 d1abc
 ```
-
 
 #### super 关键字
 
@@ -1637,20 +1506,14 @@ class Son : Father {
     }
 ```
 
-
-
 输出
-
 
 ```
 FFF
 Chen Jason Love Chen Harry
 ```
 
-
-
 ### 3.7.3 操作符和操作符的重载
-
 
 Kotlin 允许我们为自己的类型提供预定义的一组操作符的实现。这些操作符具有固定的符号表示（如 `+` 或 `*`）和固定的优先级。这些操作符的符号定义如下：
 
@@ -1705,30 +1568,26 @@ Kotlin 允许我们为自己的类型提供预定义的一组操作符的实现�
     KtSingleValueToken COMMA       = new KtSingleValueToken("COMMA", ",");
 ```
 
-
-
-
 ### 3.7.4 操作符优先级（Precedence)
 
-| 优先级 | 标题 | 符号 |
-|------------|-------|---------|
-| 最高    | 后缀（Postfix ）| `++`, `--`, `.`, `?.`, `?` |
-| | 前缀（Prefix） | `-`, `+`, `++`, `--`, `!`, [`labelDefinition`](#IDENTIFIER)`@` |
-| | 右手类型运算（Type RHS，right-hand side class type (RHS) ） | `:`, `as`, `as?` |
-| | 乘除取余（Multiplicative） | `*`, `/`, `%` |
-| | 加减（Additive ）| `+`, `-` |
-| | 区间范围（Range） | `..` |
-| | Infix函数 | 例如，给` Int `定义扩展 `infix fun Int.shl(x: Int): Int {...}`,这样调用 `1 shl 2`，等同于`1.shl(2)` |
-| | Elvis操作符 | `?:` |
-| | 命名检查符（Named checks） | `in`, `!in`, `is`, `!is` |
-| | 比较大小（Comparison） | `<`, `>`, `<=`, `>=` |
-| | 相等性判断（Equality) | `==`, `\!==` |
-| | 与 （Conjunction）| `&&` |
-| | 或 （Disjunction）| `ll`|
-| 最低 | 赋值（Assignment） | `=`, `+=`, `-=`, `*=`, `/=`, `%=` |
+| 优先级  | 标题                                       | 符号                                       |
+| ---- | ---------------------------------------- | ---------------------------------------- |
+| 最高   | 后缀（Postfix ）                             | `++`, `--`, `.`, `?.`, `?`               |
+|      | 前缀（Prefix）                               | `-`, `+`, `++`, `--`, `!`, [`labelDefinition`](#IDENTIFIER)`@` |
+|      | 右手类型运算（Type RHS，right-hand side class type (RHS) ） | `:`, `as`, `as?`                         |
+|      | 乘除取余（Multiplicative）                     | `*`, `/`, `%`                            |
+|      | 加减（Additive ）                            | `+`, `-`                                 |
+|      | 区间范围（Range）                              | `..`                                     |
+|      | Infix函数                                  | 例如，给` Int `定义扩展 `infix fun Int.shl(x: Int): Int {...}`,这样调用 `1 shl 2`，等同于`1.shl(2)` |
+|      | Elvis操作符                                 | `?:`                                     |
+|      | 命名检查符（Named checks）                      | `in`, `!in`, `is`, `!is`                 |
+|      | 比较大小（Comparison）                         | `<`, `>`, `<=`, `>=`                     |
+|      | 相等性判断（Equality)                          | `==`, `\!==`                             |
+|      | 与 （Conjunction）                          | `&&`                                     |
+|      | 或 （Disjunction）                          | `ll`                                     |
+| 最低   | 赋值（Assignment）                           | `=`, `+=`, `-=`, `*=`, `/=`, `%=`        |
 
 注：Markdown表格语法：`ll`是`||`。
-
 
 为实现这些的操作符，Kotlin为二元操作符左侧的类型和一元操作符的参数类型，提供了相应的函数或扩展函数。
 
@@ -1915,19 +1774,15 @@ public class Int private constructor() : Number(), Comparable<Int> {
 
 从源代码我们可以看出，重载操作符的函数需要用 `operator` 修饰符标记。中缀操作符的函数使用`infix`修饰符标记。
 
-
-
-
-
 ### 3.7.5  一元操作符（unary operation）
 
 #### 前缀操作符
 
-| 表达式     | 翻译为        |
-|------------|---------------|
-| `+a` | `a.unaryPlus()` |
+| 表达式  | 翻译为              |
+| ---- | ---------------- |
+| `+a` | `a.unaryPlus()`  |
 | `-a` | `a.unaryMinus()` |
-| `!a` | `a.not()` |
+| `!a` | `a.not()`        |
 
 例如，当编译器处理表达式 `+a` 时，它将执行以下步骤：
 
@@ -1940,7 +1795,7 @@ public class Int private constructor() : Number(), Comparable<Int> {
 
 以下是如何重载一元减运算符的示例：
 
-``` kotlin
+```kotlin
 
 package com.easy.kotlin
 
@@ -1952,11 +1807,9 @@ class OperatorDemo {
 
 }
 
-
 data class Point(val x: Int, val y: Int)
 
 operator fun Point.unaryMinus() = Point(-x, -y)
-
 
 ```
 
@@ -1982,16 +1835,15 @@ class OperatorDemoTest {
         println(np) //Point(x=-1, y=-1)
     }
 }
-
 ```
 
 ####  递增和递减
 
-| 表达式     | 翻译为        |
-|------------|---------------|
-| `a++` | `a.inc()` 返回值是`a`  |
-| `a--` | `a.dec()`  返回值是`a`|
-| `++a` | `a.inc()`  返回值是`a+1`|
+| 表达式   | 翻译为                  |
+| ----- | -------------------- |
+| `a++` | `a.inc()` 返回值是`a`    |
+| `a--` | `a.dec()`  返回值是`a`   |
+| `++a` | `a.inc()`  返回值是`a+1` |
 | `--a` | `a.dec()`  返回值是`a-1` |
 
 `inc()` 和 `dec()` 函数必须返回一个值，它用于赋值给使用
@@ -2011,8 +1863,6 @@ class OperatorDemoTest {
 
 ( `a--` 同理分析）。
 
-
-
 对于*前缀*形式 `++a` 和 `--a` 解析步骤类似，但是返回值是取的新值来返回：
 
 * 把 `a.inc()` 结果赋值给 `a`
@@ -2020,20 +1870,18 @@ class OperatorDemoTest {
 
 ( `--a` 同理分析）。
 
-
 ### 3.7.6  二元操作符
-
 
 #### 算术运算符
 
-| 表达式     | 翻译为        |
-| -----------|-------------- |
-| `a + b` | `a.plus(b)` |
-| `a - b` | `a.minus(b)` |
-| `a * b` | `a.times(b)` |
-| `a / b` | `a.div(b)` |
-| `a % b` | `a.rem(b)`、 `a.mod(b)`  |
-| `a..b ` | `a.rangeTo(b)` |
+| 表达式     | 翻译为                    |
+| ------- | ---------------------- |
+| `a + b` | `a.plus(b)`            |
+| `a - b` | `a.minus(b)`           |
+| `a * b` | `a.times(b)`           |
+| `a / b` | `a.div(b)`             |
+| `a % b` | `a.rem(b)`、 `a.mod(b)` |
+| `a..b ` | `a.rangeTo(b)`         |
 
 代码示例
 
@@ -2080,13 +1928,12 @@ public final operator fun plus(other: Short): Int defined in kotlin.Int
 1
 ```
 
-
 #### 自定义重载的 `+` 运算符
 
 下面我们使用一个计数类 Counter 重载的 `+` 运算符来增加index的计数值。
 
 代码示例
-``` kotlin
+```kotlin
 data class Counter(var index: Int)
 
 operator fun Counter.plus(increment: Int): Counter {
@@ -2115,67 +1962,56 @@ class OperatorDemoTest
         println(cplus) //Counter(index=11)
     }
 }
-
 ```
-
 
 ####  `in`操作符
 
-
-| 表达式     | 翻译为        |
-| -----------|-------------- |
-| `a in b` | `b.contains(a)` |
+| 表达式       | 翻译为              |
+| --------- | ---------------- |
+| `a in b`  | `b.contains(a)`  |
 | `a !in b` | `!b.contains(a)` |
 
 #### 索引访问操作符
 
-| 表达式 | 翻译为        |
-| -------|-------------- |
-| `a[i]`  | `a.get(i)` |
+| 表达式        | 翻译为           |
+| ---------- | ------------- |
+| `a[i]`     | `a.get(i)`    |
 | `a[i] = b` | `a.set(i, b)` |
 
 方括号转换为调用带有适当数量参数的 `get` 和 `set`。
 
-
 #### 调用操作符
 
-| 表达式 | 翻译为        |
-|--------|---------------|
-| `a()`  | `a.invoke()` |
-| `a(i)`  | `a.invoke(i)` |
-
+| 表达式    | 翻译为           |
+| ------ | ------------- |
+| `a()`  | `a.invoke()`  |
+| `a(i)` | `a.invoke(i)` |
 
 圆括号转换为调用带有适当数量参数的 `invoke`。
 
-
 #### 计算并赋值
 
-| 表达式     | 翻译为        |
-|------------|---------------|
-| `a += b` | `a.plusAssign(b)` |
+| 表达式      | 翻译为                |
+| -------- | ------------------ |
+| `a += b` | `a.plusAssign(b)`  |
 | `a -= b` | `a.minusAssign(b)` |
 | `a *= b` | `a.timesAssign(b)` |
-| `a /= b` | `a.divAssign(b)` |
-| `a %= b` | `a.modAssign(b)` |
+| `a /= b` | `a.divAssign(b)`   |
+| `a %= b` | `a.modAssign(b)`   |
 
 对于赋值操作，例如 `a += b`，编译器会试着生成 `a = a + b` 的代码（这里包含类型检查：`a + b` 的类型必须是 `a` 的子类型）。
 
-
 #### 相等与不等操作符
-
 
 Kotlin 中有两种类型的相等性：
 
 * 引用相等 `===` `!==`（两个引用指向同一对象）
 * 结构相等 `==` `!=`（ 使用`equals()` 判断）
 
-
-
-| 表达式     | 翻译为        |
-|------------|---------------|
-| `a == b` | `a?.equals(b) ?: (b === null)` |
+| 表达式      | 翻译为                               |
+| -------- | --------------------------------- |
+| `a == b` | `a?.equals(b) ?: (b === null)`    |
 | `a != b` | `!(a?.equals(b) ?: (b === null))` |
-
 
 这个 `==` 操作符有些特殊：它被翻译成一个复杂的表达式，用于筛选 `null` 值。
 
@@ -2184,7 +2020,6 @@ Kotlin 中有两种类型的相等性：
 当与 null 显式比较时，`a == null` 会被自动转换为 `a=== null`
 
 *注意*：`===` 和 `!==`不可重载。
-
 
 #### Elvis 操作符 `?:`
 
@@ -2199,14 +2034,9 @@ val y = if(x!==null) x else 0
 
 主要用来作`null`安全性检查。
 
-
-
-
-
 Elvis操作符 `?:` 是一个二元运算符，如果第一个操作数为真，则返回第一个操作数，否则将计算并返回其第二个操作数。它是三元条件运算符的变体。命名灵感来自猫王的发型风格。
 
 Kotlin中没有这样的三元运算符 `true?1:0`，取而代之的是`if(true) 1 else 0`。而Elvis操作符算是精简版的三元运算符。
-
 
 我们在Java中使用的三元运算符的语法，你通常要重复变量两次， 示例：
 ```
@@ -2245,16 +2075,12 @@ false
 abc
 ```
 
-
-
-
-
 #### 比较操作符
 
-| 表达式 | 翻译为        |
-|--------|---------------|
-| `a > b`  | `a.compareTo(b) > 0` |
-| `a < b`  | `a.compareTo(b) < 0` |
+| 表达式      | 翻译为                   |
+| -------- | --------------------- |
+| `a > b`  | `a.compareTo(b) > 0`  |
+| `a < b`  | `a.compareTo(b) < 0`  |
 | `a >= b` | `a.compareTo(b) >= 0` |
 | `a <= b` | `a.compareTo(b) <= 0` |
 
@@ -2266,7 +2092,6 @@ abc
 
 代码示例
 
-
 ```
 data class Person(val name: String, val age: Int)
 
@@ -2275,9 +2100,7 @@ infix fun Person.grow(years: Int): Person {
 }
 ```
 
-
 测试代码
-
 
 ```
 package com.easy.kotlin
@@ -2286,9 +2109,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-/**
- * Created by jack on 2017/6/11.
- */
+
 @RunWith(JUnit4::class)
 class InfixFunctionDemoTest {
 
@@ -2300,50 +2121,35 @@ class InfixFunctionDemoTest {
         println(person grow 2)
     }
 }
-
 ```
 
 输出
 
-
 ```
 Person(name=Jack, age=22)
 Person(name=Jack, age=22)
 ```
-
-
-
-
-
-
-
-
 
 ## 3.8 函数扩展和属性扩展(Extensions)
 Kotlin 支持 扩展函数 和 扩展属性。其能够扩展一个类的新功能而无需继承该类或使用像装饰者这样的设计模式等。 
 
 大多数时候我们在顶层定义扩展，即直接在包里：
 
-``` kotlin
+```kotlin
 package com.easy.kotlin
-
-/**
- * Created by jack on 2017/6/11.
- */
 
 val <T> List<T>.lastIndex: Int get() = size - 1
 
 fun String.notEmpty(): Boolean {
     return !this.isEmpty()
 }
-
-``` 
+```
 
 这样我们就可以在整个包里使用这些扩展。
 
 要使用其他包的扩展，我们需要在调用方导入它：
 
-``` kotlin
+```kotlin
 package com.example.usage
 
 import foo.bar.goo // 导入所有名为“goo”的扩展
@@ -2353,9 +2159,7 @@ import foo.bar.*   // 从“foo.bar”导入一切
 fun usage(baz: Baz) {
     baz.goo()
 }
-
 ```
-
 
 ### 3.8.1 扩展函数
 
@@ -2370,7 +2174,6 @@ true
 
 我们就可以为`String`类型扩展一个`notEmpty()`函数：
 
-
 ```
 >>> fun String.notEmpty():Boolean{
 ... return !this.isEmpty()
@@ -2383,11 +2186,9 @@ false
 true
 ```
 
-
-
 下面代码为 `MutableList<Int>` 添加一个`swap` 函数：
 
-``` kotlin
+```kotlin
 fun MutableList<Int>.swap(index1: Int, index2: Int) {
     val tmp = this[index1] // this对应该列表
     this[index1] = this[index2]
@@ -2400,7 +2201,7 @@ fun MutableList<Int>.swap(index1: Int, index2: Int) {
 
 当然，这个函数对任何 `MutableList<T>` 起作用，我们可以泛化它：
 
-``` kotlin
+```kotlin
     fun <T> MutableList<T>.mswap(index1: Int, index2: Int) {
         val tmp = this[index1] // “this”对应该列表
         this[index1] = this[index2]
@@ -2412,13 +2213,8 @@ fun MutableList<Int>.swap(index1: Int, index2: Int) {
 
 完整代码示例
 
-
-```
+```kotlin
 package com.easy.kotlin
-
-/**
- * Created by jack on 2017/6/11.
- */
 
 val <T> List<T>.lastIndex: Int get() = size - 1
 
@@ -2438,9 +2234,7 @@ fun <T> MutableList<T>.mswap(index1: Int, index2: Int) {
     this[index2] = tmp
 }
 
-
 class ExtensionsDemo {
-
 
     fun useExtensions() {
         val a = "abc"
@@ -2453,14 +2247,12 @@ class ExtensionsDemo {
         println("After Swap:")
         println(mList)//[5, 2, 3, 4, 1]
 
-
         val mmList = mutableListOf<String>("a12", "b34", "c56", "d78")
         println("Before Swap:")
         println(mmList)//[a12, b34, c56, d78]
         mmList.mswap(1, 2)
         println("After Swap:")
         println(mmList)//[a12, c56, b34, d78]
-
 
         val mmmList = mutableListOf<Int>(100, 200, 300, 400, 500)
         println("Before Swap:")
@@ -2470,7 +2262,6 @@ class ExtensionsDemo {
         println(mmmList)
     }
 
-
     class Inner {
         fun useExtensions() {
             val mmmList = mutableListOf<Int>(100, 200, 300, 400, 500)
@@ -2478,28 +2269,16 @@ class ExtensionsDemo {
         }
     }
 }
-
-
-
-
-
 ```
-
-
 
 测试代码
 
-
-```
+```kotlin
 package com.easy.kotlin
 
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-
-/**
- * Created by jack on 2017/6/11.
- */
 
 @RunWith(JUnit4::class)
 class ExtensionsDemoTest {
@@ -2508,21 +2287,15 @@ class ExtensionsDemoTest {
         demo.useExtensions()
     }
 }
-
 ```
 
-
-
-
 扩展不是真正的修改他们所扩展的类。我们定义一个扩展，其实并没有在一个类中插入新函数，仅仅是通过该类型的变量，用点`.`表达式去调用这个新函数。
-
-
 
 ### 3.8.2 扩展属性
 
 和函数类似，Kotlin 支持扩展属性：
 
-``` kotlin
+```kotlin
 val <T> List<T>.lastIndex: Int
     get() = size - 1
 ```
@@ -2531,28 +2304,16 @@ val <T> List<T>.lastIndex: Int
 
 代码示例：
 
-
-```
+```kotlin
 package com.easy.kotlin
 
-/**
- * Created by jack on 2017/6/11.
- */
-
 val <T> List<T>.lastIndex: Int get() = size - 1
-
-
-
 
 ```
 
 我们可以直接使用包`com.easy.kotlin`中扩展的属性`lastIndex` :
 
-
-
-![螢幕快照 2017-06-11 02.54.03.png](http://upload-images.jianshu.io/upload_images/1233356-5014b0532f56a0a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-5014b0532f56a0a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 3.9 空指针安全(Null-safety)
 
@@ -2573,11 +2334,9 @@ val <T> List<T>.lastIndex: Int get() = size - 1
 
 在Kotlin中`null`等同于空指针。我们来通过代码来看一下`null`的有趣的特性：
 
-
 首先，一个非空引用不能直接赋值为`null` :
 
-``` kotlin
-
+```kotlin
 >>> var a="abc"
 >>> a=null
 error: null can not be a value of a non-null type String
@@ -2598,21 +2357,17 @@ arrayInts=null
 
 ```
 
-
 这样，我们就可以放心地调用 `a` 的方法或者访问它的属性，不会导致 `NPE`：
 
-``` kotlin
+```kotlin
 >>> val a="abc"
 >>> a.length
 3
 ```
 
-
-
-
 如果要允许为空，我们可以在变量的类型后面加个问号`?`声明一个变量为可空的：
 
-``` kotlin
+```kotlin
 >>> var a:String?="abc"
 >>> a=null
 >>> var one:Int?=1
@@ -2625,7 +2380,7 @@ null
 
 如果我们声明了一个可空`String?`类型变量`na` ，然后直接调用`length`属性，这将是不安全的。编译器会直接报错：
 
-``` kotlin
+```kotlin
 >>> var na:String?="abc"
 >>> na=null
 >>> na.length
@@ -2646,13 +2401,11 @@ kotlin.KotlinNullPointerException
 ```
 我们可以看出，代码返回了`null` 和 `kotlin.KotlinNullPointerException`。
 
-
-
 安全调用在链式调用中很有用。在调用链中如果任意一个属性（环节）为空，这个链式调用就会安全返回 null。
 
 如果要只对非空值执行某个操作，安全调用操作符可以与 `let` （以调用者的值作为参数来执行指定的函数块，并返回其结果）一起使用：
 
-``` kotlin
+```kotlin
 >>> val listWithNulls: List<String?> = listOf("A", "B",null)
 >>> listWithNulls
 [A, B, null]
@@ -2664,22 +2417,15 @@ A
 B
 ```
 
-
-
-
 本章小结
 ===
-
 
 本章我们学习了Kotlin语言的基本词汇（关键字、标识符等）、句子（流程控制、表达式、操作符等）和一些基础语法。同时，学习了空指针安全、扩展函数与扩展属性等的语言特性。
 
 我们将在下一章节中介绍Kotlin的基本类型和类型系统。
-
-
 
 参考资料
 ===
 1.https://www.kotlincn.net/docs/reference/grammar.html
 
 2.https://en.wikipedia.org/wiki/Elvis_operator
-

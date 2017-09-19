@@ -1,18 +1,11 @@
-# chapter2_hello_world_kotlin2js
-chapter2_hello_world_kotlin2js
-
-Kotlin极简教程
-===
-
-
 第2章 快速开始：HelloWorld
 ===
 
 ## 2.1 命令行的HelloWorld
+
 安装配置完Kotlin命令行环境之后，我们直接命令行输入kotlinc, 即可进入 Kotlin REPL界面。
 
 ```kotlin
-
 $ kotlinc
 Welcome to Kotlin version 1.1.2-2 (JRE 1.8.0_40-b27)
 Type :help for help, :quit for quit
@@ -22,7 +15,6 @@ Hello,World!
 >>> import java.util.Date
 >>> Date()
 Wed Jun 07 14:19:33 CST 2017
-
 ```
 
 ## 2.2 应用程序版HelloWorld
@@ -35,7 +27,7 @@ Wed Jun 07 14:19:33 CST 2017
 
 新建完项目，我们写一个HelloWorld.kt类
 
-```
+```kotlin
 package com.easy.kotlin
 
 /**
@@ -132,17 +124,18 @@ dependencies {
 
 
 ## 2.3 Web RESTFul HelloWorld
+
 本节介绍使用 `Kotlin` 结合 `SpringBoot` 开发一个RESTFul版本的 `Hello.World`。
 
-1. 新建gradle，kotlin工程：
+1.新建gradle，kotlin工程：
 
 打开IDEA的`File > New > Project` , 如下图
 
-![螢幕快照 2017-03-11 12.40.05.png](http://upload-images.jianshu.io/upload_images/1233356-8d1252f729630936.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-8d1252f729630936.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 按照界面操作，输入相应的工程名等信息，即可新建一个使用Gradle构建的标准Kotlin工程。
 
-2. build.gradle 基本配置
+2.build.gradle 基本配置
 
 IDEA自动生成的Gradle配置文件如下：
 
@@ -180,13 +173,13 @@ dependencies {
 ```
 从上面的配置文件我们可以看出，IDEA已经自动把Gradle 构建Kotlin工程插件 kotlin-gradle-plugin，以及Kotlin标准库kotlin-stdlib添加到配置文件中了。
 
-3. 配置SpringBoot相关内容
+3.配置SpringBoot相关内容
 
 下面我们来配置SpringBoot相关内容。首先在构建脚本里面添加ext变量springBootVersion。
 
 ```
-    ext.kotlin_version = '1.1.2-2'
-    ext.springboot_version = '1.5.2.RELEASE'
+ext.kotlin_version = '1.1.2-2'
+ext.springboot_version = '1.5.2.RELEASE'
 
 ```
 
@@ -208,7 +201,7 @@ buildscript {
 }
 ```
 
-4. 配置无参（no-arg）、全开放（allopen）插件
+4.配置无参（no-arg）、全开放（allopen）插件
 
 其中,`org.jetbrains.kotlin:kotlin-noarg`是无参（no-arg）编译器插件，它为具有特定注解的类生成一个额外的零参数构造函数。 这个生成的构造函数是合成的，因此不能从 Java 或 Kotlin 中直接调用，但可以使用反射调用。 这样我们就可以使用 Java Persistence API（JPA）实例化 data 类。
 
@@ -216,12 +209,7 @@ buildscript {
 
 这样的代码写起来，可费事了。还好，我们有all-open 编译器插件。它会适配 Kotlin 以满足这些框架的需求，并使用指定的注解标注类而其成员无需显式使用 open 关键字打开。 例如，当我们使用 Spring 时，就不需要打开所有的类，跟我们在Java中写代码一样，只需要用相应的注解标注即可，如 @Configuration 或 @Service。 
 
-
-
-
-
-
-5. 配置application.properties
+5.配置application.properties
 
 ```
 spring.datasource.url = jdbc:mysql://localhost:3306/easykotlin
@@ -243,11 +231,9 @@ spring.jpa.hibernate.naming-strategy = org.hibernate.cfg.ImprovedNamingStrategy
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 
 server.port=8000
-
-
 ```
 
-6. 整体工程架构
+6.整体工程架构
 
 > UNIX操作系统说，“一切都是文件”。所以,我们 的所有的源代码、字节码、工程资源文件等等，一切都是文件。文件里面存的是字符串（01也当做是字符）。各种框架、库、编译器，解释器，都是对这些字符串流进行过滤，最后映射成01机器码（或者CPU微指令码等），最终落地到硬件上的高低电平。
 
@@ -292,12 +278,11 @@ server.port=8000
 
 ```
 
-
 一切尽在不言中，静静地看工程文件结构。
 
 直接写个HelloWorldController
 
-```
+```kotlin
 package com.easy.kotlin.controller
 
 import org.springframework.web.bind.annotation.GetMapping
@@ -320,7 +305,7 @@ class HelloWorldController {
 
 写领域模型类People
 
-```
+```kotlin
 package com.easy.kotlin.entity
 
 import java.util.*
@@ -352,7 +337,7 @@ class People(
 
 写PeopleRepository
 
-```
+```kotlin
 package com.easy.kotlin.repository
 
 import com.easy.kotlin.entity.People
@@ -368,7 +353,7 @@ interface PeopleRepository : CrudRepository<People, Long> {
 ```
 
 写PeopleService
-```
+```kotlin
 package com.easy.kotlin.service
 
 import com.easy.kotlin.entity.People
@@ -430,14 +415,13 @@ class PeopleService : PeopleRepository {
     override fun deleteAll() {
     }
 
-
 }
 
 ```
 
 写PeopleController
 
-```
+```kotlin
 package com.easy.kotlin.controller
 
 import com.easy.kotlin.service.PeopleService
@@ -468,26 +452,17 @@ class PeopleController {
 
 ```
 
-
-
-
-
-
-
-7. 运行测试
+7.运行测试
 
 点击Gradle的`bootRun` , 如下图
 
 
-![螢幕快照 2017-06-07 11.47.42.png](http://upload-images.jianshu.io/upload_images/1233356-5496bf11120199e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-5496bf11120199e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 如果没有异常，启动成功，我们将看到以下输出：
 
-![螢幕快照 2017-06-07 11.50.07.png](http://upload-images.jianshu.io/upload_images/1233356-34dc6fdaa14ebda0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-34dc6fdaa14ebda0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 打开浏览器，访问请求：
@@ -506,7 +481,7 @@ Hello,World!
 http://127.0.0.1:8000/hello?lastName=chen
 
 
-```
+```json
 // 20170607115700
 // http://127.0.0.1:8000/hello?lastName=chen
 
@@ -540,10 +515,7 @@ http://127.0.0.1:8000/hello?lastName=chen
 https://github.com/EasyKotlin/easy_kotlin_chapter2_hello_world_springboot_restful
 
 
-
-
 ## 2.4 Android版的HelloWorld
-
 
 2017谷歌I/O大会：宣布 Kotlin 成 Android 开发一级语言。
 
@@ -553,7 +525,6 @@ https://github.com/EasyKotlin/easy_kotlin_chapter2_hello_world_springboot_restfu
 
 JetBrains在2010年首次推出Kotlin编程语言，并在次年将之开源。下一版的AndroidStudio（3.0）也将提供支持。
 
-
 下面我们简要介绍如何在Android上开始一个Kotlin的HelloWorld程序。
 
 对于我们程序员来说，我们正处于一个美好的时代。得益于互联网的发展、工具的进步，我们现在学习一门新技术的成本和难度都比过去低了很多。
@@ -561,7 +532,7 @@ JetBrains在2010年首次推出Kotlin编程语言，并在次年将之开源。�
 
 假设你之前没有使用过Kotlin，那么从头开始写一个HelloWorld的app也只需要这么几步：
 
-1. 首先，你要有一个Android Studio。
+1.首先，你要有一个Android Studio。
 本节中，我们用的是2.2.3版本，其它版本应该也大同小异。
 
 ```
@@ -573,7 +544,7 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 ```
 
 
-2. 其次，安装一个Kotlin的插件。
+2.其次，安装一个Kotlin的插件。
 
 依次打开：Android Studio > Preferences > Plugins，
 
@@ -589,11 +560,11 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 点击安装，安装完成之后，重启Android Studio。
 
 
-3. 新建一个Android项目
+3.新建一个Android项目
 
 重新打开Android Studio，新建一个Android项目吧，添加一个默认的MainActivity——像以前一样即可。
 
-4. 转换Java to Kotlin
+4.转换Java to Kotlin
 
 安装完插件的AndroidStudio现在已经拥有开发Kotlin的功能。我们先来尝试它的转换功能：Java -> Kotlin，可以把现有的java文件翻译成Kotlin文件。
 
@@ -602,16 +573,13 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 
 ![](http://upload-images.jianshu.io/upload_images/1233356-68101f8caa0a0fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-
 点击转换，
-
 
 ![](http://upload-images.jianshu.io/upload_images/1233356-934a0c279af3c884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-
 可以看到转换后的Kotlin文件：MainActivity.kt
 
-```
+```kotlin
 package com.kotlin.easy.kotlinandroid
 
 import android.support.v7.app.AppCompatActivity
@@ -624,12 +592,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
-
 ```
 
 这个转换功能，对我们Java程序员在学习Kotlin是十分实用。我们可以基于我们之前的Java编码的经验来迅速学习Kotlin编程。
 
-5. 配置gradle文件
+5.配置gradle文件
 
 MainActivity已经被转换成了Kotlin实现，但是项目目前gradle编译、构建、运行还不能执行，还需要进一步配置一下，让项目支持grade的编译、运行。当然，这一步也不需要我们做太多工作——IDEA都已经帮我们做好了。
 
@@ -713,7 +680,7 @@ repositories {
     mavenCentral()
 }
 
-``` 
+```
 
 所以说使用IDEA来写Kotlin代码，这工具的完美集成会让你用起来如丝般润滑。毕竟Kotlin的亲爸爸JetBrains是专门做工具的，而且Intelli IDEA又是那么敏捷、智能。
 
@@ -723,13 +690,10 @@ repositories {
 
 运行结果如下
 
-
 ![](http://upload-images.jianshu.io/upload_images/1233356-a3afc675807f9881.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 工程源码：https://github.com/EasyKotlin/KotlinAndroid
-
-
 
 ## 2.5 JavaScript版HelloWorld
 
@@ -739,7 +703,7 @@ repositories {
 
 首先，使用编辑器新建一个HelloWord.kt
 
-```
+```kotlin
 fun helloWorld(){
 	println("Hello,World!")
 }
@@ -773,28 +737,20 @@ var HelloWorld = function (_, Kotlin) {
 我们看到，使用`kotlinc-js` 转换成的js代码依赖'kotlin'模块。这个模块是Kotlin支持JavaScript脚本的内部封装模块。也就是说，如果我们想要使用`HelloWorld.js`，先要引用`kotlin.js`。这个`kotlin.js` 在kotlin-stdlib-js-1.1.2.jar里面。
 
 
-
 下面我们使用IDEA新建一个Kotlin（JavaScript）工程。在这个过程中，我们将会看到使用Kotlin来开发js的过程。
 
 首先按照以下步骤新建工程
 
-![螢幕快照 2017-06-07 21.32.23.png](http://upload-images.jianshu.io/upload_images/1233356-00912c0684daf9c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-00912c0684daf9c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![螢幕快照 2017-06-07 21.33.40.png](http://upload-images.jianshu.io/upload_images/1233356-92c1c14e38ac53bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-92c1c14e38ac53bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![螢幕快照 2017-06-07 21.33.57.png](http://upload-images.jianshu.io/upload_images/1233356-2318499596ac2224.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-![螢幕快照 2017-06-07 21.34.08.png](http://upload-images.jianshu.io/upload_images/1233356-71eba5d0b05a2972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-2318499596ac2224.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-71eba5d0b05a2972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 等待Gradle初始化工程完毕，我们将得到一个Gradle KotlinJS 工程，其目录如下
-
-
-
 
 ```
 .
@@ -849,7 +805,6 @@ dependencies {
 
 其中，apply plugin: 'kotlin2js' 是Gradle的kotlin编译成js的插件。org.jetbrains.kotlin:kotlin-stdlib-js是KotlinJS的运行库。
 
-
 另外，我们需要再配置一下Kotlin代码编译成JS的编译规则，以及文件放置目录等属性，如下所示
 
 ```
@@ -894,7 +849,7 @@ UMD是想综合AMD、CommonJS这两种模型，同时支持它们在客户端或
 
 一切配置完毕，我们来写Kotlin代码App.kt
 
-```
+```kotlin
 package com.easy.kotlin
 
 /**
@@ -909,7 +864,7 @@ fun helloWorld() {
 
 然后，我们直接使用Gradle构建工程，如下图所示
 
-![螢幕快照 2017-06-07 23.48.23.png](http://upload-images.jianshu.io/upload_images/1233356-41e5ec9326080542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-41e5ec9326080542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 控制台输出
 
@@ -1094,12 +1049,12 @@ app.com.easy.kotlin.helloWorld()
 在浏览器中打开index.html
 
 
-![螢幕快照 2017-06-08 00.11.15.png](http://upload-images.jianshu.io/upload_images/1233356-1eac26bab3de5362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-1eac26bab3de5362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 我们可以看到浏览器控制台输出
 
 
-![螢幕快照 2017-06-08 00.14.57.png](http://upload-images.jianshu.io/upload_images/1233356-85de9abe557023f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-85de9abe557023f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 

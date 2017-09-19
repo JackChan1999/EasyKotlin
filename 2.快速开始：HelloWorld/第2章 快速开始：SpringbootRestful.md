@@ -1,18 +1,11 @@
-# easy_kotlin_chapter2_hello_world_springboot_restful
-easy_kotlin_chapter2_hello_world_springboot_restful
-
-
-Kotlin极简教程
-===
-
 第2章 快速开始：HelloWorld
 ===
 
 ## 2.1 命令行的HelloWorld
+
 安装配置完Kotlin命令行环境之后，我们直接命令行输入kotlinc, 即可进入 Kotlin REPL界面。
 
 ```kotlin
-
 $ kotlinc
 Welcome to Kotlin version 1.1.2-2 (JRE 1.8.0_40-b27)
 Type :help for help, :quit for quit
@@ -35,7 +28,7 @@ Wed Jun 07 14:19:33 CST 2017
 
 新建完项目，我们写一个HelloWorld.kt类
 
-```
+```kotlin
 package com.easy.kotlin
 
 /**
@@ -132,13 +125,14 @@ dependencies {
 
 
 ## 2.3 Web RESTFul HelloWorld
+
 本节介绍使用 `Kotlin` 结合 `SpringBoot` 开发一个RESTFul版本的 `Hello.World`。
 
 1. 新建gradle，kotlin工程：
 
 打开IDEA的`File > New > Project` , 如下图
 
-![螢幕快照 2017-03-11 12.40.05.png](http://upload-images.jianshu.io/upload_images/1233356-8d1252f729630936.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-8d1252f729630936.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 按照界面操作，输入相应的工程名等信息，即可新建一个使用Gradle构建的标准Kotlin工程。
 
@@ -278,8 +272,6 @@ dependencies {
 }
 
 ```
-
-
 5. 配置application.properties
 
 ```
@@ -302,8 +294,6 @@ spring.jpa.hibernate.naming-strategy = org.hibernate.cfg.ImprovedNamingStrategy
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 
 server.port=8000
-
-
 ```
 
 6. 整体工程架构
@@ -351,12 +341,11 @@ server.port=8000
 
 ```
 
-
 一切尽在不言中，静静地看工程文件结构。
 
 直接写个HelloWorldController
 
-```
+```kotlin
 package com.easy.kotlin.controller
 
 import org.springframework.web.bind.annotation.GetMapping
@@ -379,7 +368,7 @@ class HelloWorldController {
 
 写领域模型类People
 
-```
+```kotlin
 package com.easy.kotlin.entity
 
 import java.util.*
@@ -411,7 +400,7 @@ class People(
 
 写PeopleRepository
 
-```
+```kotlin
 package com.easy.kotlin.repository
 
 import com.easy.kotlin.entity.People
@@ -425,9 +414,8 @@ interface PeopleRepository : CrudRepository<People, Long> {
 }
 
 ```
-
 写PeopleService
-```
+```kotlin
 package com.easy.kotlin.service
 
 import com.easy.kotlin.entity.People
@@ -488,15 +476,12 @@ class PeopleService : PeopleRepository {
 
     override fun deleteAll() {
     }
-
-
 }
-
 ```
 
 写PeopleController
 
-```
+```kotlin
 package com.easy.kotlin.controller
 
 import com.easy.kotlin.service.PeopleService
@@ -526,28 +511,15 @@ class PeopleController {
 }
 
 ```
-
-
-
-
-
-
-
 7. 运行测试
 
 点击Gradle的`bootRun` , 如下图
 
-
-![螢幕快照 2017-06-07 11.47.42.png](http://upload-images.jianshu.io/upload_images/1233356-5496bf11120199e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-5496bf11120199e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 如果没有异常，启动成功，我们将看到以下输出：
 
-![螢幕快照 2017-06-07 11.50.07.png](http://upload-images.jianshu.io/upload_images/1233356-34dc6fdaa14ebda0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-34dc6fdaa14ebda0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 打开浏览器，访问请求：
 
@@ -598,9 +570,6 @@ http://127.0.0.1:8000/hello?lastName=chen
 
 https://github.com/EasyKotlin/easy_kotlin_chapter2_hello_world_springboot_restful
 
-
-
-
 ## 2.4 Android版的HelloWorld
 
 
@@ -617,7 +586,6 @@ JetBrains在2010年首次推出Kotlin编程语言，并在次年将之开源。�
 
 对于我们程序员来说，我们正处于一个美好的时代。得益于互联网的发展、工具的进步，我们现在学习一门新技术的成本和难度都比过去低了很多。
 
-
 假设你之前没有使用过Kotlin，那么从头开始写一个HelloWorld的app也只需要这么几步：
 
 1. 首先，你要有一个Android Studio。
@@ -631,7 +599,6 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 
 ```
 
-
 2. 其次，安装一个Kotlin的插件。
 
 依次打开：Android Studio > Preferences > Plugins，
@@ -644,9 +611,7 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 
 ![](http://upload-images.jianshu.io/upload_images/1233356-74f30d3242a2765c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-
 点击安装，安装完成之后，重启Android Studio。
-
 
 3. 新建一个Android项目
 
@@ -670,7 +635,7 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 
 可以看到转换后的Kotlin文件：MainActivity.kt
 
-```
+```kotlin
 package com.kotlin.easy.kotlinandroid
 
 import android.support.v7.app.AppCompatActivity
@@ -788,8 +753,6 @@ repositories {
 
 工程源码：https://github.com/EasyKotlin/KotlinAndroid
 
-
-
 ## 2.5 JavaScript版HelloWorld
 
 在Kotlin 1.1中，开始支持JavaScript和协程是引人注目的亮点。本节我们简单介绍Kotlin代码编译转化为JavaScript的方法。
@@ -830,31 +793,20 @@ var HelloWorld = function (_, Kotlin) {
 ```
 
 我们看到，使用`kotlinc-js` 转换成的js代码依赖'kotlin'模块。这个模块是Kotlin支持JavaScript脚本的内部封装模块。也就是说，如果我们想要使用`HelloWorld.js`，先要引用`kotlin.js`。这个`kotlin.js` 在kotlin-stdlib-js-1.1.2.jar里面。
-
-
-
 下面我们使用IDEA新建一个Kotlin（JavaScript）工程。在这个过程中，我们将会看到使用Kotlin来开发js的过程。
 
 首先按照以下步骤新建工程
 
-![螢幕快照 2017-06-07 21.32.23.png](http://upload-images.jianshu.io/upload_images/1233356-00912c0684daf9c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-00912c0684daf9c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![螢幕快照 2017-06-07 21.33.40.png](http://upload-images.jianshu.io/upload_images/1233356-92c1c14e38ac53bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-92c1c14e38ac53bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![螢幕快照 2017-06-07 21.33.57.png](http://upload-images.jianshu.io/upload_images/1233356-2318499596ac2224.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-![螢幕快照 2017-06-07 21.34.08.png](http://upload-images.jianshu.io/upload_images/1233356-71eba5d0b05a2972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-2318499596ac2224.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-71eba5d0b05a2972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 等待Gradle初始化工程完毕，我们将得到一个Gradle KotlinJS 工程，其目录如下
-
-
-
-
 ```
 .
 ├── build
@@ -953,7 +905,7 @@ UMD是想综合AMD、CommonJS这两种模型，同时支持它们在客户端或
 
 一切配置完毕，我们来写Kotlin代码App.kt
 
-```
+```kotlin
 package com.easy.kotlin
 
 /**
@@ -968,7 +920,7 @@ fun helloWorld() {
 
 然后，我们直接使用Gradle构建工程，如下图所示
 
-![螢幕快照 2017-06-07 23.48.23.png](http://upload-images.jianshu.io/upload_images/1233356-41e5ec9326080542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-41e5ec9326080542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 控制台输出
 
@@ -1153,15 +1105,12 @@ app.com.easy.kotlin.helloWorld()
 在浏览器中打开index.html
 
 
-![螢幕快照 2017-06-08 00.11.15.png](http://upload-images.jianshu.io/upload_images/1233356-1eac26bab3de5362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-1eac26bab3de5362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 我们可以看到浏览器控制台输出
 
 
-![螢幕快照 2017-06-08 00.14.57.png](http://upload-images.jianshu.io/upload_images/1233356-85de9abe557023f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-85de9abe557023f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 这个helloWorld() JavaScript函数
 
 ```

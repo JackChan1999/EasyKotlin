@@ -1,7 +1,6 @@
 第13章 使用 Kotlin 和 Anko 的Android 开发
 ===
 
-
 ## 13.1 什么是 Anko？
 
 Anko (https://github.com/Kotlin/anko)  是一个用 Kotlin 写的Android DSL (Domain-Specific Language)。长久以来，Android视图都是用 XML 来完成布局的。这些 XML可重用性比较差。同时在运行的时候，XML 要转换成 Java 表述，这在一定程度上占用了 CPU 和耗费了电量。
@@ -23,8 +22,7 @@ Anko由几个部分组成:
 
 这里是一个转换成 Anko 的简单 XML 文件。
 
-XML
-```
+```xml
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
@@ -68,14 +66,11 @@ verticalLayout {
 
 这个应用程序界面如下所示：
 
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-cba3711fbfd95c9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![Screenshot_1500661334.png](http://upload-images.jianshu.io/upload_images/1233356-cba3711fbfd95c9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-d7afc8397b6be9c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![Screenshot_1500661325.png](http://upload-images.jianshu.io/upload_images/1233356-d7afc8397b6be9c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![Screenshot_1500661320.png](http://upload-images.jianshu.io/upload_images/1233356-d912560d42ac69c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-d912560d42ac69c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## 13.4 使用 Android Studio 新建工程
@@ -84,31 +79,27 @@ verticalLayout {
 
 第一步，新建项目
 
-![螢幕快照 2017-07-21 00.03.49.png](http://upload-images.jianshu.io/upload_images/1233356-4e3643c7cd6cfee9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-4e3643c7cd6cfee9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 第二步，配置项目基本信息
 
-![螢幕快照 2017-07-20 23.38.01.png](http://upload-images.jianshu.io/upload_images/1233356-0afbd5f256c422e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-0afbd5f256c422e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 第三步，设置支持设备以及 SDK 版本
 
-![螢幕快照 2017-07-20 23.38.13.png](http://upload-images.jianshu.io/upload_images/1233356-886c980af1df31f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-886c980af1df31f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 第四步，选择 Basic Activity
 
-![螢幕快照 2017-07-20 23.38.29.png](http://upload-images.jianshu.io/upload_images/1233356-c7de31f6b8b44556.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-c7de31f6b8b44556.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 第五步，使用默认的Activity命名
 
-![螢幕快照 2017-07-20 23.39.04.png](http://upload-images.jianshu.io/upload_images/1233356-39592f366c8e4a5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-39592f366c8e4a5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 我们将得到一个标准的 Gradle Android 工程：
 
-
-![螢幕快照 2017-07-21 00.08.01.png](http://upload-images.jianshu.io/upload_images/1233356-a2ed24522aecd3b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-a2ed24522aecd3b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 其中，app 工程 src 目录如下：
 
@@ -170,12 +161,9 @@ verticalLayout {
 
 我们直接在Android 模拟器中（也可以选择用真机）运行它，可以看到如下效果：
 
-
-![Screenshot_1500567437.png](http://upload-images.jianshu.io/upload_images/1233356-fd623bdd8a8402dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-fd623bdd8a8402dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 13.5 设计UI 界面主题颜色
-
 
 我们首先把应用名称改成“我的日程”。在文件MyTodoApplication/app/src/main/res/values/strings.xml中：
 
@@ -197,7 +185,6 @@ verticalLayout {
 
 ```
 
-
 再去colors.xml中，设计主题颜色为：
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +195,6 @@ verticalLayout {
 </resources>
 
 ```
-
 
 然后到文件MyTodoApplication/app/src/main/res/layout/activity_main.xml中，设置android.support.v7.widget.Toolbar的背景色为
 ```
@@ -221,7 +207,6 @@ app:srcCompat="drawable/ic_content_add"
 ```
 
 其中，ic_content_add.png图片是我们添加按钮中间的加号 icon。
-
 
 ## 13.6 配置 Kotlin 与 Anko 依赖
 
@@ -293,7 +278,6 @@ buildscript {
 compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 ```
 
-
 ### 13.6.2 添加 Kotlin 源代码目录
 
 首先，我们在 src/main/下面新建一个 kotlin 目录，来存放 Kotlin源码。然后在 build.gradle 文件里的 `android {}` 配置里面添加Java的编译路径：
@@ -310,16 +294,11 @@ android {
 
 刚添加完毕，src/main/kotlin 还没有变成源码目录的蓝色，这个时候点击下图右上角的 Sync Now :
 
-
-![螢幕快照 2017-07-21 15.27.57.png](http://upload-images.jianshu.io/upload_images/1233356-32539498ceffa7cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-32539498ceffa7cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 Gradle 同步完毕，即可看到kotlin 目录已经变成蓝色的源码目录了：
 
-
-![螢幕快照 2017-07-21 16.01.41.png](http://upload-images.jianshu.io/upload_images/1233356-b128b7270abbf0fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-b128b7270abbf0fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
@@ -352,7 +331,6 @@ repositories {
 }
 ```
 
-
 提示：realm-recyclerview的 Github 地址是 https://github.com/thorbenprimke/realm-recyclerview
 
 另外， Kotlin使用 Realm 还要加上注解处理的依赖库：
@@ -361,8 +339,6 @@ repositories {
     kapt "io.realm:realm-annotations:0.87.1"
     kapt "io.realm:realm-annotations-processor:0.87.1"
 ```
-
-
 
 
 
@@ -377,7 +353,6 @@ Butter Knife是基于注解处理方式工作：通过对代码注解自动生�
 ```
 
 Butter Knife主要是用来做Android视图的成员变量和属性的数据绑定。在开发过程中，我们通常要写大量的findViewById和点击事件，像初始view、设置view监听这样简单而重复的操作会显得比较繁琐。而我们有了 Butter Knife，就可以通过使用注解直接生成样板代码。例如，在 Java 中我们可以通过在字段上使用 @BindView 来替代 findViewById 的调用。上面的配置中的`annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'`就是来处理这些注解从而生成样板代码的。
-
 
 ```
 @Bind(R.id.todo_item_todo_title)
@@ -402,11 +377,9 @@ at com.easy.kotlin.mytodoapplication.TodoListFragment.onResume(TodoListFragment.
 
 一般情况下，我们使用Kotlin集成 Java 生态的一些框架的时候，像 Spring Boot，JPA，Butter Knife，Realm等，都需要一些额外的插件或者依赖来“填充缝隙”（例如：all-open, kotterknife，realm-annotations等）， 所谓Kotlin 与 Java 的无缝集成，很多时候并非Java 中怎么用，Kotlin就直接拿过来就怎么用，往往是要再添加一些插件或者额外的配置等。
 
-
 那么要如何才能在Kotlin的环境中使用ButterKnife呢？
 
 在早些时候，ButterKnife的作者已经帮我们想好解决方案了，那就是——KotterKnife，见名知意。KotterKnife的GitHub地址是：https://github.com/JakeWharton/kotterknife 。这个插件是建立在ButterKnife 7的基础上的。
-
 
 下面我们配置一下在 Kotlin 中使用 Butter Knife 的依赖库 KotterKnife。
 
@@ -467,7 +440,6 @@ class MainActivity : AppCompatActivity() {
 
         fab = findViewById(R.id.fab) as FloatingActionButton
 
-
         // 添加日程事件
         fab?.setOnClickListener { _ ->
             ...
@@ -487,13 +459,11 @@ class MainActivity : AppCompatActivity() {
 ```
 
 
-
 ## 13.7 将MainActivity.java 转成 Kotlin 代码
 
 选中默认生成的MainActivity.java， 我们使用 IDEA 的 Code > Convert Java File to Kotlin File :
 
-![螢幕快照 2017-07-21 16.19.35.png](http://upload-images.jianshu.io/upload_images/1233356-0ca9bcd9e85ac9f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-0ca9bcd9e85ac9f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 点击转换，即可看到转换成 Kotlin 的代码：
 
@@ -535,7 +505,6 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
 
-
         if (id == R.id.action_settings) {
             return true
         }
@@ -546,14 +515,11 @@ class MainActivity : AppCompatActivity() {
 
 ```
 
-
 看，这就是Android 开发者，从 Java无缝转到 Kotlin 的过程。
 
 我们把这个MainActivity.kt放到对应的 src/main/kotlin 目录下。首先新建`package com.easy.kotlin.mytodoapplication` , 直接在 IDEA 中把这个MainActivity.kt 拖到这个package 下面即可。现在我们的工程目录是下面这个样子
 
-![螢幕快照 2017-07-21 16.26.14.png](http://upload-images.jianshu.io/upload_images/1233356-1b7628842782b84e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-1b7628842782b84e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## 13.8 在 Kotlin 中使用 Realm
@@ -564,7 +530,6 @@ class MainActivity : AppCompatActivity() {
     kapt "io.realm:realm-annotations:0.87.1"
     kapt "io.realm:realm-annotations-processor:0.87.1"
 ```
-
 
 ## 13.9 添加日程实体类
 
@@ -616,9 +581,7 @@ RealmMigration must be provided ...
 at com.easy.kotlin.mytodoapplication.TodoListFragment.onActivityCreated(TodoListFragment.kt:36)
 ```
 
-
 提示： 更多关于 realm 数据库的相关内容可参考 https://realm.io/docs/
-
 
 
 ## 13.10 添加日程事件
@@ -644,8 +607,7 @@ fab?.setOnClickListener { _ ->
 
 下面我们来完成这个添加日程的界面。
 
-![Screenshot_1500666104.png](http://upload-images.jianshu.io/upload_images/1233356-967218566488993f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-967218566488993f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 我们采用Fragment来实现。首先新建一个TodoEditFragment继承Fragment() ：
 ```
@@ -722,7 +684,6 @@ class TodoEditFragment : Fragment() {
         realm.close()
     }
 
-
     /**
      *  新增待办事项，存入Realm数据库
      *
@@ -741,7 +702,6 @@ class TodoEditFragment : Fragment() {
         realm.commitTransaction()
         activity.supportFragmentManager.popBackStack()
     }
-
 
 }
 ```
@@ -799,7 +759,6 @@ inline fun ViewManager.verticalLayout(init: _LinearLayout.() -> Unit): LinearLay
 
 从这些例子我们可以看出 Kotlin 的函数扩展功能相当实用，尤其在 DSL 中用的非常广泛。
 
-
 在 verticalLayout 代码段内部，创建了三个Android的控件 - 两个 editText 视图和一个 button 视图。这里视图的属性都在一行里面设置好了。
 
 ```
@@ -829,7 +788,6 @@ button {
 我们可以看下按钮控件定义的地方。按钮有一个点击监听函数是定义在视图定义文件里面的。在定义按钮之前，有两个参数 title 和 content 的方法 createTodoFrom 已经被调用了。最后，通过在 AnkoContext （UI 类）上调用 view 属性`UI {...}.view`来返回视图。
 
 
-
 这里的 ids 被设置为 R.id.<id_name>。这些 ids 需要手工在一个加做 ids.xml 的文件里创建，这个文件放在 app/src/main/res/values/ids.xml。如果这个文件不存在就创建它。文件内容如下：
 
 ```
@@ -841,7 +799,6 @@ button {
 </resources>
 ```
 这个 ids.xml 文件定义了所有能够被代码引用到的各种视图的 ids。
-
 
 ## 13.12 保存到 Realm 中
 
@@ -864,15 +821,11 @@ button {
 ```
 
 
-
-
 ## 13.13 用RecyclerView 来展示待办事项
 
 下面我们来实现这个页面。
 
-
-![Screenshot_1500667248.png](http://upload-images.jianshu.io/upload_images/1233356-965e8a49b3f96510.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-965e8a49b3f96510.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 首先，这个是主页面，对应 activity_main.xml 视图, 文件内容如下：
 
@@ -916,7 +869,6 @@ button {
 
 ```
 
-
 我们的待办事项列表视图是fragment_todos.xml， 文件内容如下：
 ```
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -943,7 +895,6 @@ button {
 
 ```
 
-
 我们看下`RealmRecyclerView`的配置：
 
 |配置项 | 功能说明|
@@ -951,9 +902,6 @@ button {
 |app:rrvEmptyLayoutId|当列表为空的时候的显示页面|
 |app:rrvIsRefreshable|是否支持下拉刷新，通过setOnRefreshListener 或 setRefreshing来进行事件处理|
 |app:rrvLayoutType| 配置LayoutManager，可选项是：LinearLayout，Grid，LinearLayoutWithHeaders等|
-
-
-
 
 
 
@@ -1006,8 +954,6 @@ init {
 ```
 
 
-
-
 待办事项监听器类：
 
 ```
@@ -1015,7 +961,6 @@ init {
         fun onClick(caller: View, todo: Todo)
     }
 ```
-
 
 我们在TodosFragment中实现这个方法：
 
@@ -1036,10 +981,7 @@ init {
 
 
 
-
-
 然后我们在TodoAdapter中重写RealmBasedRecyclerViewAdapter的onCreateRealmViewHolder和onBindRealmViewHolder方法。
-
 
 ```
     override fun onCreateRealmViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -1058,7 +1000,6 @@ init {
     }
 
 ```
-
 
 我们在添加（保存）完事项的时候，回到之前的列表页面：
 
@@ -1094,19 +1035,15 @@ override fun onResume() {
 
 然后，通过适配器`val adapter = TodoAdapter(activity, todos, true, true, this)`把数据装配到RecyclerView中 `realmRecyclerView.setAdapter(adapter)` 。
 
-
 ## 13.14 运行测试
 
 编译安装应用，我们就可以看到如下的界面了，我们可以在里面添加编辑我们的待办事项。
 
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-53ff659c13e6e703.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![Screenshot_1500669269.png](http://upload-images.jianshu.io/upload_images/1233356-53ff659c13e6e703.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-75d1e23143f7beed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![Screenshot_1500669264.png](http://upload-images.jianshu.io/upload_images/1233356-75d1e23143f7beed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![Screenshot_1500669255.png](http://upload-images.jianshu.io/upload_images/1233356-ba713c9d892b6582.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-ba713c9d892b6582.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
@@ -1116,12 +1053,9 @@ Android 中经常出现的空引用、API的冗余样板式代码等都是是驱
 
 下一章我们介绍使用 Kotlin 创建 DSL。
 
-
 本章工程源码：
 
-
 https://github.com/EasyKotlin/chapter13_kotlin_android
-
 
 
 --------------------------------------
