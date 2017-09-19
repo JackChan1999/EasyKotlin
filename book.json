@@ -1,0 +1,10 @@
+{ 
+"description": "Kotlin极简教程",
+"title" : "Kotlin极简教程",
+"language": "zh-hans",
+"author" : "AllenIverson",
+"gitbook": "3.2.3",
+"pdf": {
+        "fontFamily": "等线"
+    }
+}
