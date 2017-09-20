@@ -3,18 +3,18 @@
 
 ## 13.1 什么是 Anko？
 
-Anko (https://github.com/Kotlin/anko)  是一个用 Kotlin 写的Android DSL (Domain-Specific Language)。长久以来，Android视图都是用 XML 来完成布局的。这些 XML可重用性比较差。同时在运行的时候，XML 要转换成 Java 表述，这在一定程度上占用了 CPU 和耗费了电量。
+[Anko](https://github.com/Kotlin/anko)  是一个用 Kotlin 写的Android DSL (Domain-Specific Language)。长久以来，Android视图都是用 XML 来完成布局的。这些 XML可重用性比较差。同时在运行的时候，XML 要转换成 Java 表述，这在一定程度上占用了 CPU 和耗费了电量。
 
 Anko是一个 Kotlin 库, 它使 android 应用程序的开发变得更快、更容易。它使您的代码干净, 易于阅读, 并让您忘记了粗糙的边缘 android sdk 为 java。
 
 Anko由几个部分组成:
 
-|模块|         功能说明|
-|---|---|
-|Anko Commons|  使得对 intents, dialogs, logging等操作更加简单的轻量级库|
-|Anko Layouts| 快速和类型安全的动态的 android 布局库|
-|Anko SQLite| 用于 android sqlite 的查询 dsl 和分析库|
-|Anko Coroutines|  基于 kotlinx 协程库|
+| 模块              | 功能说明                                     |
+| --------------- | ---------------------------------------- |
+| Anko Commons    | 使得对 intents, dialogs, logging等操作更加简单的轻量级库 |
+| Anko Layouts    | 快速和类型安全的动态的 android 布局库                  |
+| Anko SQLite     | 用于 android sqlite 的查询 dsl 和分析库           |
+| Anko Coroutines | 基于 kotlinx 协程库                           |
 
 有了Anko 我们就能直接用 Kotlin 在任何的 Activity 、 Fragment 或者 AnkoComponent里来编写视图。
 
@@ -41,7 +41,7 @@ Anko由几个部分组成:
 
 用 Anko 描述的同样的视图
 
-```
+```kotlin
 verticalLayout {
     var title = editText {
         id = R.id.todo_title
@@ -66,12 +66,11 @@ verticalLayout {
 
 这个应用程序界面如下所示：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-cba3711fbfd95c9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko1.png)
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-d7afc8397b6be9c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko2.png)
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-d912560d42ac69c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](images/Anko3.png)
 
 ## 13.4 使用 Android Studio 新建工程
 
@@ -79,27 +78,27 @@ verticalLayout {
 
 第一步，新建项目
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-4e3643c7cd6cfee9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko4.png)
 
 第二步，配置项目基本信息
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-0afbd5f256c422e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko5.png)
 
 第三步，设置支持设备以及 SDK 版本
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-886c980af1df31f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko6.png)
 
 第四步，选择 Basic Activity
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-c7de31f6b8b44556.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko7.png)
 
 第五步，使用默认的Activity命名
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-39592f366c8e4a5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko8.png)
 
 我们将得到一个标准的 Gradle Android 工程：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-a2ed24522aecd3b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko9.png)
 
 其中，app 工程 src 目录如下：
 
@@ -161,13 +160,13 @@ verticalLayout {
 
 我们直接在Android 模拟器中（也可以选择用真机）运行它，可以看到如下效果：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-fd623bdd8a8402dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko10.png)
 
 ## 13.5 设计UI 界面主题颜色
 
 我们首先把应用名称改成“我的日程”。在文件MyTodoApplication/app/src/main/res/values/strings.xml中：
 
-```
+```xml
 <resources>
     <string name="app_name">MyTodoApplication</string>
     <string name="action_settings">Settings</string>
@@ -177,7 +176,7 @@ verticalLayout {
 
 改写成
 
-```
+```xml
 <resources>
     <string name="app_name">我的日程</string>
     <string name="action_settings">设置</string>
@@ -186,7 +185,7 @@ verticalLayout {
 ```
 
 再去colors.xml中，设计主题颜色为：
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#f2fced</color>
@@ -211,7 +210,7 @@ app:srcCompat="drawable/ic_content_add"
 ## 13.6 配置 Kotlin 与 Anko 依赖
 
 我们默认生成的 app 项目的 Gradle 配置文件build.gradle如下：
-```
+```gradle
 apply plugin: 'com.android.application'
 
 android {
@@ -243,7 +242,6 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
 }
-
 ```
 
 下面我们在 app 项目的build.gradle里面加上Kotlin 、Anko 、Realm、Butter Knife 等依赖。
@@ -282,7 +280,7 @@ compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
 首先，我们在 src/main/下面新建一个 kotlin 目录，来存放 Kotlin源码。然后在 build.gradle 文件里的 `android {}` 配置里面添加Java的编译路径：
 
-```
+```gradle
 android {
     ...
     sourceSets {
@@ -294,30 +292,27 @@ android {
 
 刚添加完毕，src/main/kotlin 还没有变成源码目录的蓝色，这个时候点击下图右上角的 Sync Now :
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-32539498ceffa7cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko11.png)
 
 Gradle 同步完毕，即可看到kotlin 目录已经变成蓝色的源码目录了：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-b128b7270abbf0fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+![Kotlin极简教程](images/Anko12.png)
 
 ### 13.6.3 Anko依赖
 
 在项目依赖里添加
-```
-    // Anko
-    compile 'org.jetbrains.anko:anko-sdk15:0.8.2' // sdk19, sdk21, sdk23 are also available
-    compile 'org.jetbrains.anko:anko-support-v4:0.8.2' // In case you need support-v4 bindings
-    compile 'org.jetbrains.anko:anko-appcompat-v7:0.8.2' // For appcompat-v7 bindings
-
+```gradle
+// Anko
+compile 'org.jetbrains.anko:anko-sdk15:0.8.2' // sdk19, sdk21, sdk23 are also available
+compile 'org.jetbrains.anko:anko-support-v4:0.8.2' // In case you need support-v4 bindings
+compile 'org.jetbrains.anko:anko-appcompat-v7:0.8.2' // For appcompat-v7 bindings
 ```
 
 ### 13.6.4 Realm依赖
 
 ```
-    compile 'io.realm:realm-android:0.87.1'
-    compile 'com.github.thorbenprimke:realm-recyclerview:0.9.12' // 在jitpack.io上
+compile 'io.realm:realm-android:0.87.1'
+compile 'com.github.thorbenprimke:realm-recyclerview:0.9.12' // 在jitpack.io上
 ```
 
 其中，Realm是一个轻量级的跨平台移动数据库引。Realm 简单易用，model 设计在代码中，更加易于维护，同时其性能也不错。在Android开发中，它可以替代 SQLite 和 ORM 框架。相比SQLite，Realm更快并且具有很多现代数据库的特性，比如支持JSON，流式api，数据变更通知，以及加密支持。
@@ -335,26 +330,24 @@ repositories {
 
 另外， Kotlin使用 Realm 还要加上注解处理的依赖库：
 ```
-    // kotlin使用realm的注解处理依赖库
-    kapt "io.realm:realm-annotations:0.87.1"
-    kapt "io.realm:realm-annotations-processor:0.87.1"
+// kotlin使用realm的注解处理依赖库
+kapt "io.realm:realm-annotations:0.87.1"
+kapt "io.realm:realm-annotations-processor:0.87.1"
 ```
-
-
 
 ### 13.6.5 Butter Knife依赖
 
 Butter Knife是基于注解处理方式工作：通过对代码注解自动生成模板代码。我们添加其依赖如下：
 
 ```
-    // Butter Knife，专门为Android View设计的绑定注解，专业解决各种findViewById
-    compile 'com.jakewharton:butterknife:8.7.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+// Butter Knife，专门为Android View设计的绑定注解，专业解决各种findViewById
+compile 'com.jakewharton:butterknife:8.7.0'
+annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 ```
 
 Butter Knife主要是用来做Android视图的成员变量和属性的数据绑定。在开发过程中，我们通常要写大量的findViewById和点击事件，像初始view、设置view监听这样简单而重复的操作会显得比较繁琐。而我们有了 Butter Knife，就可以通过使用注解直接生成样板代码。例如，在 Java 中我们可以通过在字段上使用 @BindView 来替代 findViewById 的调用。上面的配置中的`annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'`就是来处理这些注解从而生成样板代码的。
 
-```
+```kotlin
 @Bind(R.id.todo_item_todo_title)
 public TextView todoTitle;
 
@@ -365,7 +358,7 @@ public TextView todoContent;
 而在 Kotlin 中使用Butter Knife情况有些不同，需要作额外的配置。
 
 如果在Kotlin中直接使用ButterKnife的注解方式的话，会出现空指针的异常，导致绑定失败。例如
-```
+```kotlin
 @Bind(R.id.todos_recycler_view)
 var realmRecyclerView: RealmRecyclerView? = null
 ```
@@ -408,15 +401,15 @@ val todoContent: TextView by bindView(R.id.todo_item_todo_content)
 这样的代码看起来不是那么的优雅，还没有在 Java 中直接使用注解来的简单好看。同时要注意的是，如果使用 kotterknife 0.1.0 + butterknife:7.0.1 ，同时使用 Java 跟 Kotlin 混合编程的场景中使用 Butter Knife，发现配了KotterKnife 之后的 Java 的注解式写法就失效了。也就是说，如果我们上面添加了KotterKnife的依赖，那么 Java 代码中同时使用 Butter Knife 注解的地方会绑定失败。不过这个问题，在后面的新版本中已经解决。例如在butterknife 8.7.0中，我们可以直接添加下面的依赖项：
 
 ```
-    compile 'com.jakewharton:butterknife:8.7.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
-    kapt 'com.jakewharton:butterknife-compiler:8.7.0'
+compile 'com.jakewharton:butterknife:8.7.0'
+annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+kapt 'com.jakewharton:butterknife-compiler:8.7.0'
 ```
 其中，`annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'` 是 Java 的butterknife注解处理器。` kapt 'com.jakewharton:butterknife-compiler:8.7.0'` 是 Kotlin 的butterknife注解处理器（Kotlin Annotation processing tool，kapt）。
 
 这样我们的代码就继续优雅简洁下去了：
 
-```
+```kotlin
 @BindView(R.id.todo_item_todo_title)
 lateinit var todoTitle: TextView
 @BindView(R.id.todo_item_todo_content)
@@ -427,7 +420,7 @@ lateinit var todoContent: TextView
 
 当然，我们使用 Butter Knife 的同时，仍然可以使用原生的 findViewById :
 
-```
+```kotlin
 class MainActivity : AppCompatActivity() {
     var fab: FloatingActionButton? = null
 
@@ -458,16 +451,15 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-
 ## 13.7 将MainActivity.java 转成 Kotlin 代码
 
 选中默认生成的MainActivity.java， 我们使用 IDEA 的 Code > Convert Java File to Kotlin File :
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-0ca9bcd9e85ac9f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko13.png)
 
 点击转换，即可看到转换成 Kotlin 的代码：
 
-```
+```kotlin
 package com.easy.kotlin.mytodoapplication
 
 import android.os.Bundle
@@ -519,23 +511,22 @@ class MainActivity : AppCompatActivity() {
 
 我们把这个MainActivity.kt放到对应的 src/main/kotlin 目录下。首先新建`package com.easy.kotlin.mytodoapplication` , 直接在 IDEA 中把这个MainActivity.kt 拖到这个package 下面即可。现在我们的工程目录是下面这个样子
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-1b7628842782b84e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](images/Anko14.png)
 
 ## 13.8 在 Kotlin 中使用 Realm
 
 我们需要添加针对 Kotlin 的realm注解处理的库：
 
 ```
-    kapt "io.realm:realm-annotations:0.87.1"
-    kapt "io.realm:realm-annotations-processor:0.87.1"
+kapt "io.realm:realm-annotations:0.87.1"
+kapt "io.realm:realm-annotations-processor:0.87.1"
 ```
 
 ## 13.9 添加日程实体类
 
 我们先从领域模型的建立开始。首先我们需要设计一个极简的待办事项的实体类 Todo, 它有主键 id、标题、内容三个字段。
 
-```
+```kotlin
 @RealmClass
 open class Todo : RealmObject() {
     @PrimaryKey
@@ -547,7 +538,7 @@ open class Todo : RealmObject() {
 
 然后，我们写一个应用程序入口类`MyTodoApplication`继承`android.app.Application`, 在 onCreate() 里面初始化 Realm 数据库的配置。代码如下：
 
-```
+```kotlin
 class MyTodoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
@@ -583,12 +574,11 @@ at com.easy.kotlin.mytodoapplication.TodoListFragment.onActivityCreated(TodoList
 
 提示： 更多关于 realm 数据库的相关内容可参考 https://realm.io/docs/
 
-
 ## 13.10 添加日程事件
 
 现在我们点击添加日程的浮层按钮中，添加切换到 “日程添加编辑” `TodoEditFragment`的逻辑。
 
-```
+```kotlin
 // 添加日程事件
 fab?.setOnClickListener { _ ->
     // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
@@ -607,10 +597,10 @@ fab?.setOnClickListener { _ ->
 
 下面我们来完成这个添加日程的界面。
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-967218566488993f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko15.png)
 
 我们采用Fragment来实现。首先新建一个TodoEditFragment继承Fragment() ：
-```
+```kotlin
 class TodoEditFragment : Fragment() {
     val realm: Realm = Realm.getDefaultInstance()
     var todo: Todo? = null
@@ -708,7 +698,7 @@ class TodoEditFragment : Fragment() {
 
 其中，我们重点讲下 Anko 的 UI 布局部分的代码。
 
-```
+```kotlin
 return UI {
     // AnkoContext
 
@@ -761,7 +751,7 @@ inline fun ViewManager.verticalLayout(init: _LinearLayout.() -> Unit): LinearLay
 
 在 verticalLayout 代码段内部，创建了三个Android的控件 - 两个 editText 视图和一个 button 视图。这里视图的属性都在一行里面设置好了。
 
-```
+```kotlin
 padding = dip(30)
 var title = editText {
     // editText 视图
@@ -787,10 +777,9 @@ button {
 
 我们可以看下按钮控件定义的地方。按钮有一个点击监听函数是定义在视图定义文件里面的。在定义按钮之前，有两个参数 title 和 content 的方法 createTodoFrom 已经被调用了。最后，通过在 AnkoContext （UI 类）上调用 view 属性`UI {...}.view`来返回视图。
 
-
 这里的 ids 被设置为 R.id.<id_name>。这些 ids 需要手工在一个加做 ids.xml 的文件里创建，这个文件放在 app/src/main/res/values/ids.xml。如果这个文件不存在就创建它。文件内容如下：
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="todo_title" type="id" />
@@ -804,33 +793,31 @@ button {
 
 新增待办事项，存入Realm数据库：
 
+```kotlin
+private fun createTodoFrom(title: EditText, todoContent: EditText) {
+
+    realm.beginTransaction()
+    // Either update the edited object or create a new one.
+    var t = todo ?: realm.createObject(Todo::class.java)
+    t.id = todo?.id ?: UUID.randomUUID().toString()
+    t.title = title.text.toString()
+    t.content = todoContent.text.toString()
+
+    realm.commitTransaction()
+
+    activity.supportFragmentManager.popBackStack()
+}
 ```
-    private fun createTodoFrom(title: EditText, todoContent: EditText) {
-
-        realm.beginTransaction()
-        // Either update the edited object or create a new one.
-        var t = todo ?: realm.createObject(Todo::class.java)
-        t.id = todo?.id ?: UUID.randomUUID().toString()
-        t.title = title.text.toString()
-        t.content = todoContent.text.toString()
-
-        realm.commitTransaction()
-
-        activity.supportFragmentManager.popBackStack()
-    }
-```
-
 
 ## 13.13 用RecyclerView 来展示待办事项
 
 下面我们来实现这个页面。
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-965e8a49b3f96510.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko16.png)
 
 首先，这个是主页面，对应 activity_main.xml 视图, 文件内容如下：
 
-```
-
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -870,7 +857,7 @@ button {
 ```
 
 我们的待办事项列表视图是fragment_todos.xml， 文件内容如下：
-```
+```xml
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -897,19 +884,16 @@ button {
 
 我们看下`RealmRecyclerView`的配置：
 
-|配置项 | 功能说明|
-|-------|--------------|
-|app:rrvEmptyLayoutId|当列表为空的时候的显示页面|
-|app:rrvIsRefreshable|是否支持下拉刷新，通过setOnRefreshListener 或 setRefreshing来进行事件处理|
-|app:rrvLayoutType| 配置LayoutManager，可选项是：LinearLayout，Grid，LinearLayoutWithHeaders等|
-
-
-
+| 配置项                  | 功能说明                                     |
+| -------------------- | ---------------------------------------- |
+| app:rrvEmptyLayoutId | 当列表为空的时候的显示页面                            |
+| app:rrvIsRefreshable | 是否支持下拉刷新，通过setOnRefreshListener 或 setRefreshing来进行事件处理 |
+| app:rrvLayoutType    | 配置LayoutManager，可选项是：LinearLayout，Grid，LinearLayoutWithHeaders等 |
 
 下面我们来实现这个TodosFragment 。
 
 首先新建TodosFragment类，继承如下面代码所示：
-```
+```kotlin
 class TodosFragment : Fragment(), TodoAdapter.TodoItemClickListener {
     @BindView(R.id.todos_recycler_view)
     lateinit var realmRecyclerView: RealmRecyclerView
@@ -920,115 +904,111 @@ class TodosFragment : Fragment(), TodoAdapter.TodoItemClickListener {
 ```
 
 其中，TodoAdapter是继承了RealmBasedRecyclerViewAdapter的适配器类。我们在 TodoAdapter 里面定义了一个视图持有类：
-```
-    inner class ViewHolder(view: View, private val clickListener: TodoItemClickListener?) :
-            RealmViewHolder(view), View.OnClickListener {
+```kotlin
+inner class ViewHolder(view: View, private val clickListener: TodoItemClickListener?) :
+        RealmViewHolder(view), View.OnClickListener {
 
-        // Bind a field to the view for the specified ID. The view will automatically be cast to the field type
-        @BindView(R.id.todo_item_todo_title)
-        lateinit var todoTitle: TextView
-        // val todoTitle: TextView by bindView(R.id.todo_item_todo_title)
-        @BindView(R.id.todo_item_todo_content)
-        lateinit var todoContent: TextView
-        // val todoContent: TextView by bindView(R.id.todo_item_todo_content)
+    // Bind a field to the view for the specified ID. The view will automatically be cast to the field type
+    @BindView(R.id.todo_item_todo_title)
+    lateinit var todoTitle: TextView
+    // val todoTitle: TextView by bindView(R.id.todo_item_todo_title)
+    @BindView(R.id.todo_item_todo_content)
+    lateinit var todoContent: TextView
+    // val todoContent: TextView by bindView(R.id.todo_item_todo_content)
 
-        init {
-            // Bind annotated fields and methods
-            ButterKnife.bind(this, view)
-            view.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View) {
-            clickListener?.onClick(v, realmResults[adapterPosition])
-        }
+    init {
+        // Bind annotated fields and methods
+        ButterKnife.bind(this, view)
+        view.setOnClickListener(this)
     }
+
+    override fun onClick(v: View) {
+        clickListener?.onClick(v, realmResults[adapterPosition])
+    }
+}
 ```
 在ViewHolder初始化 View 的时候，我们使用ButterKnife进行了绑定
 
-```
+```kotlin
 init {
-            // Bind annotated fields and methods
-            ButterKnife.bind(this, view)
-            view.setOnClickListener(this)
-        }
+    // Bind annotated fields and methods
+    ButterKnife.bind(this, view)
+    view.setOnClickListener(this)
+}
 ```
-
 
 待办事项监听器类：
 
-```
-    interface TodoItemClickListener {
-        fun onClick(caller: View, todo: Todo)
-    }
+```kotlin
+interface TodoItemClickListener {
+    fun onClick(caller: View, todo: Todo)
+}
 ```
 
 我们在TodosFragment中实现这个方法：
 
-```
-    override fun onClick(caller: View, todo: Todo) {
-        (activity as MainActivity).hideFab()
+```kotlin
+override fun onClick(caller: View, todo: Todo) {
+    (activity as MainActivity).hideFab()
 
-        val todoEditFragment = TodoEditFragment.newInstance(todo.id)
-        activity.supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.content_main, todoEditFragment, todoEditFragment.javaClass.getSimpleName())
-                .addToBackStack(todoEditFragment.javaClass.getSimpleName())
-                .commit()
-    }
+    val todoEditFragment = TodoEditFragment.newInstance(todo.id)
+    activity.supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.content_main, todoEditFragment, todoEditFragment.javaClass.getSimpleName())
+            .addToBackStack(todoEditFragment.javaClass.getSimpleName())
+            .commit()
+}
 ```
 
 点击待办事项，把当前的content_main切换成编辑事项 EditFragment的视图。
 
-
-
 然后我们在TodoAdapter中重写RealmBasedRecyclerViewAdapter的onCreateRealmViewHolder和onBindRealmViewHolder方法。
 
-```
-    override fun onCreateRealmViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val v = inflater.inflate(R.layout.todo_item, viewGroup, false)
-        return ViewHolder(v, clickListener)
-    }
+```kotlin
+override fun onCreateRealmViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+    val v = inflater.inflate(R.layout.todo_item, viewGroup, false)
+    return ViewHolder(v, clickListener)
+}
 
-    override fun onBindRealmViewHolder(viewHolder: ViewHolder, position: Int) {
-        val todo = realmResults[position]
+override fun onBindRealmViewHolder(viewHolder: ViewHolder, position: Int) {
+    val todo = realmResults[position]
 
-        viewHolder.todoTitle.setText(todo.title)
-        viewHolder.todoTitle.fontFeatureSettings = "font-size:12px"
-        viewHolder.todoTitle.setTextColor(Color.argb(255, 69, 106, 124))
+    viewHolder.todoTitle.setText(todo.title)
+    viewHolder.todoTitle.fontFeatureSettings = "font-size:12px"
+    viewHolder.todoTitle.setTextColor(Color.argb(255, 69, 106, 124))
 
-        viewHolder.todoContent.setText(todo.content)
-    }
-
+    viewHolder.todoContent.setText(todo.content)
+}
 ```
 
 我们在添加（保存）完事项的时候，回到之前的列表页面：
 
-```
+```kotlin
 private fun createTodoFrom(title: EditText, todoContent: EditText) {
-        realm.beginTransaction()
-        // Either update the edited object or create a new one.
-        var t = todo ?: realm.createObject(Todo::class.java)
-        t.id = todo?.id ?: UUID.randomUUID().toString()
-        t.title = title.text.toString()
-        t.content = todoContent.text.toString()
+    realm.beginTransaction()
+    // Either update the edited object or create a new one.
+    var t = todo ?: realm.createObject(Todo::class.java)
+    t.id = todo?.id ?: UUID.randomUUID().toString()
+    t.title = title.text.toString()
+    t.content = todoContent.text.toString()
 
-        realm.commitTransaction()
+    realm.commitTransaction()
 
-        activity.supportFragmentManager.popBackStack()
-    }
+    activity.supportFragmentManager.popBackStack()
+}
 ```
 
 当回退到待办事项列表的时候，我们在TodosFragment中的 `onResume()` 函数中来实现数据的更新展示：
 
-```
+```kotlin
 override fun onResume() {
-        super.onResume()
-        val todos = realm!!.where(Todo::class.java).findAll()
-        Log.i(MY_TAG, "onResume: ${todos}")
-        Log.i(MY_TAG, "onResume: realmRecyclerView = ${realmRecyclerView} ")
-        val adapter = TodoAdapter(activity, todos, true, true, this)
-        realmRecyclerView.setAdapter(adapter)
-    }
+    super.onResume()
+    val todos = realm!!.where(Todo::class.java).findAll()
+    Log.i(MY_TAG, "onResume: ${todos}")
+    Log.i(MY_TAG, "onResume: realmRecyclerView = ${realmRecyclerView} ")
+    val adapter = TodoAdapter(activity, todos, true, true, this)
+    realmRecyclerView.setAdapter(adapter)
+}
 ```
 
 其中，`val todos = realm!!.where(Todo::class.java).findAll()` 是去 Realm 数据库中查询出所有Todo对应的实体记录。
@@ -1039,13 +1019,11 @@ override fun onResume() {
 
 编译安装应用，我们就可以看到如下的界面了，我们可以在里面添加编辑我们的待办事项。
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-53ff659c13e6e703.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko17.png)
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-75d1e23143f7beed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Anko18.png)
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-ba713c9d892b6582.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+![Kotlin极简教程](images/Anko19.png)
 
 ## 本章小结
 
@@ -1053,17 +1031,4 @@ Android 中经常出现的空引用、API的冗余样板式代码等都是是驱
 
 下一章我们介绍使用 Kotlin 创建 DSL。
 
-本章工程源码：
-
-https://github.com/EasyKotlin/chapter13_kotlin_android
-
-
---------------------------------------
-
-# 《Kotlin极简教程》正式上架：
-
-> #### [点击这里 > *去京东商城购买阅读* ](https://item.jd.com/12181725.html)
-> #### [点击这里 > *去天猫商城购买阅读* ](https://detail.tmall.com/item.htm?id=558540170670)
-
-#### 非常感谢您亲爱的读者，大家请多支持！！！有任何问题，欢迎随时与我交流~
---------------------------------------
+本章工程源码：https://github.com/EasyKotlin/chapter13_kotlin_android

@@ -15,7 +15,7 @@
 
 一个答案是使用目录命名空间。对应在Java中，就是使用`package`来组织类，以确保类名的唯一性。上面说的例子，A写的类放到`package com.abc.fastjson` 中, B写的类就放到 `package com.bbc.jackjson`中。这样我们在代码中，就可以根据命名空间来分别使用这两个类。调用示例如下
 
-```
+```java
 com.abc.fastjson.JSON.toJSONString()
 com.bbc.jackjson.JSON.parseJSONObject()
 ```
@@ -72,7 +72,6 @@ class PackageDemoTest {
         val motorbike = Motorbike()
         motorbike.drive()
     }
-
 }
 ```
 其中，`what()` 函数跟` PackageDemoTest`类在同一个包命名空间下，可以直接调用，不需要 `import`。`Motorbike`类跟` PackageDemoTest`类也是同理分析。
@@ -192,38 +191,30 @@ class PackageDemoTest {
         val car = Car()
         car.drive()
     }
-
 }
 ```
 
-另外， Kotlin会会默认导入一些基础包到每个 Kotlin 文件中：
+另外， Kotlin会默认导入一些基础包到每个 Kotlin 文件中：
 
->kotlin.*
-
->kotlin.annotation.*
-
->kotlin.collections.*
-
->kotlin.comparisons.* （自 1.1 起）
-
->kotlin.io.*
-
->kotlin.ranges.*
-
->kotlin.sequences.*
-
->kotlin.text.*
+- kotlin.*
+- kotlin.annotation.*
+- kotlin.collections.*
+- kotlin.comparisons.* （自 1.1 起）
+- kotlin.io.*
+- kotlin.ranges.*
+- kotlin.sequences.*
+- kotlin.text.*
 
 根据目标平台还会导入额外的包：
 
 JVM:
 
->java.lang.*
-
->kotlin.jvm.*
+- java.lang.*
+- kotlin.jvm.*
 
 JS:
->kotlin.js.*
+
+- kotlin.js.*
 
 本小节示例工程源代码：https://github.com/EasyKotlin/chapter3_kotlin_basics/tree/package_demo
 
@@ -236,7 +227,6 @@ Kotlin的变量分为 `var` (可变的) 和 `val` (不可变的)。
 可以简单理解为：
 
 >`var` 是可写的，在它生命周期中可以被多次赋值； 
-
 >而 `val` 是只读的，仅能一次赋值，后面就不能被重新赋值。 
 
 代码示例
@@ -284,49 +274,49 @@ class VariableVSValue {
 在Kotlin中大部分情况你不需要说明你使用对象的类型，编译器可以直接推断出它的类型。代码示例
 
 ```kotlin
-    fun typeInference(){
-        val str = "abc"
-        println(str)
-        println(str is String)
-        println(str::class)
-        println(str::class.java)
+fun typeInference(){
+    val str = "abc"
+    println(str)
+    println(str is String)
+    println(str::class)
+    println(str::class.java)
 
-//        abc
-//        true
-//        class java.lang.String (Kotlin reflection is not available)
-//        class java.lang.String
+    // abc
+    // true
+    // class java.lang.String (Kotlin reflection is not available)
+    // class java.lang.String
 
-        val d = Date()
-        println(d)
-        println(d is Date)
-        println(d::class)
-        println(d::class.java)
+    val d = Date()
+    println(d)
+    println(d is Date)
+    println(d::class)
+    println(d::class.java)
 
-//        Fri Jun 09 00:06:33 CST 2017
-//        true
-//        class java.util.Date (Kotlin reflection is not available)
-//        class java.util.Date
+    // Fri Jun 09 00:06:33 CST 2017
+    // true
+    // class java.util.Date (Kotlin reflection is not available)
+    // class java.util.Date
 
-        val bool = true
-        println(bool)
-        println(bool::class)
-        println(bool::class.java)
+    val bool = true
+    println(bool)
+    println(bool::class)
+    println(bool::class.java)
 
-//        true
-//        boolean (Kotlin reflection is not available)
-//        boolean
+    // true
+    // boolean (Kotlin reflection is not available)
+    // boolean
 
-        val array = arrayOf(1,2,3)
-        println(array)
-        println(array is Array)
-        println(array::class)
-        println(array::class.java)
+    val array = arrayOf(1,2,3)
+    println(array)
+    println(array is Array)
+    println(array::class)
+    println(array::class.java)
 
-//        [Ljava.lang.Integer;@7b5eadd8
-//        true
-//        class [Ljava.lang.Integer; (Kotlin reflection is not available)
-//        class [Ljava.lang.Integer;
-    }
+    // [Ljava.lang.Integer;@7b5eadd8
+    // true
+    // class [Ljava.lang.Integer; (Kotlin reflection is not available)
+    // class [Ljava.lang.Integer;
+}
 ```
 
 所以，我们只需要依据要产生的变量类型填写var或val，其类型通常能够被推断出来。编译器能够检测到其类型，自动地完成类型转换。当然，我们也可以明确地指定变量类型。
@@ -334,20 +324,20 @@ class VariableVSValue {
  但是，类型推断不是所有的。例如，整型变量Int不能赋值Long变量。下面的代码不能通过编译：
 
 ```kotlin
-    fun Int2Long(){
-        val x:Int = 10
-        val y:Long = x // Type mismatch
-    }
+fun Int2Long(){
+    val x:Int = 10
+    val y:Long = x // Type mismatch
+}
 ```
 
 我们需要显式地调用对应的类型转换函数进行转换：
 
 ```kotlin
-    fun Int2Long(){
-        val x:Int = 10
-//        val y:Long = x // Type mismatch
-        val y: Long = x.toLong()
-    }
+fun Int2Long(){
+    val x:Int = 10
+    //  val y:Long = x // Type mismatch
+    val y: Long = x.toLong()
+}
 ```
 
 ### 3.3.2 使用`is`运算符进行类型检测
@@ -382,7 +372,6 @@ fun testGetLength() {
 
     val obj2:Any = Any()
     variableVSValue.getLength(obj2)
-
 }
 ```
 
@@ -415,9 +404,7 @@ println(fooTemplateString)
 流程控制语句是编程语言中的核心之一。可分为：
 
 >分支语句(`if` 、 `when`)
-
 >循环语句(`for`、`while` )和 
-
 >跳转语句 (`return` 、 `break` 、`continue`、`throw`)等。
 
 ### 3.5.1 if表达式
@@ -482,7 +469,7 @@ if作为代码块时，最后一行为其返回值。
 
 另外，在Kotlin中没有类似`true? 1: 0`这样的三元表达式。对应的写法是使用`if else`语句:
 
-```
+```kotlin
 if(true) 1 else 0
 ```
 
@@ -592,7 +579,6 @@ fun switch(x: Int) {
 我们也可以检测一个值在 in 或者不在 !in 一个区间或者集合中：
 
 ```kotlin
-
 val x = 1
 val validNumbers = arrayOf(1, 2, 3)
 when (x) {
@@ -625,8 +611,7 @@ for (i in intArray) {
 
 代码示例
 
-```
-
+```kotlin
 /**
  * For loop iterates through anything that provides an iterator.
  * See http://kotlinlang.org/docs/reference/control-flow.html#for-loops
@@ -663,7 +648,6 @@ while  和  do .. while使用方式跟C、Java语言基本一致。
 代码示例
 
 ```kotlin
-
 package com.easy.kotlin
 
 fun main(args: Array<String>) {
@@ -689,13 +673,11 @@ fun main(args: Array<String>) {
 
 我们在写代码的时候，经常会遇到在某种条件出现的时候，就直接提前终止循环。而不是等到循环条件为`false`时才终止。这个时候，我们就可以使用`break`结束循环。`break`用于完全结束一个循环，直接跳出循环体，然后执行循环后面的语句。
 
-问题场景：
-
->打印数字1~10，只要遇到偶数，就结束打印。
+问题场景：打印数字1~10，只要遇到偶数，就结束打印。
 
 代码示例：
 
-```
+```kotlin
 fun breakDemo_1() {
     for (i in 1..10) {
         println(i)
@@ -707,7 +689,7 @@ fun breakDemo_1() {
 ```
 测试代码：
 
-```
+```kotlin
 @Test
 fun testBreakDemo_1(){
     breakDemo_1()
@@ -723,9 +705,7 @@ fun testBreakDemo_1(){
 
 `continue`是只终止本轮循环，但是还会继续下一轮循环。可以简单理解为，直接在当前语句处中断，跳转到循环入口，执行下一轮循环。而`break`则是完全终止循环，跳转到循环出口。
 
-问题场景：
-
-> 打印数字0~10，但是不打印偶数。
+问题场景：打印数字0~10，但是不打印偶数。
 
 代码示例：
 
@@ -741,11 +721,11 @@ fun continueDemo() {
 ```
 
 测试代码
-```
-    @Test
-    fun testContinueDemo() {
-        continueDemo()
-    }
+```kotlin
+@Test
+fun testContinueDemo() {
+    continueDemo()
+}
 ```
 输出
 ```
@@ -763,7 +743,7 @@ fun continueDemo() {
 在Kotlin中，除了表达式的值，有返回值的函数都要求显式使用`return`来返回其值。
 
 代码示例
-```
+```kotlin
 fun sum(a: Int,b: Int): Int{
     return a+b
 }
@@ -773,7 +753,7 @@ fun max(a: Int, b: Int): Int { if (a > b) return a else return b}
 我们在Kotlin中，可以直接使用`=`符号来直接返回一个函数的值。
 
 代码示例
-```
+```kotlin
 >>> fun sum(a: Int,b: Int) = a + b
 >>> fun max(a: Int, b: Int) = if (a > b) a else b
 
@@ -796,12 +776,11 @@ fun max(a: Int, b: Int): Int { if (a > b) return a else return b}
 () -> kotlin.Int
 >>> sumf(1,1).invoke()
 2
-
 ```
 
 上述代码示例中，我们可以看到，后面的函数体语句有没有大括号 `{}` 意思完全不同。加了大括号，意义就完全不一样了。我们再通过下面的代码示例清晰的看出：
 
-```
+```kotlin
 >>> fun sumf(a:Int,b:Int) = {a+b}
 >>> sumf(1,1)
 () -> kotlin.Int
@@ -816,19 +795,18 @@ sumf(1,1).invoke
 () -> kotlin.Int
 >>> maxf(1,2).invoke()
 2
-
 ```
 
 可以看出，`sumf`，`maxf`的返回值是函数类型：
 
-```
+```kotlin
 () -> kotlin.Int
 () -> kotlin.Int
 ```
 
 这点跟Scala是不同的。在Scala中，带不带大括号`{}`，意思一样：
 
-```
+```scala
 scala> def maxf(x:Int, y:Int) = { if(x>y) x else y }
 maxf: (x: Int, y: Int)Int
 
@@ -848,7 +826,7 @@ res6: Int = 2
 
 kotlin 中 `return` 语句会从最近的函数或匿名函数中返回，但是在Lambda表达式中遇到return，则直接返回最近的外层函数。例如下面两个函数是不同的：
 
-```
+```kotlin
 fun returnDemo_1() {
     println(" START " + ::returnDemo_1.name)
     val intArray = intArrayOf(1, 2, 3, 4, 5)
@@ -905,7 +883,7 @@ fun returnDemo_2() {
 Kotlin 的函数是可以被嵌套的。它有函数字面量、局部函数等。 有了标签限制的 return，我们就可以从外层函数返回了。例如，从 lambda 表达式中返回，`returnDemo_2()` 我们可以显示指定lambda 表达式中的return地址是其入口处。
 
 代码示例：
-```
+```kotlin
 fun returnDemo_3() {
     println(" START " + ::returnDemo_3.name)
     val intArray = intArrayOf(1, 2, 3, 4, 5)
@@ -928,7 +906,7 @@ fun returnDemo_3() {
 
 代码示例
 
-```
+```kotlin
 fun returnDemo_4() {
     println(" START " + ::returnDemo_4.name)
     val intArray = intArrayOf(1, 2, 3, 4, 5)
@@ -944,7 +922,7 @@ fun returnDemo_4() {
 接收该Lambda表达式的函数是forEach, 所以我们可以直接使用 `return@forEach` ，来跳转到此处执行下一轮循环。
 
 通常当我们在循环体中使用break，是跳出最近外层的循环：
-```
+```kotlin
 fun breakDemo_1() {
     println("---------------  breakDemo_1 ---------------")
     for (outer in 1..5) {
@@ -983,7 +961,7 @@ inner=2
 当我们想直接跳转到外层for循环，这个时候我们就可以使用标签了。
 
 代码示例
-```
+```kotlin
 fun breakDemo_2() {
     println("---------------  breakDemo_2 ---------------")
     outer@ for (outer in 1..5)
@@ -1009,7 +987,7 @@ outer=1
 
 有时候，为了代码可读性，我们可以用标签来显式地指出循环体的跳转地址，比如说在`breakDemo_1()`中，我们可以用标签来指明内层循环的跳转地址：
 
-```
+```kotlin
 fun breakDemo_3() {
     println("---------------  breakDemo_3 ---------------")
     for (outer in 1..5)
@@ -1027,14 +1005,14 @@ fun breakDemo_3() {
 
 在 Kotlin 中 throw 是表达式，它的类型是特殊类型 Nothing。 该类型没有值。跟C、Java中的`void` 意思一样。
 
-```
+```kotlin
 >>> Nothing::class
 class java.lang.Void
 ```
 
  我们在代码中，用 Nothing 来标记无返回的函数：
 
-```
+```kotlin
 >>> fun fail(msg:String):Nothing{ throw IllegalArgumentException(msg) }
 >>> fail("XXXX")
 java.lang.IllegalArgumentException: XXXX
@@ -1044,7 +1022,7 @@ java.lang.IllegalArgumentException: XXXX
 
 另外，如果把一个throw表达式的值赋值给一个变量，需要显式声明类型为`Nothing` ， 代码示例如下
 
-```
+```kotlin
 >>> val ex = throw Exception("YYYYYYYY")
 error: 'Nothing' property type needs to be specified explicitly
 val ex = throw Exception("YYYYYYYY")
@@ -1056,7 +1034,7 @@ java.lang.Exception: YYYYYYYY
 
 另外，因为ex变量是Nothing类型，没有任何值，所以无法当做参数传给函数：
 
-```
+```kotlin
 >>> println(ex)
 error: overload resolution ambiguity: 
 @InlineOnly public inline fun println(message: Any?): Unit defined in kotlin.io
@@ -1079,7 +1057,6 @@ File being compiled and position: (1,1) in /line64.kts
 PsiElement: ex
 The root cause was thrown at: ScriptContext.java:86
 ...
-
 ```
 
 ## 3.6 代码注释
@@ -1095,7 +1072,7 @@ The root cause was thrown at: ScriptContext.java:86
 
 与 Java 不同的是，Kotlin 的块注释可以嵌套。就是说，你可以这样注释：
 
-```
+```kotlin
 /**
  * hhhh
  * /**
@@ -1127,7 +1104,7 @@ fun main(args:Array<String>){
 
 在Kotlin源码工程中的kotlin/grammar/src/modifiers.grm文件中，描述了Kotlin语言的修饰符，我们在此作简要注释说明：
 
-```
+```kotlin
 /**
 ## Modifiers
 */
@@ -1212,7 +1189,7 @@ suspendModifier
 
 这些修饰符的完整定义，在kotlin/compiler/frontend/src/org/jetbrains/kotlin/lexer/KtTokens.java源码中：
 
-```
+```java
 KtModifierKeywordToken[] MODIFIER_KEYWORDS_ARRAY =
             new KtModifierKeywordToken[] {
                     ABSTRACT_KEYWORD, ENUM_KEYWORD, OPEN_KEYWORD, INNER_KEYWORD, OVERRIDE_KEYWORD, PRIVATE_KEYWORD,
@@ -1261,92 +1238,92 @@ TokenSet KEYWORDS = TokenSet.create(PACKAGE_KEYWORD, AS_KEYWORD, TYPE_ALIAS_KEYW
 其中，对应的关键字如下：
 
 ```
-    KtKeywordToken PACKAGE_KEYWORD          = KtKeywordToken.keyword("package");
-    KtKeywordToken AS_KEYWORD               = KtKeywordToken.keyword("as");
-    KtKeywordToken TYPE_ALIAS_KEYWORD       = KtKeywordToken.keyword("typealias");
-    KtKeywordToken CLASS_KEYWORD            = KtKeywordToken.keyword("class");
-    KtKeywordToken THIS_KEYWORD             = KtKeywordToken.keyword("this");
-    KtKeywordToken SUPER_KEYWORD            = KtKeywordToken.keyword("super");
-    KtKeywordToken VAL_KEYWORD              = KtKeywordToken.keyword("val");
-    KtKeywordToken VAR_KEYWORD              = KtKeywordToken.keyword("var");
-    KtKeywordToken FUN_KEYWORD              = KtKeywordToken.keyword("fun");
-    KtKeywordToken FOR_KEYWORD              = KtKeywordToken.keyword("for");
-    KtKeywordToken NULL_KEYWORD             = KtKeywordToken.keyword("null");
-    KtKeywordToken TRUE_KEYWORD             = KtKeywordToken.keyword("true");
-    KtKeywordToken FALSE_KEYWORD            = KtKeywordToken.keyword("false");
-    KtKeywordToken IS_KEYWORD               = KtKeywordToken.keyword("is");
-    KtModifierKeywordToken IN_KEYWORD       = KtModifierKeywordToken.keywordModifier("in");
-    KtKeywordToken THROW_KEYWORD            = KtKeywordToken.keyword("throw");
-    KtKeywordToken RETURN_KEYWORD           = KtKeywordToken.keyword("return");
-    KtKeywordToken BREAK_KEYWORD            = KtKeywordToken.keyword("break");
-    KtKeywordToken CONTINUE_KEYWORD         = KtKeywordToken.keyword("continue");
-    KtKeywordToken OBJECT_KEYWORD           = KtKeywordToken.keyword("object");
-    KtKeywordToken IF_KEYWORD               = KtKeywordToken.keyword("if");
-    KtKeywordToken TRY_KEYWORD              = KtKeywordToken.keyword("try");
-    KtKeywordToken ELSE_KEYWORD             = KtKeywordToken.keyword("else");
-    KtKeywordToken WHILE_KEYWORD            = KtKeywordToken.keyword("while");
-    KtKeywordToken DO_KEYWORD               = KtKeywordToken.keyword("do");
-    KtKeywordToken WHEN_KEYWORD             = KtKeywordToken.keyword("when");
-    KtKeywordToken INTERFACE_KEYWORD        = KtKeywordToken.keyword("interface");
+KtKeywordToken PACKAGE_KEYWORD          = KtKeywordToken.keyword("package");
+KtKeywordToken AS_KEYWORD               = KtKeywordToken.keyword("as");
+KtKeywordToken TYPE_ALIAS_KEYWORD       = KtKeywordToken.keyword("typealias");
+KtKeywordToken CLASS_KEYWORD            = KtKeywordToken.keyword("class");
+KtKeywordToken THIS_KEYWORD             = KtKeywordToken.keyword("this");
+KtKeywordToken SUPER_KEYWORD            = KtKeywordToken.keyword("super");
+KtKeywordToken VAL_KEYWORD              = KtKeywordToken.keyword("val");
+KtKeywordToken VAR_KEYWORD              = KtKeywordToken.keyword("var");
+KtKeywordToken FUN_KEYWORD              = KtKeywordToken.keyword("fun");
+KtKeywordToken FOR_KEYWORD              = KtKeywordToken.keyword("for");
+KtKeywordToken NULL_KEYWORD             = KtKeywordToken.keyword("null");
+KtKeywordToken TRUE_KEYWORD             = KtKeywordToken.keyword("true");
+KtKeywordToken FALSE_KEYWORD            = KtKeywordToken.keyword("false");
+KtKeywordToken IS_KEYWORD               = KtKeywordToken.keyword("is");
+KtModifierKeywordToken IN_KEYWORD       = KtModifierKeywordToken.keywordModifier("in");
+KtKeywordToken THROW_KEYWORD            = KtKeywordToken.keyword("throw");
+KtKeywordToken RETURN_KEYWORD           = KtKeywordToken.keyword("return");
+KtKeywordToken BREAK_KEYWORD            = KtKeywordToken.keyword("break");
+KtKeywordToken CONTINUE_KEYWORD         = KtKeywordToken.keyword("continue");
+KtKeywordToken OBJECT_KEYWORD           = KtKeywordToken.keyword("object");
+KtKeywordToken IF_KEYWORD               = KtKeywordToken.keyword("if");
+KtKeywordToken TRY_KEYWORD              = KtKeywordToken.keyword("try");
+KtKeywordToken ELSE_KEYWORD             = KtKeywordToken.keyword("else");
+KtKeywordToken WHILE_KEYWORD            = KtKeywordToken.keyword("while");
+KtKeywordToken DO_KEYWORD               = KtKeywordToken.keyword("do");
+KtKeywordToken WHEN_KEYWORD             = KtKeywordToken.keyword("when");
+KtKeywordToken INTERFACE_KEYWORD        = KtKeywordToken.keyword("interface");
 
-    // Reserved for future use:
-    KtKeywordToken TYPEOF_KEYWORD           = KtKeywordToken.keyword("typeof");
+// Reserved for future use:
+KtKeywordToken TYPEOF_KEYWORD           = KtKeywordToken.keyword("typeof");
 ...
-    KtKeywordToken FILE_KEYWORD    = KtKeywordToken.softKeyword("file");
-    KtKeywordToken FIELD_KEYWORD     = KtKeywordToken.softKeyword("field");
-    KtKeywordToken PROPERTY_KEYWORD     = KtKeywordToken.softKeyword("property");
-    KtKeywordToken RECEIVER_KEYWORD     = KtKeywordToken.softKeyword("receiver");
-    KtKeywordToken PARAM_KEYWORD     = KtKeywordToken.softKeyword("param");
-    KtKeywordToken SETPARAM_KEYWORD  = KtKeywordToken.softKeyword("setparam");
-    KtKeywordToken DELEGATE_KEYWORD  = KtKeywordToken.softKeyword("delegate");
-    KtKeywordToken IMPORT_KEYWORD    = KtKeywordToken.softKeyword("import");
-    KtKeywordToken WHERE_KEYWORD     = KtKeywordToken.softKeyword("where");
-    KtKeywordToken BY_KEYWORD        = KtKeywordToken.softKeyword("by");
-    KtKeywordToken GET_KEYWORD       = KtKeywordToken.softKeyword("get");
-    KtKeywordToken SET_KEYWORD       = KtKeywordToken.softKeyword("set");
-    KtKeywordToken CONSTRUCTOR_KEYWORD = KtKeywordToken.softKeyword("constructor");
-    KtKeywordToken INIT_KEYWORD        = KtKeywordToken.softKeyword("init");
+KtKeywordToken FILE_KEYWORD    = KtKeywordToken.softKeyword("file");
+KtKeywordToken FIELD_KEYWORD     = KtKeywordToken.softKeyword("field");
+KtKeywordToken PROPERTY_KEYWORD     = KtKeywordToken.softKeyword("property");
+KtKeywordToken RECEIVER_KEYWORD     = KtKeywordToken.softKeyword("receiver");
+KtKeywordToken PARAM_KEYWORD     = KtKeywordToken.softKeyword("param");
+KtKeywordToken SETPARAM_KEYWORD  = KtKeywordToken.softKeyword("setparam");
+KtKeywordToken DELEGATE_KEYWORD  = KtKeywordToken.softKeyword("delegate");
+KtKeywordToken IMPORT_KEYWORD    = KtKeywordToken.softKeyword("import");
+KtKeywordToken WHERE_KEYWORD     = KtKeywordToken.softKeyword("where");
+KtKeywordToken BY_KEYWORD        = KtKeywordToken.softKeyword("by");
+KtKeywordToken GET_KEYWORD       = KtKeywordToken.softKeyword("get");
+KtKeywordToken SET_KEYWORD       = KtKeywordToken.softKeyword("set");
+KtKeywordToken CONSTRUCTOR_KEYWORD = KtKeywordToken.softKeyword("constructor");
+KtKeywordToken INIT_KEYWORD        = KtKeywordToken.softKeyword("init");
 
-    KtModifierKeywordToken ABSTRACT_KEYWORD  = KtModifierKeywordToken.softKeywordModifier("abstract");
-    KtModifierKeywordToken ENUM_KEYWORD      = KtModifierKeywordToken.softKeywordModifier("enum");
-    KtModifierKeywordToken OPEN_KEYWORD      = KtModifierKeywordToken.softKeywordModifier("open");
-    KtModifierKeywordToken INNER_KEYWORD     = KtModifierKeywordToken.softKeywordModifier("inner");
-    KtModifierKeywordToken OVERRIDE_KEYWORD  = KtModifierKeywordToken.softKeywordModifier("override");
-    KtModifierKeywordToken PRIVATE_KEYWORD   = KtModifierKeywordToken.softKeywordModifier("private");
-    KtModifierKeywordToken PUBLIC_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("public");
-    KtModifierKeywordToken INTERNAL_KEYWORD  = KtModifierKeywordToken.softKeywordModifier("internal");
-    KtModifierKeywordToken PROTECTED_KEYWORD = KtModifierKeywordToken.softKeywordModifier("protected");
-    KtKeywordToken CATCH_KEYWORD     = KtKeywordToken.softKeyword("catch");
-    KtModifierKeywordToken OUT_KEYWORD       = KtModifierKeywordToken.softKeywordModifier("out");
-    KtModifierKeywordToken VARARG_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("vararg");
-    KtModifierKeywordToken REIFIED_KEYWORD   = KtModifierKeywordToken.softKeywordModifier("reified");
-    KtKeywordToken DYNAMIC_KEYWORD   = KtKeywordToken.softKeyword("dynamic");
-    KtModifierKeywordToken COMPANION_KEYWORD = KtModifierKeywordToken.softKeywordModifier("companion");
-    KtModifierKeywordToken SEALED_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("sealed");
+KtModifierKeywordToken ABSTRACT_KEYWORD  = KtModifierKeywordToken.softKeywordModifier("abstract");
+KtModifierKeywordToken ENUM_KEYWORD      = KtModifierKeywordToken.softKeywordModifier("enum");
+KtModifierKeywordToken OPEN_KEYWORD      = KtModifierKeywordToken.softKeywordModifier("open");
+KtModifierKeywordToken INNER_KEYWORD     = KtModifierKeywordToken.softKeywordModifier("inner");
+KtModifierKeywordToken OVERRIDE_KEYWORD  = KtModifierKeywordToken.softKeywordModifier("override");
+KtModifierKeywordToken PRIVATE_KEYWORD   = KtModifierKeywordToken.softKeywordModifier("private");
+KtModifierKeywordToken PUBLIC_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("public");
+KtModifierKeywordToken INTERNAL_KEYWORD  = KtModifierKeywordToken.softKeywordModifier("internal");
+KtModifierKeywordToken PROTECTED_KEYWORD = KtModifierKeywordToken.softKeywordModifier("protected");
+KtKeywordToken CATCH_KEYWORD     = KtKeywordToken.softKeyword("catch");
+KtModifierKeywordToken OUT_KEYWORD       = KtModifierKeywordToken.softKeywordModifier("out");
+KtModifierKeywordToken VARARG_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("vararg");
+KtModifierKeywordToken REIFIED_KEYWORD   = KtModifierKeywordToken.softKeywordModifier("reified");
+KtKeywordToken DYNAMIC_KEYWORD   = KtKeywordToken.softKeyword("dynamic");
+KtModifierKeywordToken COMPANION_KEYWORD = KtModifierKeywordToken.softKeywordModifier("companion");
+KtModifierKeywordToken SEALED_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("sealed");
 
-    KtModifierKeywordToken DEFAULT_VISIBILITY_KEYWORD = PUBLIC_KEYWORD;
+KtModifierKeywordToken DEFAULT_VISIBILITY_KEYWORD = PUBLIC_KEYWORD;
 
-    KtKeywordToken FINALLY_KEYWORD   = KtKeywordToken.softKeyword("finally");
-    KtModifierKeywordToken FINAL_KEYWORD     = KtModifierKeywordToken.softKeywordModifier("final");
+KtKeywordToken FINALLY_KEYWORD   = KtKeywordToken.softKeyword("finally");
+KtModifierKeywordToken FINAL_KEYWORD     = KtModifierKeywordToken.softKeywordModifier("final");
 
-    KtModifierKeywordToken LATEINIT_KEYWORD = KtModifierKeywordToken.softKeywordModifier("lateinit");
+KtModifierKeywordToken LATEINIT_KEYWORD = KtModifierKeywordToken.softKeywordModifier("lateinit");
 
-    KtModifierKeywordToken DATA_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("data");
-    KtModifierKeywordToken INLINE_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("inline");
-    KtModifierKeywordToken NOINLINE_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("noinline");
-    KtModifierKeywordToken TAILREC_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("tailrec");
-    KtModifierKeywordToken EXTERNAL_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("external");
-    KtModifierKeywordToken ANNOTATION_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("annotation");
-    KtModifierKeywordToken CROSSINLINE_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("crossinline");
-    KtModifierKeywordToken OPERATOR_KEYWORD = KtModifierKeywordToken.softKeywordModifier("operator");
-    KtModifierKeywordToken INFIX_KEYWORD = KtModifierKeywordToken.softKeywordModifier("infix");
+KtModifierKeywordToken DATA_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("data");
+KtModifierKeywordToken INLINE_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("inline");
+KtModifierKeywordToken NOINLINE_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("noinline");
+KtModifierKeywordToken TAILREC_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("tailrec");
+KtModifierKeywordToken EXTERNAL_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("external");
+KtModifierKeywordToken ANNOTATION_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("annotation");
+KtModifierKeywordToken CROSSINLINE_KEYWORD    = KtModifierKeywordToken.softKeywordModifier("crossinline");
+KtModifierKeywordToken OPERATOR_KEYWORD = KtModifierKeywordToken.softKeywordModifier("operator");
+KtModifierKeywordToken INFIX_KEYWORD = KtModifierKeywordToken.softKeywordModifier("infix");
 
-    KtModifierKeywordToken CONST_KEYWORD = KtModifierKeywordToken.softKeywordModifier("const");
+KtModifierKeywordToken CONST_KEYWORD = KtModifierKeywordToken.softKeywordModifier("const");
 
-    KtModifierKeywordToken SUSPEND_KEYWORD = KtModifierKeywordToken.softKeywordModifier("suspend");
+KtModifierKeywordToken SUSPEND_KEYWORD = KtModifierKeywordToken.softKeywordModifier("suspend");
 
-    KtModifierKeywordToken HEADER_KEYWORD = KtModifierKeywordToken.softKeywordModifier("header");
-    KtModifierKeywordToken IMPL_KEYWORD = KtModifierKeywordToken.softKeywordModifier("impl");
+KtModifierKeywordToken HEADER_KEYWORD = KtModifierKeywordToken.softKeywordModifier("header");
+KtModifierKeywordToken IMPL_KEYWORD = KtModifierKeywordToken.softKeywordModifier("impl");
 ```
 
 #### `this` 关键字
@@ -1356,7 +1333,6 @@ TokenSet KEYWORDS = TokenSet.create(PACKAGE_KEYWORD, AS_KEYWORD, TYPE_ALIAS_KEYW
 代码示例
 
 ```Kotlin
-
 class ThisDemo {
     val thisis = "THIS IS"
 
@@ -1373,12 +1349,12 @@ class ThisDemo {
 ```
 测试代码
 
-```
-    @Test
-    fun testThisDemo(){
-        val demo = ThisDemo()
-        println(demo.whatIsThis())
-    }
+```kotlin
+@Test
+fun testThisDemo(){
+    val demo = ThisDemo()
+    println(demo.whatIsThis())
+}
 ```
 
 输出
@@ -1394,7 +1370,7 @@ com.easy.kotlin.ThisDemo@475232fc
 
 代码示例：
 
-```
+```kotlin
 >>> val sum = fun Int.(x:Int):Int = this + x
 >>> sum
 kotlin.Int.(kotlin.Int) -> kotlin.Int
@@ -1411,7 +1387,7 @@ abctrue
 如果 this 没有限定符，它指的是最内层的包含它的作用域。如果我们想要引用其他作用域中的 this，可以使用 this@label 标签。
 
 代码示例：
-```
+```kotlin
 class Outer {
     val oh = "Oh!"
 
@@ -1442,17 +1418,16 @@ class Outer {
 
         }
     }
-
 }
 ```
 测试代码：
 
-```
-    @Test
-    fun testThisKeyWord() {
-        val outer = Outer()
-        outer.Inner().m()
-    }
+```kotlin
+@Test
+fun testThisKeyWord() {
+    val outer = Outer()
+    outer.Inner().m()
+}
 ```
 
 输出
@@ -1471,7 +1446,7 @@ super关键字持有指向其父类的引用。
 
 代码示例：
 
-```
+```kotlin
 open class Father {
     open val firstName = "Chen"
     open val lastName = "Jason"
@@ -1498,12 +1473,12 @@ class Son : Father {
 
 测试代码
 
-```
-    @Test
-    fun testSuperKeyWord() {
-        val son = Son("Harry")
-        son.love()
-    }
+```kotlin
+@Test
+fun testSuperKeyWord() {
+    val son = Son("Harry")
+    son.love()
+}
 ```
 
 输出
@@ -1518,54 +1493,54 @@ Chen Jason Love Chen Harry
 Kotlin 允许我们为自己的类型提供预定义的一组操作符的实现。这些操作符具有固定的符号表示（如 `+` 或 `*`）和固定的优先级。这些操作符的符号定义如下：
 
 ```
-    KtSingleValueToken LBRACKET    = new KtSingleValueToken("LBRACKET", "[");
-    KtSingleValueToken RBRACKET    = new KtSingleValueToken("RBRACKET", "]");
-    KtSingleValueToken LBRACE      = new KtSingleValueToken("LBRACE", "{");
-    KtSingleValueToken RBRACE      = new KtSingleValueToken("RBRACE", "}");
-    KtSingleValueToken LPAR        = new KtSingleValueToken("LPAR", "(");
-    KtSingleValueToken RPAR        = new KtSingleValueToken("RPAR", ")");
-    KtSingleValueToken DOT         = new KtSingleValueToken("DOT", ".");
-    KtSingleValueToken PLUSPLUS    = new KtSingleValueToken("PLUSPLUS", "++");
-    KtSingleValueToken MINUSMINUS  = new KtSingleValueToken("MINUSMINUS", "--");
-    KtSingleValueToken MUL         = new KtSingleValueToken("MUL", "*");
-    KtSingleValueToken PLUS        = new KtSingleValueToken("PLUS", "+");
-    KtSingleValueToken MINUS       = new KtSingleValueToken("MINUS", "-");
-    KtSingleValueToken EXCL        = new KtSingleValueToken("EXCL", "!");
-    KtSingleValueToken DIV         = new KtSingleValueToken("DIV", "/");
-    KtSingleValueToken PERC        = new KtSingleValueToken("PERC", "%");
-    KtSingleValueToken LT          = new KtSingleValueToken("LT", "<");
-    KtSingleValueToken GT          = new KtSingleValueToken("GT", ">");
-    KtSingleValueToken LTEQ        = new KtSingleValueToken("LTEQ", "<=");
-    KtSingleValueToken GTEQ        = new KtSingleValueToken("GTEQ", ">=");
-    KtSingleValueToken EQEQEQ      = new KtSingleValueToken("EQEQEQ", "===");
-    KtSingleValueToken ARROW       = new KtSingleValueToken("ARROW", "->");
-    KtSingleValueToken DOUBLE_ARROW       = new KtSingleValueToken("DOUBLE_ARROW", "=>");
-    KtSingleValueToken EXCLEQEQEQ  = new KtSingleValueToken("EXCLEQEQEQ", "!==");
-    KtSingleValueToken EQEQ        = new KtSingleValueToken("EQEQ", "==");
-    KtSingleValueToken EXCLEQ      = new KtSingleValueToken("EXCLEQ", "!=");
-    KtSingleValueToken EXCLEXCL    = new KtSingleValueToken("EXCLEXCL", "!!");
-    KtSingleValueToken ANDAND      = new KtSingleValueToken("ANDAND", "&&");
-    KtSingleValueToken OROR        = new KtSingleValueToken("OROR", "||");
-    KtSingleValueToken SAFE_ACCESS = new KtSingleValueToken("SAFE_ACCESS", "?.");
-    KtSingleValueToken ELVIS       = new KtSingleValueToken("ELVIS", "?:");
-    KtSingleValueToken QUEST       = new KtSingleValueToken("QUEST", "?");
-    KtSingleValueToken COLONCOLON  = new KtSingleValueToken("COLONCOLON", "::");
-    KtSingleValueToken COLON       = new KtSingleValueToken("COLON", ":");
-    KtSingleValueToken SEMICOLON   = new KtSingleValueToken("SEMICOLON", ";");
-    KtSingleValueToken DOUBLE_SEMICOLON   = new KtSingleValueToken("DOUBLE_SEMICOLON", ";;");
-    KtSingleValueToken RANGE       = new KtSingleValueToken("RANGE", "..");
-    KtSingleValueToken EQ          = new KtSingleValueToken("EQ", "=");
-    KtSingleValueToken MULTEQ      = new KtSingleValueToken("MULTEQ", "*=");
-    KtSingleValueToken DIVEQ       = new KtSingleValueToken("DIVEQ", "/=");
-    KtSingleValueToken PERCEQ      = new KtSingleValueToken("PERCEQ", "%=");
-    KtSingleValueToken PLUSEQ      = new KtSingleValueToken("PLUSEQ", "+=");
-    KtSingleValueToken MINUSEQ     = new KtSingleValueToken("MINUSEQ", "-=");
-    KtKeywordToken NOT_IN      = KtKeywordToken.keyword("NOT_IN", "!in");
-    KtKeywordToken NOT_IS      = KtKeywordToken.keyword("NOT_IS", "!is");
-    KtSingleValueToken HASH        = new KtSingleValueToken("HASH", "#");
-    KtSingleValueToken AT          = new KtSingleValueToken("AT", "@");
+KtSingleValueToken LBRACKET    = new KtSingleValueToken("LBRACKET", "[");
+KtSingleValueToken RBRACKET    = new KtSingleValueToken("RBRACKET", "]");
+KtSingleValueToken LBRACE      = new KtSingleValueToken("LBRACE", "{");
+KtSingleValueToken RBRACE      = new KtSingleValueToken("RBRACE", "}");
+KtSingleValueToken LPAR        = new KtSingleValueToken("LPAR", "(");
+KtSingleValueToken RPAR        = new KtSingleValueToken("RPAR", ")");
+KtSingleValueToken DOT         = new KtSingleValueToken("DOT", ".");
+KtSingleValueToken PLUSPLUS    = new KtSingleValueToken("PLUSPLUS", "++");
+KtSingleValueToken MINUSMINUS  = new KtSingleValueToken("MINUSMINUS", "--");
+KtSingleValueToken MUL         = new KtSingleValueToken("MUL", "*");
+KtSingleValueToken PLUS        = new KtSingleValueToken("PLUS", "+");
+KtSingleValueToken MINUS       = new KtSingleValueToken("MINUS", "-");
+KtSingleValueToken EXCL        = new KtSingleValueToken("EXCL", "!");
+KtSingleValueToken DIV         = new KtSingleValueToken("DIV", "/");
+KtSingleValueToken PERC        = new KtSingleValueToken("PERC", "%");
+KtSingleValueToken LT          = new KtSingleValueToken("LT", "<");
+KtSingleValueToken GT          = new KtSingleValueToken("GT", ">");
+KtSingleValueToken LTEQ        = new KtSingleValueToken("LTEQ", "<=");
+KtSingleValueToken GTEQ        = new KtSingleValueToken("GTEQ", ">=");
+KtSingleValueToken EQEQEQ      = new KtSingleValueToken("EQEQEQ", "===");
+KtSingleValueToken ARROW       = new KtSingleValueToken("ARROW", "->");
+KtSingleValueToken DOUBLE_ARROW       = new KtSingleValueToken("DOUBLE_ARROW", "=>");
+KtSingleValueToken EXCLEQEQEQ  = new KtSingleValueToken("EXCLEQEQEQ", "!==");
+KtSingleValueToken EQEQ        = new KtSingleValueToken("EQEQ", "==");
+KtSingleValueToken EXCLEQ      = new KtSingleValueToken("EXCLEQ", "!=");
+KtSingleValueToken EXCLEXCL    = new KtSingleValueToken("EXCLEXCL", "!!");
+KtSingleValueToken ANDAND      = new KtSingleValueToken("ANDAND", "&&");
+KtSingleValueToken OROR        = new KtSingleValueToken("OROR", "||");
+KtSingleValueToken SAFE_ACCESS = new KtSingleValueToken("SAFE_ACCESS", "?.");
+KtSingleValueToken ELVIS       = new KtSingleValueToken("ELVIS", "?:");
+KtSingleValueToken QUEST       = new KtSingleValueToken("QUEST", "?");
+KtSingleValueToken COLONCOLON  = new KtSingleValueToken("COLONCOLON", "::");
+KtSingleValueToken COLON       = new KtSingleValueToken("COLON", ":");
+KtSingleValueToken SEMICOLON   = new KtSingleValueToken("SEMICOLON", ";");
+KtSingleValueToken DOUBLE_SEMICOLON   = new KtSingleValueToken("DOUBLE_SEMICOLON", ";;");
+KtSingleValueToken RANGE       = new KtSingleValueToken("RANGE", "..");
+KtSingleValueToken EQ          = new KtSingleValueToken("EQ", "=");
+KtSingleValueToken MULTEQ      = new KtSingleValueToken("MULTEQ", "*=");
+KtSingleValueToken DIVEQ       = new KtSingleValueToken("DIVEQ", "/=");
+KtSingleValueToken PERCEQ      = new KtSingleValueToken("PERCEQ", "%=");
+KtSingleValueToken PLUSEQ      = new KtSingleValueToken("PLUSEQ", "+=");
+KtSingleValueToken MINUSEQ     = new KtSingleValueToken("MINUSEQ", "-=");
+KtKeywordToken NOT_IN      = KtKeywordToken.keyword("NOT_IN", "!in");
+KtKeywordToken NOT_IS      = KtKeywordToken.keyword("NOT_IS", "!is");
+KtSingleValueToken HASH        = new KtSingleValueToken("HASH", "#");
+KtSingleValueToken AT          = new KtSingleValueToken("AT", "@");
 
-    KtSingleValueToken COMMA       = new KtSingleValueToken("COMMA", ",");
+KtSingleValueToken COMMA       = new KtSingleValueToken("COMMA", ",");
 ```
 
 ### 3.7.4 操作符优先级（Precedence)
@@ -1593,7 +1568,7 @@ Kotlin 允许我们为自己的类型提供预定义的一组操作符的实现�
 
 例如在kotlin/core/builtins/native/kotlin/Primitives.kt代码中，对基本类型Int的操作符的实现代码如下
 
-```
+```kotlin
 public class Int private constructor() : Number(), Comparable<Int> {
     ...
 
@@ -1796,12 +1771,7 @@ public class Int private constructor() : Number(), Comparable<Int> {
 以下是如何重载一元减运算符的示例：
 
 ```kotlin
-
 package com.easy.kotlin
-
-/**
- * Created by jack on 2017/6/10.
- */
 
 class OperatorDemo {
 
@@ -1810,21 +1780,17 @@ class OperatorDemo {
 data class Point(val x: Int, val y: Int)
 
 operator fun Point.unaryMinus() = Point(-x, -y)
-
 ```
 
 测试代码：
 
-```
+```kotlin
 package com.easy.kotlin
 
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-/**
- * Created by jack on 2017/6/10.
- */
 @RunWith(JUnit4::class)
 class OperatorDemoTest {
 
@@ -1885,7 +1851,7 @@ class OperatorDemoTest {
 
 代码示例
 
-```
+```kotlin
 >>> val a=10
 >>> val b=3
 >>> a+b
@@ -1906,7 +1872,7 @@ class OperatorDemoTest {
 
 先用代码举个例子：
 
-```
+```kotlin
 >>> ""+1
 1
 >>> 1+""
@@ -1943,16 +1909,13 @@ operator fun Counter.plus(increment: Int): Counter {
 
 测试类
 
-```
+```kotlin
 package com.easy.kotlin
 
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-/**
- * Created by jack on 2017/6/10.
- */
 @RunWith(JUnit4::class)
 class OperatorDemoTest 
     @Test
@@ -2039,12 +2002,12 @@ Elvis操作符 `?:` 是一个二元运算符，如果第一个操作数为真，
 Kotlin中没有这样的三元运算符 `true?1:0`，取而代之的是`if(true) 1 else 0`。而Elvis操作符算是精简版的三元运算符。
 
 我们在Java中使用的三元运算符的语法，你通常要重复变量两次， 示例：
-```
+```java
 String name = "Elvis Presley";
 String displayName = (name != null) ? name : "Unknown";
 ```
 取而代之，你可以使用Elvis操作符。
-```
+```java
 String name = "Elvis Presley";
 String displayName = name?:"Unknown"
 ```
@@ -2056,7 +2019,7 @@ String displayName = name?:"Unknown"
 在Kotlin中当然就没有理由不支持这个特性。
 
 代码示例：
-```
+```kotlin
 >>> val x = null
 >>> val y = x?:0
 >>> y
@@ -2092,7 +2055,7 @@ abc
 
 代码示例
 
-```
+```kotlin
 data class Person(val name: String, val age: Int)
 
 infix fun Person.grow(years: Int): Person {
@@ -2102,13 +2065,12 @@ infix fun Person.grow(years: Int): Person {
 
 测试代码
 
-```
+```kotlin
 package com.easy.kotlin
 
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-
 
 @RunWith(JUnit4::class)
 class InfixFunctionDemoTest {
@@ -2174,7 +2136,7 @@ true
 
 我们就可以为`String`类型扩展一个`notEmpty()`函数：
 
-```
+```kotlin
 >>> fun String.notEmpty():Boolean{
 ... return !this.isEmpty()
 ... }
@@ -2202,11 +2164,11 @@ fun MutableList<Int>.swap(index1: Int, index2: Int) {
 当然，这个函数对任何 `MutableList<T>` 起作用，我们可以泛化它：
 
 ```kotlin
-    fun <T> MutableList<T>.mswap(index1: Int, index2: Int) {
-        val tmp = this[index1] // “this”对应该列表
-        this[index1] = this[index2]
-        this[index2] = tmp
-    }
+fun <T> MutableList<T>.mswap(index1: Int, index2: Int) {
+    val tmp = this[index1] // “this”对应该列表
+    this[index1] = this[index2]
+    this[index2] = tmp
+}
 ```
 
 为了在接收者类型表达式中使用泛型，我们要在函数名前声明泛型参数。
@@ -2392,7 +2354,7 @@ na.length
 
 我们使用安全调用`?.` 和 非空断言调用 `!!.`
 
-```
+```kotlin
 >>> na?.length
 null
 >>> na!!.length
