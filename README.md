@@ -1,21 +1,48 @@
 ## Kotlin极简教程
 
-* [Kotlin极简教程](https://alleniverson.gitbooks.io/easykotlin/content/README.html)
-* [前言](https://alleniverson.gitbooks.io/easykotlin/content/sword_preface.html)
-* [第1章 Kotlin简介](https://alleniverson.gitbooks.io/easykotlin/content/1.Kotlin简介/第1章%20Kotlin简介.html)
-* [第2章 快速开始：HelloWorld](https://alleniverson.gitbooks.io/easykotlin/content/2.快速开始：HelloWorld/第2章%20快速开始：HelloWorld.html)
-* [第2章 快速开始：SpringbootRestful](https://alleniverson.gitbooks.io/easykotlin/content/2.快速开始：HelloWorld/第2章%20快速开始：SpringbootRestful.html)
-* [第3章 Kotlin语言基础](https://alleniverson.gitbooks.io/easykotlin/content/3.Kotlin语言基础/第3章%20Kotlin语言基础.html)
-* [第4章 基本数据类型与类型系统](https://alleniverson.gitbooks.io/easykotlin/content/4.基本数据类型与类型系统/第4章%20基本数据类型与类型系统.html)
-* [第5章 集合类](https://alleniverson.gitbooks.io/easykotlin/content/5.集合类/第5章%20集合类.html)
-* [第6章 泛型](https://alleniverson.gitbooks.io/easykotlin/content/6.泛型/第6章%20泛型.html)
-* [第7章 面向对象编程](https://alleniverson.gitbooks.io/easykotlin/content/7.面向对象编程/第7章%20面向对象编程.html)
-* [第8章 函数式编程](https://alleniverson.gitbooks.io/easykotlin/content/8.函数式编程/第8章%20函数式编程.html)
-* [第9章 轻量级线程：协程](https://alleniverson.gitbooks.io/easykotlin/content/9.协程/第9章%20轻量级线程：协程.html)
-* [第10章 Kotlin与Java互操作](https://alleniverson.gitbooks.io/easykotlin/content/10.Kotlin与Java互操作/第10章%20Kotlin与Java互操作.html)
-* [第11章 使用Kotlin集成SpringBoot开发Web服务端](https://alleniverson.gitbooks.io/easykotlin/content/11.使用Kotlin集成SpringBoot开发Web服务端/第11章%20使用Kotlin集成SpringBoot开发Web服务端.html)
-* [第12章 使用Kotlin集成Gradle开发](https://alleniverson.gitbooks.io/easykotlin/content/12.使用Kotlin集成Gradle开发/第12章%20使用Kotlin集成Gradle开发.html)
-* [第13章 使用 Kotlin 和 Anko 的Android 开发](https://alleniverson.gitbooks.io/easykotlin/content/13.使用Kotlin和Anko的Android开发/第13章%20使用%20Kotlin%20和%20Anko%20的Android%20开发.html)
-* [第14章 使用 Kotlin  DSL](https://alleniverson.gitbooks.io/easykotlin/content/14.使用%20Kotlin%20DSL/第14章%20使用%20Kotlin%20%20DSL.html)
-* [第15章 Kotlin 文件IO操作与多线程](https://alleniverson.gitbooks.io/easykotlin/content/15.Kotlin%20文件IO操作与多线程/第15章%20Kotlin%20文件IO操作与多线程.html)
-* [第16章 使用 Kotlin Native](https://alleniverson.gitbooks.io/easykotlin/content/16.使用%20Kotlin%20Native/第16章%20使用%20Kotlin%20Native.html)
+![](assets/note.jpg)
+
+> 十年生死两茫茫，不思量，自难忘，华年短暂，陈辞岁月悠悠伤，
+>
+> 满腔热血已芜荒，展未来，后生强，战战兢兢，如履薄冰心彷徨，
+>
+> 青丝化雪、鬓角成霜，已是英雄迟暮，人生怎慷慨激昂？
+
+对于一个开发者而言，能够胜任系统中任意一个模块的开发是其核心价值的体现。
+
+对于一个架构师而言，掌握各种语言的优势并可以运用到系统中，由此简化系统的开发，是其架构生涯的第一步。
+
+对于一个开发团队而言，能在短期内开发出用户满意的软件系统是起核心竞争力的体现。
+
+每一个程序员都不能固步自封，要多接触新的行业，新的技术领域，突破自我。
+
+GitHub托管主页：https://github.com/JackChan1999/EasyKotlin
+
+GitBook在线阅读、电子书下载：https://www.gitbook.com/book/alleniverson/easykotlin/details
+
+### Kotlin 语言中文站
+
+![](assets/Kotlin 语言中文站.png)
+
+### Kotlin 语言官方参考文档 中文版
+
+> https://www.gitbook.com/book/hltj/kotlin-reference-chinese/details
+
+### 《Kotlin for android developers》中文版翻译
+
+> GitHub：https://github.com/wangjiegulu/kotlin-for-android-developers-zh
+>
+> 英文原版：https://leanpub.com/kotlin-for-android-developers
+>
+> [GitBook（电子书下载、在线阅读）](https://www.gitbook.com/book/alleniverson/kotlin-for-android-developers/details)
+
+![](assets/Kotlin for android developers.png)
+
+## 关注我
+
+- Email：<619888095@qq.com>
+- CSDN博客：[Allen Iverson](http://blog.csdn.net/axi295309066)
+- 新浪微博：[AndroidDeveloper](http://weibo.com/u/1848214604?topnav=1&wvr=6&topsug=1&is_all=1)
+- GitHub：[JackChan1999](https://github.com/JackChan1999)
+- GitBook：[alleniverson](https://www.gitbook.com/@alleniverson)
+- 个人博客：[JackChan](https://jackchan1999.github.io/)

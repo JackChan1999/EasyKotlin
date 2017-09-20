@@ -2,6 +2,10 @@
 
 * [Kotlin极简教程](README.md)
 * [前言](sword_preface.md)
+* [视频教程](vedio\README.md)
+    * [Kotlin 系统入门到进阶](vedio\Kotlin 系统入门到进阶.md)
+    * [Kotlin 从入门到放弃](vedio\Kotlin 从入门到放弃.md)
+    * [Kotlin 从零基础到进阶](vedio\Kotlin 从零基础到进阶.md)
 * [第1章 Kotlin简介](1.Kotlin简介\第1章 Kotlin简介.md)
 * [第2章 快速开始：HelloWorld](2.快速开始：HelloWorld\第2章 快速开始：HelloWorld.md)
 * [第2章 快速开始：SpringbootRestful](2.快速开始：HelloWorld\第2章 快速开始：SpringbootRestful.md)
