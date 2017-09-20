@@ -66,11 +66,9 @@ verticalLayout {
 
 这个应用程序界面如下所示：
 
-![Kotlin极简教程](images/Anko1.png)
-
-![Kotlin极简教程](images/Anko2.png)
-
-![Kotlin极简教程](images/Anko3.png)
+| 界面1                                      | 界面2                                      | 界面3                                      |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| <img src="images/Anko1.png" width="300"/> | <img src="images/Anko2.png" width="300"/> | <img src="images/Anko3.png" width="300"/> |
 
 ## 13.4 使用 Android Studio 新建工程
 
@@ -160,7 +158,7 @@ verticalLayout {
 
 我们直接在Android 模拟器中（也可以选择用真机）运行它，可以看到如下效果：
 
-![Kotlin极简教程](images/Anko10.png)
+<img src="images/Anko10.png" width="400"/>
 
 ## 13.5 设计UI 界面主题颜色
 
@@ -597,7 +595,7 @@ fab?.setOnClickListener { _ ->
 
 下面我们来完成这个添加日程的界面。
 
-![Kotlin极简教程](images/Anko15.png)
+<img src="images/Anko15.png" width="400"/>
 
 我们采用Fragment来实现。首先新建一个TodoEditFragment继承Fragment() ：
 ```kotlin
@@ -813,7 +811,7 @@ private fun createTodoFrom(title: EditText, todoContent: EditText) {
 
 下面我们来实现这个页面。
 
-![Kotlin极简教程](images/Anko16.png)
+<img src="images/Anko16.png" width="400"/>
 
 首先，这个是主页面，对应 activity_main.xml 视图, 文件内容如下：
 
@@ -1019,11 +1017,9 @@ override fun onResume() {
 
 编译安装应用，我们就可以看到如下的界面了，我们可以在里面添加编辑我们的待办事项。
 
-![Kotlin极简教程](images/Anko17.png)
-
-![Kotlin极简教程](images/Anko18.png)
-
-![Kotlin极简教程](images/Anko19.png)
+| 界面1                                      | 界面2                                      | 界面3                                      |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| <img src="images/Anko17.png" width="300"/> | <img src="images/Anko18.png" width="300"/> | <img src="images/Anko19.png" width="300"/> |
 
 ## 本章小结
 
