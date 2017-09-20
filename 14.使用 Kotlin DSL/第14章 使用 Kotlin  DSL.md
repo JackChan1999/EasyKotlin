@@ -5,41 +5,39 @@
 
 本章就让我们一起来学习一下 使用 Kotlin 创建 DSL的相关内容。
 
-
 我们在上一章中已经看到了在 Android 中使用下面这样的 嵌套DSL 风格的代码来替代 XML 式风格的视图文件
 
-```
-        UI {
-            // AnkoContext
+```kotlin
+UI {
+    // AnkoContext
 
-            verticalLayout {
-                padding = dip(30)
-                var title = editText {
-                    // editText 视图
-                    id = R.id.todo_title
-                    hintResource = R.string.title_hint
-                }
-
-                var content = editText {
-                    id = R.id.todo_content
-                    height = 400
-                    hintResource = R.string.content_hint
-                }
-                button {
-                    // button 视图
-                    id = R.id.todo_add
-                    textResource = R.string.add_todo
-                    textColor = Color.WHITE
-                    setBackgroundColor(Color.DKGRAY)
-                    onClick { _ -> createTodoFrom(title, content) }
-                }
-            }
+    verticalLayout {
+        padding = dip(30)
+        var title = editText {
+            // editText 视图
+            id = R.id.todo_title
+            hintResource = R.string.title_hint
         }
+
+        var content = editText {
+            id = R.id.todo_content
+            height = 400
+            hintResource = R.string.content_hint
+        }
+        button {
+            // button 视图
+            id = R.id.todo_add
+            textResource = R.string.add_todo
+            textColor = Color.WHITE
+            setBackgroundColor(Color.DKGRAY)
+            onClick { _ -> createTodoFrom(title, content) }
+        }
+    }
+}
 ```
 相比 XML 风格的 DSL（XML 本质上讲也是一种 DSL），明显使用原生的编程语言（例如Kotlin）DSL 风格更加简单干净，也更加自由灵活。
 
 Kotlin DSL 的编程风格是怎样的呢？以及其背后实现的原理是怎样的呢？下面就让我一起来探讨一下。
-
 
 ## DSL 是什么
 
@@ -51,17 +49,15 @@ DSL 只是问题解决方案模型的外部封装，这个模型可能是一个 
 
 提示：关于 DSL 的详细介绍可以参考：《领域特定语言》（Martin Fowler）这本书。
 
-
 ## Kotlin 的 DSL 特性支持
 
 扩展（eXtension）特性。
-
 
 ## 实现一个极简的 DSL
 
 OkHttp是一个成熟且强大的网络库，在Android源码中已经使用OkHttp替代原先的HttpURLConnection。很多著名的框架例如Picasso、Retrofit也使用OkHttp作为底层框架。在这里我对OkHttp做一下简单的封装，其实封装得有点粗暴只是为了演示如何实现dsl。
 
-```
+```kotlin
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.schedulers.Schedulers
@@ -71,9 +67,6 @@ import okhttp3.RequestBody
 import okhttp3.Response
 import java.util.concurrent.TimeUnit
 
-/**
- * Created by Tony Shen on 2017/6/1.
- */
 class RequestWrapper {
 
     var url:String? = null
@@ -136,53 +129,51 @@ private fun onExecute(wrap:RequestWrapper): Response? {
 
 ```
 封装完OkHttp之后，看看如何来编写get请求
-```
-        http {
+```kotlin
+http {
 
-            url = "http://www.163.com/"
+    url = "http://www.163.com/"
 
-            method = "get"
+    method = "get"
 
-            onSuccess {
-                string -> L.i(string)
-            }
+    onSuccess {
+        string -> L.i(string)
+    }
 
-            onFail {
-                e -> L.i(e.message)
-            }
-        }
-
+    onFail {
+        e -> L.i(e.message)
+    }
+}
 ```
 
 是不是很像以前用jquery来写ajax？
 
 post请求也是类似的，只不过多了body
 
+```kotlin
+var json = JSONObject()
+json.put("xxx","yyyy")
+....
+
+val postBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),json.toString())
+
+http {
+
+    url = "https://......"
+
+    method = "post"
+
+    body = postBody
+
+    onSuccess {
+        string -> L.json(string)
+    }
+
+    onFail {
+        e -> L.i(e.message)
+    }
+}
 ```
-        var json = JSONObject()
-        json.put("xxx","yyyy")
-        ....
-
-        val postBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),json.toString())
-
-        http {
-
-            url = "https://......"
-
-            method = "post"
-
-            body = postBody
-
-            onSuccess {
-                string -> L.json(string)
-            }
-
-            onFail {
-                e -> L.i(e.message)
-            }
-        }
-```
-
 
 ## 使用kotlinx.html DSL 写前端代码
 
@@ -194,7 +185,7 @@ kotlinx. html 分别提供了kotlinx-html-jvm 和 kotlinx-html-js库的DSL , 用
 
 要使用 kotlinx.html 首先添加依赖
 
-```
+```gradle
 dependencies {
     def kotlinx_html_version = "0.6.3"
     compile "org.jetbrains.kotlinx:kotlinx-html-jvm:${kotlinx_html_version}"
@@ -203,7 +194,7 @@ dependencies {
 }
 ```
 kotlinx.html 最新版本发布在 https://jcenter.bintray.com/ 仓库上，所以我们添加一下仓库的配置
-```
+```gradle
 repositories {
     maven { url 'https://jitpack.io' }
     mavenCentral()
@@ -215,14 +206,11 @@ repositories {
 
 我们来写一个极简百度首页示例。这个页面界面如下图所示
 
-
-![螢幕快照 2017-07-23 03.39.07.png](http://upload-images.jianshu.io/upload_images/1233356-83268d6804614e91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-83268d6804614e91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 前端 HTML 代码：
 
-```
+```html
 <!DOCTYPE html>
 <html lang=zh-CN>
 <head>
@@ -261,7 +249,6 @@ repositories {
 }
 ```
 
-
 dsl.js 文件内容如下
 ```
 $(function () {
@@ -276,16 +263,13 @@ $(function () {
 
 我们首先新建 Kotlin + Spring Boot 工程，然后直接来写 Kotlin 视图类HelloDSLView，代码如下：
 
-```
+```kotlin
 package com.easy.kotlin.chapter14_kotlin_dsl.view
 
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 import org.springframework.stereotype.Service
 
-/**
- * Created by jack on 2017/7/22.
- */
 @Service
 class HelloDSLView {
     fun html(): String {
@@ -345,7 +329,7 @@ class HelloDSLView {
 
 然后，我们就可以直接在控制器层的代码里直接调用我们的 Kotlin 视图代码了：
 
-```
+```kotlin
 @Controller
 class HelloDSLController {
     @Autowired
@@ -401,31 +385,12 @@ ${hello}
 
 ```
 
-
 然后，启动运行 SpringBoot 应用，浏览器访问  http://127.0.0.1:8888/hello ， 我们可以看到如下输出界面：
 
-
-![螢幕快照 2017-07-23 03.53.07.png](http://upload-images.jianshu.io/upload_images/1233356-f36aff0846fa2d8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-f36aff0846fa2d8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 这就是 DSL 的精妙之处。我们后面可以尝试使用 kotlinx.html 来写Kotlin 语言的前端代码了。在做 Web 开发的时候，我们通常是使用 HTML + 模板引擎（Velocity、JSP、Freemarker 等）来集成前后端的代码，这让我们有时候感到很尴尬，要学习模板引擎的语法，还得应对 前端HTML代码中凌乱的模板引擎标签、变量等片段代码。
 
 使用 Kotlin DSL 来写 HTML 代码的情况将完全不一样了，我们将重拾前后端集成编码的乐趣（不再是模板引擎套前端 HTML，各种奇怪的 #、<#>、${} 模板语言标签），我们直接把 更加优雅简单的 DSL 风格的HTML 代码搬到了后端，同时HTML中的元素将直接跟后端的数据无缝交互，而完成这些的只是 Kotlin（当然，相应领域的 DSL 基本语义模型还是要学习一下）。
 
-提示：本节项目源码：
-
-https://github.com/EasyKotlin/chapter14_kotlin_dsl
-
-
-
-## 使用KotlinTest写测试代码
-
-
-
-
-
-## 本章小结
-
-
-
-
-本章工程源码：
+提示：本节项目源码：https://github.com/EasyKotlin/chapter14_kotlin_dsl
