@@ -51,7 +51,7 @@ Artifact：chapter11_kotlin_springboot
 
 以上三步如下图所示：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-41de142e1e026678.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_01.png)
 
 点击生成项目，下载zip包，解压后导入IDEA中，我们可以看到一个如下目录结构的工程：
 
@@ -655,7 +655,7 @@ fun main(args: Array<String>) {
 
 如果是在IDEA中运行，可以直接点击main函数运行，如下图所示：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-5345520564c28ef0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_02.png)
 
 如果想在命令行运行，直接在项目根目录下运行命令：
 ```
@@ -757,7 +757,7 @@ fun listAllArticleView(model: Model): ModelAndView {
 
 重启应用，浏览器访问 ： http://127.0.0.1:8000/listAllArticleView ，我们可以看到页面输出：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-e4b99926e77c8e85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_03.png)
 
 到这里，我们已经完成了一个从数据库到前端页面的完整的一个极简的Web应用。
 
@@ -767,7 +767,7 @@ fun listAllArticleView(model: Model): ModelAndView {
 
 我们使用基于Bootstrap的前端UI库Flat UI。首先去Flat UI的首页：http://www.bootcss.com/p/flat-ui/ 下载zip包，加压后，放到我们的工程里，放置的目录是：src/main/resources/static 。如下图所示：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-e2fdc39c3e814421.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_04.png)
 
 我们在list.ftl头部引入静态资源文件：
 ```html
@@ -833,7 +833,7 @@ fun listAllArticleView(model: Model): ModelAndView {
 
 重新build工程，在此访问文章列表页，我们将看到一个比刚才漂亮多了的页面：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-be7f570041c93704.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_05.png)
 
 考虑到头部的静态资源文件基本都是公共的代码，我们单独抽取到一个head.ftl文件中,  然后在list.ftl中直接这样引用：
 ```
@@ -902,7 +902,7 @@ class WebMvcConfig : WebMvcConfigurerAdapter() {
 
 重启应用，进入到我们的写文章的页面，如下图：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-f5f5b344fca06ce8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_06.png)
 
 ### 11.15.1  加上导航栏
 
@@ -961,9 +961,9 @@ class WebMvcConfig : WebMvcConfigurerAdapter() {
 
 加入了导航栏之后，我们的页面现在更加美观了：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-919d3f34e099a57f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_07.png)
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-5fdad0b0e7003d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_08.png)
 
 ### 11.15.3 写文章的控制器层接口
 
@@ -1066,11 +1066,11 @@ fun detailArticleView(id: Long, model: Model): ModelAndView {
 
 现在我们的文章列表页面如下：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-e9e3209a27d834c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_09.png)
 
 点击一篇文章标题，即可进入详情页：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-932ce8d93e55ff4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_10.png)
 
 ## 11.16 添加Markdown支持
 
@@ -1114,7 +1114,7 @@ fun detailArticleView(id: Long, model: Model): ModelAndView {
 
 这样，写文章的页面对应的textarea区域就变成了支持Markdown在线编辑+预览的功能了：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-69d868caf6273e0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_11.png)
 
 ### 11.16.3 文章详情显示Markdown渲染
 下面我们来使我们的详情页也能支持Markdown的渲染显示。
@@ -1171,7 +1171,7 @@ fun detailArticleView(id: Long, model: Model): ModelAndView {
 
 这样我们的详情页也支持了Markdown的渲染显示了：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-5f87b5d126eaeac8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_12.png)
 
 ## 11.17 文章列表分页搜索
 
@@ -1259,7 +1259,7 @@ $('#articlesDataTable').DataTable(dataTableOptions)
 
 再次看我们的文章列表页：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-31ac4ac1bbb0fb5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_springboot_13.png)
 
 已经具备了分页、搜索、排序等功能了。
 

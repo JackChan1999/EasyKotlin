@@ -11,7 +11,7 @@
 
 我们这里讲的Kotlin，就是一门以这个Котлин岛命名的现代程序设计语言。它是一门静态类型编程语言，支持JVM平台，Android平台，浏览器JS运行环境，本地机器码等。支持与Java，Android 100% 完全互操作。
 
-![Kotlin简介](http://upload-images.jianshu.io/upload_images/1233356-3526cca478f6bc75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Kotlin Logo.png)
 
 其主要设计者是来自 Saint Petersburg, Russia JetBrains团队的布雷斯拉夫( [Andrey Breslav](https://twitter.com/abreslav) , https://www.linkedin.com/in/abreslav/ )等人，源码在github上，其实现主要是JetBrains团队成员以及开源贡献者。
 
@@ -49,7 +49,7 @@ Kotlin这个语言从一开始推出到如今，已经有六年了。官方正�
 2017 Google I/O 大会，Kotlin “转正”。
 
 
-Kotlin 具有很多下一代编程语言[1][2]静态语言特性：如类型推断、多范式支持、可空性表达、扩展函数、模式匹配等。
+Kotlin 具有很多下一代编程语言[1]\[2]静态语言特性：如类型推断、多范式支持、可空性表达、扩展函数、模式匹配等。
 
 Kotlin的编译器kompiler可以被独立出来并嵌入到 Maven、Ant 或 Gradle 工具链中。这使得在 IDE 中开发的代码能够利用已有的机制来构建，可以在新环境中自由使用。
 
@@ -59,7 +59,7 @@ Kotlin以K字打头的用语，甚至连 contributors 这类词也改成了kontr
 
 2016 年是 Kotlin “元年（First year of Kotlin）”，官网给出了这样一幅图来展示它一年来的成绩：
 
-![](http://upload-images.jianshu.io/upload_images/1233356-b8677ddb90971f30.gif?imageMogr2/auto-orient/strip)
+![](images/kotlin1.gif)
 
 Github 上面的代码量破千万，8000多基于kotlin项目。使用 Kotlin 的人逐渐增多。
 
@@ -87,7 +87,7 @@ Kotlin 的学习曲线极其平缓，学习量相当于一个框架。有经验�
 
 你就可以直接使用云端IDE来即时编写Kotlin代码，并运行之。一个运行示例如下图：
 
-![](http://upload-images.jianshu.io/upload_images/1233356-18c9184d60a54022.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](images/kotlin2.png)
 
 ### 1.2.2 本地命令行环境搭建
 
@@ -169,7 +169,7 @@ https://github.com/JetBrains/kotlin/releases/tag/v1.1.2-2
 
 我们来看一下kotlinc的命令：
 
-```
+```bash
 #!/usr/bin/env bash
 #
 ##############################################################################
@@ -251,7 +251,7 @@ fi
 
 kotlin命令脚本如下
 
-```
+```bash
 export KOTLIN_RUNNER=1
 
 DIR="${BASH_SOURCE[0]%/*}"
@@ -262,7 +262,7 @@ DIR="${BASH_SOURCE[0]%/*}"
 
 我们可以看出，直接是依赖kotlinc。在if逻辑代码中：
 
-```
+```bash
 if [ -n "$KOTLIN_RUNNER" ];
 then
     java_args=("${java_args[@]}" "-Dkotlin.home=${KOTLIN_HOME}")
@@ -270,7 +270,7 @@ then
 ```
 从这个逻辑，我们可以看出，Kt.class在java命令执行前，需要从kotlin-runner.jar这个逻辑里走一遍。同时，我们也能知道Kt.class跟Java.class文件有着这个kotlin-runner.jar的逻辑映射上的区别。也就是说，Kotlin的Bytecode跟纯的JVM bytecode存在一个kotlin-runner.jar的映射关系。其大致执行过程如下图所示：
 
-![Kotlin代码执行过程.png](http://upload-images.jianshu.io/upload_images/1233356-eba26d5d146e3520.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin3.png)
 
 像scala，groovy等基于JVM的语言的compiler,runner，基本都采用这种运行方式。在实现细节上也许会有不同，总的思路是一致的。比如说，scalac的入口类
 
@@ -280,7 +280,7 @@ https://github.com/EasyKotlin/scala/blob/2.12.x/src/compiler/scala/tools/nsc/Mai
 ```
 对应scalac中的命令行脚本是：
 
-```
+```bash
 ...
 
 execCommand \
@@ -295,7 +295,6 @@ execCommand \
    scala.tools.nsc.Main  "$@"
    
    ...
-
 ```
 我们解压完kotlin-compiler-1.1.2-2.zip，放到相应的目录下。然后配置系统环境变量：
 ```
@@ -305,14 +304,13 @@ export PATH=$PATH:$KOTLIN_HOME/bin
 
 执行`source ~/.bashrc`, 命令行输入`kotlinc`， 即可REPL环境，我们可以看到如下输出：
 
-```
+```bash
 $ kotlinc
 Welcome to Kotlin version 1.1.2-2 (JRE 1.8.0_40-b27)
 Type :help for help, :quit for quit
 >>> println("Hello,World")
 Hello,World
 >>> 
-
 ```
 
 然后，我们就可以像使用python,ruby,scala,groovy的REPL一样去尽情享受Kotlin的编程乐趣了。
@@ -336,26 +334,22 @@ https://www.jetbrains.com/idea/documentation/
 
 如下图所示
 
-![](http://upload-images.jianshu.io/upload_images/1233356-e0528265e9fc792b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](images/kotlin4.png)
 
 也可以选择Maven，Gradle构建工程。本书采用Gradle来构建工程。如下图所示：
 
-![](http://upload-images.jianshu.io/upload_images/1233356-f93ef7337e6f1d7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](images/kotlin5.png)
 
 然后按照后续步骤操作，最后等待Gradle下载依赖，完成工程构建。我们将得到一个标准的Gradle工程。
 
-![](http://upload-images.jianshu.io/upload_images/1233356-a485310eeb7b9b07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](images/kotlin6.png)
 
 我们在`src/main/kotlin`下面新建`package` :com.easy.kotlin.chapter1
 
 然后新建HelloWorld.kt，编写以下代码
 
-```
+```kotlin
 package com.easy.kotlin.chapter1
-
-/**
- * Created by jack on 2017/6/5.
- */
 
 fun main(args:Array<String>){
     println("Hello,World!")
@@ -364,11 +358,11 @@ fun main(args:Array<String>){
 
 右击运行该类，如下图
 
-![](http://upload-images.jianshu.io/upload_images/1233356-512a27fc41d0985d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](images/kotlin7.png)
 
 我们将会得到输出
 
-![](http://upload-images.jianshu.io/upload_images/1233356-dadfcc257e19e706.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](images/kotlin8.png)
 
 我们观察IDEA控制台输出的执行日志，可以看出IDEA集成Kotlin环境使用的核心依赖jar包：
 
@@ -397,27 +391,27 @@ Process finished with exit code 0
 
 首先，打开`Help > Eclipse Marketplace`, 如下图
 
-![螢幕快照 2017-06-05 23.31.38.png](http://upload-images.jianshu.io/upload_images/1233356-91db220d347dc399.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin9.png)
 
 在搜索框里输入`Kotlin` , 将得到如下结果
 
-![螢幕快照 2017-06-05 23.33.09.png](http://upload-images.jianshu.io/upload_images/1233356-5cdf38a802135422.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin10.png)
 
 点击`Install`, 等待完成安装，重启Eclipse。
 
 然后，选择`Kotlin Perspective` , 如下图
 
-![螢幕快照 2017-06-06 00.01.35.png](http://upload-images.jianshu.io/upload_images/1233356-522b60ee83b5f6ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin11.png)
 
-![螢幕快照 2017-06-06 00.02.02.png](http://upload-images.jianshu.io/upload_images/1233356-df74fbfb2b465bdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin12.png)
 
 点击OK。下面我们就可以新建 `Kotlin` 工程了。如下图
 
-![螢幕快照 2017-06-06 00.18.29.png](http://upload-images.jianshu.io/upload_images/1233356-9733bb118698d046.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin13.png)
 
 新建完工程，我们将得到如下结构的工程
 
-![螢幕快照 2017-06-05 23.58.32.png](http://upload-images.jianshu.io/upload_images/1233356-28be4be2051a042f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin14.png)
 
 我们可以看出，`kotlin-runtime.jar`, `kotlin-reflect.jar`,`kotlin-script-runtime.jar` 被加到了工程依赖库里。
 
@@ -427,22 +421,21 @@ Process finished with exit code 0
 
 然后在此`package`下面新建一个`HelloWorld.kt`源码文件，内容如下
 
-```
+```kotlin
 package easy_kotlin_chatper_1
 
 fun main(args: Array<String>){
 	println("Hello,Kotlin!")
 }
-
 ```
 
 如下图
 
-![螢幕快照 2017-06-06 00.05.07.png](http://upload-images.jianshu.io/upload_images/1233356-167551a36094265a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin15.png)
 
 右击`HelloWorld.kt`源码文件，如下图运行
 
-![螢幕快照 2017-06-06 00.04.30.png](http://upload-images.jianshu.io/upload_images/1233356-301920bdea1a8149.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin16.png)
 
 如果一切正常，我们将得到如下输出
 
@@ -458,7 +451,7 @@ Hello,Kotlin!
 
 其中，构建过程的核心依赖配置如下：
 
-```
+```gradle
 buildscript {
     ext.kotlin_version = '1.1.1'
 
@@ -474,25 +467,25 @@ kotlin-gradle-plugin完成了Gradle构建Kotlin工程的所有依赖构建执行
 
 然后，使用Gradle java、kotlin插件：
 
-```
+```gradle
 apply plugin: 'java'
 apply plugin: 'kotlin'
 ```
 
 当然，如果我们同时想使用Groovy语言，加上
 
-```
+```gradle
 apply plugin: 'groovy'
 ```
 
 源代码JDK兼容性配置兼容1.8往后的版本：
-```
+```gradle
 sourceCompatibility = 1.8
 ```
 
 配置Maven仓库：
 
-```
+```gradle
 repositories {
     mavenCentral()
 }
@@ -500,7 +493,7 @@ repositories {
 
 工程依赖：
 
-```
+```gradle
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
@@ -519,7 +512,7 @@ org.jetbrains.kotlin:kotlin-stdlib-js是Kotlin JS执行环境依赖。
 
 如下图
 
-![](http://upload-images.jianshu.io/upload_images/1233356-d512ff81a8f9ffbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](images/kotlin17.png)
 
 kotlin-stdlib是Kotlin运行环境的标准库。
 
@@ -541,12 +534,12 @@ kotlin-stdlib是Kotlin运行环境的标准库。
 
 每一门编程语言的学习内容都会涉及：
 
->运行环境
->数据类型（数字、字符串、数组、集合、映射字典等）
->表达式
->函数
->流程控制
->类、方法
+- 运行环境
+- 数据类型（数字、字符串、数组、集合、映射字典等）
+- 表达式
+- 函数
+- 流程控制
+- 类、方法
 
 等等，不同的语言还有一些不同的特性，可以通过对比学习来加深理解。并通过大量实践深入理解，达到熟练使用。后面还要再去深入了解面向对象编程OOP、函数式编程FP、并发、异常、文件IO、网络、标准库等内容，并辅以持续的练习，这些内容才能够让你真正进入编程领域并做出实际的软件。
 

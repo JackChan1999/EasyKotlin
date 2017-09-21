@@ -48,7 +48,7 @@ fun main(args:Array<String>){
 
 首先，我们使用标准Gradle工程目录，对应的测试代码放在test目录下。具体目录结构如下
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-624f7da04a606184.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_basics_01.png)
 
 我们在测试源代码目录 `src/test/kotlin`下面新建一个包，跟`src/main/kotlin`在同一个 `package com.easy.kotlin`。然后，在此包下面新建一个测试类PackageDemoTest
 
@@ -111,11 +111,11 @@ testCompile group: 'junit', name: 'junit', version: '4.12'
 
 右击测试类，点击执行
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-f184a42badf5380c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_basics_02.png)
 
 运行结果
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-54b9c1f3b179c826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_basics_03.png)
 
 另外，如果我们不定义package命令空间，则默认在根级目录。例如直接在`src/main/kotlin` 源代码目录下面新建 DefaultPackageDemo.kt 类
 
@@ -2275,7 +2275,7 @@ val <T> List<T>.lastIndex: Int get() = size - 1
 
 我们可以直接使用包`com.easy.kotlin`中扩展的属性`lastIndex` :
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-5014b0532f56a0a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_basics_04.png)
 
 ## 3.9 空指针安全(Null-safety)
 

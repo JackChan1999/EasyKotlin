@@ -206,7 +206,7 @@ repositories {
 
 我们来写一个极简百度首页示例。这个页面界面如下图所示
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-83268d6804614e91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/dsl1.png)
 
 前端 HTML 代码：
 
@@ -387,7 +387,7 @@ ${hello}
 
 然后，启动运行 SpringBoot 应用，浏览器访问  http://127.0.0.1:8888/hello ， 我们可以看到如下输出界面：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-f36aff0846fa2d8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/dsl2.png)
 
 这就是 DSL 的精妙之处。我们后面可以尝试使用 kotlinx.html 来写Kotlin 语言的前端代码了。在做 Web 开发的时候，我们通常是使用 HTML + 模板引擎（Velocity、JSP、Freemarker 等）来集成前后端的代码，这让我们有时候感到很尴尬，要学习模板引擎的语法，还得应对 前端HTML代码中凌乱的模板引擎标签、变量等片段代码。
 

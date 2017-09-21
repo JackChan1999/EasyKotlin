@@ -15,7 +15,6 @@ Hello,World!
 >>> import java.util.Date
 >>> Date()
 Wed Jun 07 14:19:33 CST 2017
-
 ```
 
 ## 2.2 应用程序版HelloWorld
@@ -24,7 +23,7 @@ Wed Jun 07 14:19:33 CST 2017
 
 我们使用IDEA新建gradle项目，选择Java，Kotlin(Java)框架支持，如下图：
 
-![](http://upload-images.jianshu.io/upload_images/1233356-0882a65869654dec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_01.png)
 
 新建完项目，我们写一个HelloWorld.kt类
 
@@ -42,7 +41,6 @@ fun main(args: Array<String>) {
     println("Hello, world!")
     println(SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date()))
 }
-
 ```
 
 整体的项目目录结构如下
@@ -118,11 +116,9 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-
 ```
 
 工程源码地址：https://github.com/EasyKotlin/easykotlin/tree/easykotlin_hello_world_20170529
-
 
 ## 2.3 Web RESTFul HelloWorld
 
@@ -132,14 +128,13 @@ dependencies {
 
 打开IDEA的`File > New > Project` , 如下图
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-8d1252f729630936.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_02.png)
 
 按照界面操作，输入相应的工程名等信息，即可新建一个使用Gradle构建的标准Kotlin工程。
 
 2. build.gradle 基本配置
 
 IDEA自动生成的Gradle配置文件如下：
-
 
 ```groovy
 group 'com.easy.kotlin'
@@ -173,8 +168,6 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
 }
-
-
 ```
 从上面的配置文件我们可以看出，IDEA已经自动把Gradle 构建Kotlin工程插件 kotlin-gradle-plugin，以及Kotlin标准库kotlin-stdlib添加到配置文件中了。
 
@@ -185,7 +178,6 @@ dependencies {
 ```
 ext.kotlin_version = '1.1.2-2'
 ext.springboot_version = '1.5.2.RELEASE'
-
 ```
 
 然后在构建依赖里添加spring-boot-gradle-plugin
@@ -213,7 +205,6 @@ buildscript {
 其中，`org.jetbrains.kotlin:kotlin-allopen` 是全开放编译器插件。我们使用Kotlin 调用Java的Spring AOP框架和库，需要类为 open（可被继承实现），而Kotlin 类和函数都是默认 final 的，这样我们需要为每个类和函数前面加上open修饰符。
 
 这样的代码写起来，可费事了。还好，我们有all-open 编译器插件。它会适配 Kotlin 以满足这些框架的需求，并使用指定的注解标注类而其成员无需显式使用 open 关键字打开。 例如，当我们使用 Spring 时，就不需要打开所有的类，跟我们在Java中写代码一样，只需要用相应的注解标注即可，如 @Configuration 或 @Service。 
-
 
 完整的build.gradle配置文件如下
 
@@ -270,7 +261,6 @@ dependencies {
     compile('mysql:mysql-connector-java:5.1.13')
 
 }
-
 ```
 5. 配置application.properties
 
@@ -338,7 +328,6 @@ server.port=8000
         └── resources
 
 19 directories, 13 files
-
 ```
 
 一切尽在不言中，静静地看工程文件结构。
@@ -351,9 +340,7 @@ package com.easy.kotlin.controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
-/**
- * Created by jack on 2017/6/7.
- */
+
 @RestController
 class HelloWorldController {
     @GetMapping(value = *arrayOf("/helloworld", "/"))
@@ -361,7 +348,6 @@ class HelloWorldController {
         return "Hello,World!"
     }
 }
-
 ```
 
 我们再写个访问数据库的标准四层代码
@@ -395,7 +381,6 @@ class People(
         return "People(id=$id, firstName='$firstName', lastName='$lastName', gender='$gender', age=$age, gmtCreated=$gmtCreated, gmtModified=$gmtModified)"
     }
 }
-
 ```
 
 写PeopleRepository
@@ -406,13 +391,9 @@ package com.easy.kotlin.repository
 import com.easy.kotlin.entity.People
 import org.springframework.data.repository.CrudRepository
 
-/**
- * Created by jack on 2017/6/7.
- */
 interface PeopleRepository : CrudRepository<People, Long> {
     fun findByLastName(lastName: String): List<People>?
 }
-
 ```
 写PeopleService
 ```kotlin
@@ -423,15 +404,12 @@ import com.easy.kotlin.repository.PeopleRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
-/**
- * Created by jack on 2017/6/7.
- */
+
 @Service
 class PeopleService : PeopleRepository {
 
     @Autowired
     val peopleRepository: PeopleRepository? = null
-
 
     override fun findByLastName(lastName: String): List<People>? {
         return peopleRepository?.findByLastName(lastName)
@@ -491,9 +469,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 
-/**
- * Created by jack on 2017/6/7.
- */
+
 @Controller
 class PeopleController {
     @Autowired
@@ -509,33 +485,29 @@ class PeopleController {
     }
 
 }
-
 ```
 7. 运行测试
 
 点击Gradle的`bootRun` , 如下图
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-5496bf11120199e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_03.png)
 
 如果没有异常，启动成功，我们将看到以下输出：
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-34dc6fdaa14ebda0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_04.png)
 
 打开浏览器，访问请求：
 
 http://127.0.0.1:8000/
 
-
 输出响应：
 
 ```
 Hello,World!
-
 ```
 访问
 
 http://127.0.0.1:8000/hello?lastName=chen
-
 
 ```
 // 20170607115700
@@ -572,15 +544,13 @@ https://github.com/EasyKotlin/easy_kotlin_chapter2_hello_world_springboot_restfu
 
 ## 2.4 Android版的HelloWorld
 
-
 2017谷歌I/O大会：宣布 Kotlin 成 Android 开发一级语言。
 
-![](http://upload-images.jianshu.io/upload_images/1233356-3f9d414107046319.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_05.png)
 
 2017谷歌I/O大会上，谷歌宣布，将Kotlin语言作为安卓开发的一级编程语言。Kotlin由JetBrains公司开发，与Java100%互通，并具备诸多Java尚不支持的新特性。谷歌称还将与JetBrains公司合作，为Kotlin设立一个非盈利基金会。
 
 JetBrains在2010年首次推出Kotlin编程语言，并在次年将之开源。下一版的AndroidStudio（3.0）也将提供支持。
-
 
 下面我们简要介绍如何在Android上开始一个Kotlin的HelloWorld程序。
 
@@ -596,20 +566,17 @@ Android Studio 2.3.1
 Build #AI-162.3871768, built on April 1, 2017
 JRE: 1.8.0_112-release-b06 x86_64
 JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
-
 ```
 
 2. 其次，安装一个Kotlin的插件。
 
 依次打开：Android Studio > Preferences > Plugins，
 
-
-![](http://upload-images.jianshu.io/upload_images/1233356-b3d7745cd9408848.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](images/kotlin_快速开始_06.png)
 
 然后选择『Browse repositories』，在搜索框中搜索Kotlin，结果列表中的『Kotlin』插件，如下图
 
-![](http://upload-images.jianshu.io/upload_images/1233356-74f30d3242a2765c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_07.png)
 
 点击安装，安装完成之后，重启Android Studio。
 
@@ -623,15 +590,11 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 
 打开MainActivity文件，在Code菜单下面可以看到一个新的功能：Convert Java File to Kotlin File。
 
-
-![](http://upload-images.jianshu.io/upload_images/1233356-68101f8caa0a0fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](images/kotlin_快速开始_08.png)
 
 点击转换，
 
-
-![](http://upload-images.jianshu.io/upload_images/1233356-934a0c279af3c884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](images/kotlin_快速开始_09.png)
 
 可以看到转换后的Kotlin文件：MainActivity.kt
 
@@ -648,7 +611,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
-
 ```
 
 这个转换功能，对我们Java程序员在学习Kotlin是十分实用。我们可以基于我们之前的Java编码的经验来迅速学习Kotlin编程。
@@ -696,7 +658,6 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
 ```
 
 Module build.gradle
@@ -747,9 +708,7 @@ repositories {
 
 运行结果如下
 
-
-![](http://upload-images.jianshu.io/upload_images/1233356-a3afc675807f9881.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![Kotlin极简教程](images/kotlin_快速开始_10.png)
 
 工程源码：https://github.com/EasyKotlin/KotlinAndroid
 
@@ -797,14 +756,13 @@ var HelloWorld = function (_, Kotlin) {
 
 首先按照以下步骤新建工程
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-00912c0684daf9c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_11.png)
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-92c1c14e38ac53bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_12.png)
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-2318499596ac2224.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_13.png)
 
-
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-71eba5d0b05a2972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_14.png)
 
 等待Gradle初始化工程完毕，我们将得到一个Gradle KotlinJS 工程，其目录如下
 ```
@@ -860,7 +818,6 @@ dependencies {
 
 其中，apply plugin: 'kotlin2js' 是Gradle的kotlin编译成js的插件。org.jetbrains.kotlin:kotlin-stdlib-js是KotlinJS的运行库。
 
-
 另外，我们需要再配置一下Kotlin代码编译成JS的编译规则，以及文件放置目录等属性，如下所示
 
 ```
@@ -899,18 +856,12 @@ UMD是想综合AMD、CommonJS这两种模型，同时支持它们在客户端或
 
 我们这里为了极简化演示，直接采用了普通JS `plain` 类型。
 
-
 除了输出的 JavaScript 文件，该插件默认会创建一个带二进制描述符的额外 JS 文件。 如果你是构建其他 Kotlin 模块可以依赖的可重用库，那么该文件是必需的，并且应该与转换结果一起分发。 其生成由 kotlinOptions.metaInfo 选项控制。
-
 
 一切配置完毕，我们来写Kotlin代码App.kt
 
 ```kotlin
 package com.easy.kotlin
-
-/**
- * Created by jack on 2017/6/7.
- */
 
 fun helloWorld() {
     println("Hello,World!")
@@ -920,7 +871,7 @@ fun helloWorld() {
 
 然后，我们直接使用Gradle构建工程，如下图所示
 
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-41e5ec9326080542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_15.png)
 
 控制台输出
 
@@ -1054,16 +1005,14 @@ var package$com = _.com || (_.com = {});
 简化之后的意思表达如下
 
 ```js
-
 _.com.easy.kotlin.helloWorld = helloWorld;
-
 ```
 目的是建立Kotlin代码跟JavaScript代码的映射关系。这样我们在前端代码中调用
 
 ```js
-  function helloWorld() {
-    println('Hello,World!');
-  }
+function helloWorld() {
+  println('Hello,World!');
+}
 ```
 
 这个函数时，只要这样调用即可
@@ -1071,7 +1020,6 @@ _.com.easy.kotlin.helloWorld = helloWorld;
 ```
 app.com.easy.kotlin.helloWorld()
 ```
-
 
 下面我们来新建一个index.html页面，使用我们生成的app.js。代码如下
 
@@ -1084,7 +1032,6 @@ app.com.easy.kotlin.helloWorld()
 
 </head>
 <body>
-
 
 <!-- 优先加载kotlin.js，再加载应用程序代码app.js-->
 <script type="text/javascript" src="kotlin.js"></script>
@@ -1104,24 +1051,21 @@ app.com.easy.kotlin.helloWorld()
 
 在浏览器中打开index.html
 
-
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-1eac26bab3de5362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_16.png)
 
 我们可以看到浏览器控制台输出
 
-
-![Kotlin极简教程](http://upload-images.jianshu.io/upload_images/1233356-85de9abe557023f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/kotlin_快速开始_17.png)
 这个helloWorld() JavaScript函数
 
 ```
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
-  function helloWorld() {
-    println('Hello,World!');
-  }
+var println = Kotlin.kotlin.io.println_s8jyv4$;
+function helloWorld() {
+  println('Hello,World!');
+}
 ```
 
 对应kotlin.js代码中的3755行处的代码：
-
 
 ```js
 BufferedOutputToConsoleLog.prototype.flush = function() {
@@ -1130,7 +1074,6 @@ BufferedOutputToConsoleLog.prototype.flush = function() {
   };
 ```
 
-
 本节工程源代码：https://github.com/EasyKotlin/chapter2_hello_world_kotlin2js
 
 参考资料
@@ -1138,4 +1081,3 @@ BufferedOutputToConsoleLog.prototype.flush = function() {
 1.https://kotlinlang.org/docs/reference/compiler-plugins.html
 
 2.http://kotlinlang.org/docs/tutorials/javascript/working-with-modules/working-with-modules.html
-

@@ -418,7 +418,7 @@ class VarArgsDemoTest {
 
 在 Kotlin 中，所有异常都是非受检的（Non-Checked Exceptions），这意味着编译器不会强迫你捕获其中的任何一个。而在Java中会要求我们捕获异常，例如下面的代码：
 
-![螢幕快照 2017-07-15 01.43.16.png](http://upload-images.jianshu.io/upload_images/1233356-4e326702c6c87e20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Kotlin与Java互操作1.png)
 
 也就是说，我们需要写类似下面的` try catch `代码块：
 
@@ -1278,7 +1278,7 @@ fun thisIsAnotherFunWithException() {
 
 然后，我们在Java中调用的时候，Java编译器就会检查这个异常：
 
-![螢幕快照 2017-07-15 21.49.17.png](http://upload-images.jianshu.io/upload_images/1233356-29f3bdf573741b9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Kotlin极简教程](images/Kotlin与Java互操作2.png)
 
 最后，我们的代码就需要捕获该异常并处理它。
 
