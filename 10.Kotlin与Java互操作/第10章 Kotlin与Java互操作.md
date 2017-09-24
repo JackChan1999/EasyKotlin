@@ -473,7 +473,7 @@ public class Object {
         wait(0);
     }
     protected void finalize() throws Throwable { }
-
+}
 ```
 
 当 Java 类型导入到 Kotlin 中时，类型 `java.lang.Object` 的所有引用都成了 `Any`。`Any`只声明了 `toString()`、`hashCode()` 和 `equals()` 函数。怎样才能用到 `java.lang.Object` 的其他成员方法呢？下面我们来看下。
@@ -609,7 +609,6 @@ java.util.Date arg0
 getCategory
 ```
 
-
 ## SAM 转换
 
 我们在Kotlin中，要某个函数做某件事时，会传一个函数参数给它。 而在Java中，并不支持传送函数参数。通常Java的实现方式是将动作放在一个实现某接口的类中，然后将该类的一个实例传递给另一个方法。在大多数情况下，这些接口只有单个抽象方法（single abstract method），在Java中被称为SAM类型。 
@@ -662,7 +661,6 @@ public class MathTools {
 
 }
 ```
-
 那么我们在Kotlin代码这样调用这个is方法：
 ```kotlin
 @RunWith(JUnit4::class)
@@ -927,7 +925,6 @@ fun f4() {
 }
 
 val p2: String = "PPP"
-
 ```
 测试代码：
 
@@ -1297,7 +1294,6 @@ class CheckKotlinException {
     }
 }
 ```
-
 测试代码：
 ```kotlin
 package com.easy.kotlin;

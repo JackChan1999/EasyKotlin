@@ -1326,7 +1326,7 @@ KtModifierKeywordToken HEADER_KEYWORD = KtModifierKeywordToken.softKeywordModifi
 KtModifierKeywordToken IMPL_KEYWORD = KtModifierKeywordToken.softKeywordModifier("impl");
 ```
 
-#### `this` 关键字
+#### this 关键字
 
 `this`关键字持有当前对象的引用。我们可以使用`this`来引用变量或者成员函数，也可以使用`return  this`，来返回某个类的引用。
 
@@ -1927,7 +1927,7 @@ class OperatorDemoTest
 }
 ```
 
-####  `in`操作符
+####  in 操作符
 
 | 表达式       | 翻译为              |
 | --------- | ---------------- |
