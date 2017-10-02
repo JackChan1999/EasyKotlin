@@ -13,7 +13,7 @@ Kotlin的IO操作都在kotlin.io包下。Kotlin的原则就是Java已经有的�
 
 Java 超长的输出语句 System.out.println() 居然延续到了现在！同样的工作在C++里面只需要简单的 cout<< 就可以完成。当然，如果需要的话，我们可以在工程中直接封装  System.out.println() 为简单的打印方法。
 
-在Kotlin里面很简单，只需要使用println或者print这两个全局函数即可，我们不再需要冗长的前缀。当然如果我们很怀旧，就是想用  System.out.println() ，Kotlin 依然支持直接这么使用（与 Java 无缝互操作）。
+在Kotlin里面很简单，只需要使用println或者print这两个全局函数即可，我们不再需要冗长的前缀。当然如果我们很怀旧，就是想用 System.out.println() ，Kotlin 依然支持直接这么使用（与 Java 无缝互操作）。
 
 ```kotlin
 >>> System.out.println("K")
@@ -103,7 +103,6 @@ println(bytes.joinToString(separator = " "))
 val reader: Reader = f.reader()
 val inputStream: InputStream = f.inputStream()
 val bufferedReader: BufferedReader = f.bufferedReader()
-}
 ```
 
 ### 15.3.2 写文件
@@ -138,7 +137,7 @@ fun appendFile(text: String, destFile: String) {
 
 和Groovy一样，Kotlin也提供了方便的功能来遍历文件树。遍历文件树需要调用扩展方法walk()。它会返回一个FileTreeWalk对象，它有一些方法用于设置遍历方向和深度，详情参见FileTreeWalk API 文档说明。
 
-提示：FileTreeWalk API 文档链接 https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/-file-tree-walk/
+提示：FileTreeWalk API [文档链接](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/-file-tree-walk/)
 
 下面的例子遍历了指定文件夹下的所有文件。
 
@@ -319,7 +318,7 @@ fun File.copyRecursively(
 
 我们使用 Groovy 的文件 IO 操作感觉非常好用，例如
 
-```kotlin
+```groovy
 package com.easy.kotlin
 
 import org.junit.Test
@@ -348,7 +347,7 @@ Kotlin 中的文件 IO，网络 IO 操作跟 Groovy一样简单。
 
 另外，从上面的代码中我们看到使用 Groovy 执行终端命令非常简单：
 
-```
+```groovy
 def p = "ls -R".execute()
 def output = p.inputStream.text
 ```
@@ -564,7 +563,7 @@ Kotlin的Any类似于Java的Object，但是没有wait()，notify()和notifyAll()
 
 ### 15.9.1 创建线程
 
-我们在 Java中通常有两种方法在Java中创建线程：
+我们在 Java 中通常有两种方法在Java中创建线程：
 
 - 扩展Thread类
 - 或者实例化它并通过构造函数传递一个Runnable 

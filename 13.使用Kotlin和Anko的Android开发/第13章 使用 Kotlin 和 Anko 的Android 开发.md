@@ -194,12 +194,12 @@ verticalLayout {
 ```
 
 然后到文件MyTodoApplication/app/src/main/res/layout/activity_main.xml中，设置android.support.v7.widget.Toolbar的背景色为
-```
+```xml
 android:background="?attr/colorPrimaryDark"
 ```
 
 配置android.support.design.widget.FloatingActionButton的图标为：
-```
+```xml
 app:srcCompat="drawable/ic_content_add"
 ```
 
@@ -247,17 +247,17 @@ dependencies {
 ### 13.6.1 Kotlin依赖
 
 首先，启用插件`kotlin-android` :
-```
+```gradle
 apply plugin: 'kotlin-android'
 ```
 然后，添加构建脚本
-```
+```gradle
 buildscript {
 
 }
 ```
 我们使用 Kotlin 1.1.3版本。在构建脚本中添加kotlin-gradle-plugin依赖，使用 Kotlin 对应的版本号。
-```
+```gradle
 buildscript {
     ext.kotlin_version = '1.1.3'
     repositories {
@@ -269,7 +269,7 @@ buildscript {
 }
 ```
 在项目依赖里添加 Kotlin 标准库：
-```
+```gradle
 // Kotlin
 compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 ```
@@ -308,7 +308,7 @@ compile 'org.jetbrains.anko:anko-appcompat-v7:0.8.2' // For appcompat-v7 binding
 
 ### 13.6.4 Realm依赖
 
-```
+```gradle
 compile 'io.realm:realm-android:0.87.1'
 compile 'com.github.thorbenprimke:realm-recyclerview:0.9.12' // 在jitpack.io上
 ```
@@ -317,17 +317,17 @@ compile 'com.github.thorbenprimke:realm-recyclerview:0.9.12' // 在jitpack.io上
 
 RecyclerView用于在有限的窗口展现大量的数据，相比ListView、GridView，RecyclerView标准化了ViewHolder，而且更加灵活，可以轻松实现ListView实现不了的样式和功能。我们使用的`com.github.thorbenprimke:realm-recyclerview` 依赖包在在jitpack.io上， 所以我们还需要配置一下仓库地址：
 
-```
+```gradle
 repositories {
     mavenCentral()
     maven { url "https://jitpack.io" }
 }
 ```
 
-提示：realm-recyclerview的 Github 地址是 https://github.com/thorbenprimke/realm-recyclerview
+提示：realm-recyclerview的 Github [地址](https://github.com/thorbenprimke/realm-recyclerview)
 
 另外， Kotlin使用 Realm 还要加上注解处理的依赖库：
-```
+```gradle
 // kotlin使用realm的注解处理依赖库
 kapt "io.realm:realm-annotations:0.87.1"
 kapt "io.realm:realm-annotations-processor:0.87.1"
@@ -337,7 +337,7 @@ kapt "io.realm:realm-annotations-processor:0.87.1"
 
 Butter Knife是基于注解处理方式工作：通过对代码注解自动生成模板代码。我们添加其依赖如下：
 
-```
+```gradle
 // Butter Knife，专门为Android View设计的绑定注解，专业解决各种findViewById
 compile 'com.jakewharton:butterknife:8.7.0'
 annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
@@ -370,19 +370,19 @@ at com.easy.kotlin.mytodoapplication.TodoListFragment.onResume(TodoListFragment.
 
 那么要如何才能在Kotlin的环境中使用ButterKnife呢？
 
-在早些时候，ButterKnife的作者已经帮我们想好解决方案了，那就是——KotterKnife，见名知意。KotterKnife的GitHub地址是：https://github.com/JakeWharton/kotterknife 。这个插件是建立在ButterKnife 7的基础上的。
+在早些时候，ButterKnife的作者已经帮我们想好解决方案了，那就是——KotterKnife，见名知意。KotterKnife的GitHub[地址](https://github.com/JakeWharton/kotterknife) 。这个插件是建立在ButterKnife 7的基础上的。
 
 下面我们配置一下在 Kotlin 中使用 Butter Knife 的依赖库 KotterKnife。
 
 首先在repositories中添加KotterKnife的仓库地址（KotterKnife不在 Maven Center 仓库中，而是在oss.sonatype.org仓库中。这么多仓库，要是哪天能统一用一个就方便多了）。
-```
+```gradle
 repositories {
     ...
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 ```
 然后在dependencies里面添加依赖
-```
+```gradle
 dependencies {
     ...
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -391,14 +391,14 @@ dependencies {
 ```
 
 采用这种方式的配置，我们的视图注入代码如下
-```
+```kotlin
 val todoTitle: TextView by bindView(R.id.todo_item_todo_title)
 val todoContent: TextView by bindView(R.id.todo_item_todo_content)
 ```
 
 这样的代码看起来不是那么的优雅，还没有在 Java 中直接使用注解来的简单好看。同时要注意的是，如果使用 kotterknife 0.1.0 + butterknife:7.0.1 ，同时使用 Java 跟 Kotlin 混合编程的场景中使用 Butter Knife，发现配了KotterKnife 之后的 Java 的注解式写法就失效了。也就是说，如果我们上面添加了KotterKnife的依赖，那么 Java 代码中同时使用 Butter Knife 注解的地方会绑定失败。不过这个问题，在后面的新版本中已经解决。例如在butterknife 8.7.0中，我们可以直接添加下面的依赖项：
 
-```
+```gradle
 compile 'com.jakewharton:butterknife:8.7.0'
 annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 kapt 'com.jakewharton:butterknife-compiler:8.7.0'
@@ -505,7 +505,7 @@ class MainActivity : AppCompatActivity() {
 
 ```
 
-看，这就是Android 开发者，从 Java无缝转到 Kotlin 的过程。
+看，这就是 Android 开发者，从 Java无缝转到 Kotlin 的过程。
 
 我们把这个MainActivity.kt放到对应的 src/main/kotlin 目录下。首先新建`package com.easy.kotlin.mytodoapplication` , 直接在 IDEA 中把这个MainActivity.kt 拖到这个package 下面即可。现在我们的工程目录是下面这个样子
 
@@ -515,7 +515,7 @@ class MainActivity : AppCompatActivity() {
 
 我们需要添加针对 Kotlin 的realm注解处理的库：
 
-```
+```gradle
 kapt "io.realm:realm-annotations:0.87.1"
 kapt "io.realm:realm-annotations-processor:0.87.1"
 ```
@@ -726,20 +726,19 @@ return UI {
 ```
 
 我们使用 Kotlin 的代码 Anko DSL 创建了一个垂直方向的线性布局(用代码写配置写布局要比 XML 灵活方便多了)。 其中 UI 函数
-```
+```kotlin
 fun Fragment.UI(init: AnkoContext<Fragment>.() -> Unit) = createAnkoContext(activity, init)
-
 ```
 是Fragment的扩展函数，它接收一个函数
 
-```
+```kotlin
 init: AnkoContext<Fragment>.() -> Unit
 ```
 init 的入参是AnkoContext类型。
 
 而verticalLayout函数则是ViewManager的内联扩展函数。
 
-```
+```kotlin
 inline fun ViewManager.verticalLayout(init: _LinearLayout.() -> Unit): LinearLayout {
     return ankoView(`$$Anko$Factories$CustomViews`.VERTICAL_LAYOUT_FACTORY, init)
 }
@@ -775,7 +774,7 @@ button {
 
 我们可以看下按钮控件定义的地方。按钮有一个点击监听函数是定义在视图定义文件里面的。在定义按钮之前，有两个参数 title 和 content 的方法 createTodoFrom 已经被调用了。最后，通过在 AnkoContext （UI 类）上调用 view 属性`UI {...}.view`来返回视图。
 
-这里的 ids 被设置为 R.id.<id_name>。这些 ids 需要手工在一个加做 ids.xml 的文件里创建，这个文件放在 app/src/main/res/values/ids.xml。如果这个文件不存在就创建它。文件内容如下：
+这里的 ids 被设置为 R.id.&lt;id_name>。这些 ids 需要手工在一个加做 ids.xml 的文件里创建，这个文件放在 app/src/main/res/values/ids.xml。如果这个文件不存在就创建它。文件内容如下：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

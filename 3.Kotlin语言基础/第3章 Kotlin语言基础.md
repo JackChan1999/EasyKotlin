@@ -218,7 +218,7 @@ JS:
 
 本小节示例工程源代码：https://github.com/EasyKotlin/chapter3_kotlin_basics/tree/package_demo
 
-### 3.2 声明变量和值
+## 3.2 声明变量和值
 
 首先，在Kotlin中， 一切都是对象。所以，所有变量也都是对象（也就是说，任何变量都是根据引用类型来使用的）。
 
@@ -375,7 +375,7 @@ fun testGetLength() {
 }
 ```
 
-### 3.4 字符串与其模板表达式
+## 3.4 字符串与其模板表达式
 
 原始字符串(raw string)由三重引号（"""）分隔(这个跟python一样)。原始字符串可以包含换行符和任何其他字符。
 

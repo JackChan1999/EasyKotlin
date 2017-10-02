@@ -13,7 +13,7 @@ Kotlin 的竞争优势在于它并不是完全隔离于 Java 语言。它基本�
 
 ## Kotlin 调用 Java示例
 
-Kotlin 很像 Java。它长得不像 Clojure 或者 Scala 那么奇怪（承认现实把，这两种语言就是挺奇怪的）。所以我们学 Kotlin 应该很快。这门语言显然就是写给 Java 开发者来用的。
+Kotlin 很像 Java。它长得不像 Clojure 或者 Scala 那么奇怪（承认现实吧，这两种语言就是挺奇怪的）。所以我们学 Kotlin 应该很快。这门语言显然就是写给 Java 开发者来用的。
 
 Kotlin 在设计之初就考虑了与 Java 的互操作性。我们可以从 Kotlin 中自然地调用现存的 Java 代码。例如，下面是一个Kotlin调用Java中的Okhttp库的代码：
 ```kotlin
@@ -214,7 +214,7 @@ println(setReturn)
 
 ## 空安全和平台类型
 
-我们知道Java 中的任何引用都可能是null，这样我们在使用 Kotlin调用来自 Java 的对象的时候就有可能会出现空安全的问题。
+我们知道Java 中的任何引用都可能是null，这样我们在使用 Kotlin 调用来自 Java 的对象的时候就有可能会出现空安全的问题。
 
 Java 声明的类型在 Kotlin 中会被特别对待并称为平台类型（platform types ）。对这种类型的空检查会放宽，因此它们的安全保证与在 Java 中相同。
 
@@ -283,7 +283,7 @@ name?.substring(1)
 
 ## Kotlin与Java中的类型映射
 
-Kotlin 特殊处理一部分 Java 类型。这样的类型不是“按原样”从 Java 加载，而是 _映射_ 到相应的 Kotlin 类型。
+Kotlin 特殊处理一部分 Java 类型。这样的类型不是“按原样”从 Java 加载，而是映射到相应的 Kotlin 类型。
 
 映射只发生在编译期间，运行时表示保持不变。
 
@@ -870,7 +870,7 @@ public final class KotlinExampleKt {
 fun String.swap(index1: Int, index2: Int): String
 ```
 被编译成
-```
+```java
 public static final String swap(@NotNull String $receiver, int index1, int index2)
 ```
 Kotlin中的`String.` 接收者被当做Java方法中的第一个参数传入。
@@ -896,7 +896,7 @@ PPP
 bac
 ```
 另外，要注意的这里生成的类KotlinExampleKt，我们不能使用new来创建实例对象：
-```
+```kotlin
 KotlinExampleKt example = new KotlinExampleKt();// 报错
 ```
 报如下错误：
@@ -928,7 +928,7 @@ val p2: String = "PPP"
 ```
 测试代码：
 
-```java
+```kotlin
 MyKotlinExample.f3();
 MyKotlinExample.f4();
 ```
@@ -1006,7 +1006,7 @@ System.out.println(d.NO = 10);
 
 ## 静态字段
 
-Kotlin中在命名对象或伴生对象中声明的 属性:
+Kotlin中在命名对象或伴生对象中声明的属性:
 
 ```kotlin
 class Department {
@@ -1053,19 +1053,19 @@ public static final class Companion {
 ```
 
 我们在Java访问的`innerID`时候，是通过Companion来访问：
-```
+```java
 Department.Companion.getInnerID()
 ```
 
 而我们使用`@JvmField`注解的字段`innerName` ，Kotlin编译器会把它的访问权限设置是public的，这样我们就可以这样访问这个属性字段了：
 
-```
+```java
 Department.innerName
 ```
 
 ## 静态方法
 
-Kotlin 中，我还可以将命名对象或伴生对象中定义的函数标注为 `@JvmStatic`，这样编译器既会在相应对象的类中生成静态方法，也会在对象自身中生成实例方法。
+Kotlin 中，我们还可以将命名对象或伴生对象中定义的函数标注为 `@JvmStatic`，这样编译器既会在相应对象的类中生成静态方法，也会在对象自身中生成实例方法。
 
 跟静态属性类似的，我们看下面的代码示例：
 

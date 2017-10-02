@@ -239,7 +239,7 @@ repositories {
 ```
 
 其中，dsl.css文件内容如下
-```
+```css
 .ipad {
     margin: 10px
 }
@@ -250,7 +250,7 @@ repositories {
 ```
 
 dsl.js 文件内容如下
-```
+```javascript
 $(function () {
     $('#baiduBtn').on('click', function () {
         var wd = $('#wd').val()

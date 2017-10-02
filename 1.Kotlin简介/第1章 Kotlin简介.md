@@ -1,7 +1,6 @@
 第1章 Kotlin简介
 ===
 
-
 ## 1.1 kotlin简史
 
 ### 1.1.1 Kotlin概述
