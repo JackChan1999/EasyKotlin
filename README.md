@@ -16,19 +16,29 @@
 
 每一个程序员都不能固步自封，要多接触新的行业，新的技术领域，突破自我。
 
-GitHub托管主页：https://github.com/JackChan1999/EasyKotlin
+## GitHub托管主页
 
-GitBook在线阅读、电子书下载：https://www.gitbook.com/book/alleniverson/easykotlin/details
+https://github.com/JackChan1999/EasyKotlin
 
-### Kotlin 语言中文站
+## GitBook在线阅读
+
+在线阅读，PDF、ePub、Mobi电子书下载
+
+https://www.gitbook.com/book/alleniverson/easykotlin/details
+
+## Kotlin-Tutorials
+
+https://www.gitbook.com/book/alleniverson/kotlin-tutorials/details
+
+## Kotlin 语言中文站
 
 ![](assets/Kotlin 语言中文站.png)
 
-### Kotlin 语言官方参考文档 中文版
+## Kotlin 语言官方参考文档 中文版
 
 > https://www.gitbook.com/book/hltj/kotlin-reference-chinese/details
 
-### 《Kotlin for android developers》中文版翻译
+## 《Kotlin for android developers》中文版翻译
 
 > GitHub：https://github.com/wangjiegulu/kotlin-for-android-developers-zh
 >
